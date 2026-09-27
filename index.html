@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Ben · Buzziut · Roblox Systems Programmer</title>
+<meta name="description" content="I write the systems under Roblox games: character controllers, enemy AI, matchmaking, saving and loading, UI. Six years on the platform. Open for short commissions.">
+<meta name="theme-color" content="#0f100e">
+<meta property="og:title" content="Ben · Buzziut · Roblox Systems Programmer · VFX · Animation">
+<meta property="og:description" content="Luau gameplay systems kept on the server, plus ability VFX and animation. Open for short commissions.">
+<meta property="og:image" content="https://buzziut.xyz/assets/link-banner.jpg">
+<meta property="og:url" content="https://buzziut.xyz/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://buzziut.xyz/">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='3' fill='%230f100e'/><text x='16' y='23' text-anchor='middle' font-family='Georgia,serif' font-size='21' fill='%23e8e5dd'>B</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0f100e;
+  --fg:#e8e5dd;
+  --dim:#9b988f;
+  --dim2:#6d6a63;
+  --rule:#272822;
+  --rule2:#1c1d19;
+  --fill:#181914;
+  --accent:#c58f4d;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-in-out:cubic-bezier(.77,0,.175,1);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--fg);font:400 16px/26px var(--sans);-webkit-font-smoothing:antialiased}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+::selection{background:#33352b;color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+main{max-width:616px;margin:0 auto;padding:72px 22px 96px}
+section{margin-top:64px}
+#work{margin-top:78px}
+#connect{margin-top:84px}
+
+h1{font:400 clamp(27px,4.2vw,35px)/1.14 var(--sans);letter-spacing:-.021em;margin:0 0 18px}
+h2{display:flex;align-items:baseline;gap:14px;font:400 21px/1.2 var(--serif);margin:0 0 20px}
+h2::after{content:"";flex:1;height:1px;background:var(--rule);transform:translateY(-5px)}
+.lead{color:var(--dim);margin:0 0 16px}
+.note{color:var(--dim2);font-size:14px;line-height:21px;margin:0}
+.lead a,.inline a{color:var(--fg);border-bottom:1px solid var(--rule);transition:border-color .2s ease}
+
+.head{display:flex;align-items:center;gap:15px;padding-bottom:26px;border-bottom:1px solid var(--rule2);margin-bottom:44px}
+.avatar{width:46px;height:46px;border-radius:3px;flex:none;object-fit:cover;border:1px solid var(--rule)}
+.name{font:400 16px/1.35 var(--sans);margin:0}
+.role{color:var(--dim);font-size:13.5px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.chips button{appearance:none;-webkit-appearance:none;background:none;border:1px solid var(--rule);border-radius:3px;
+  margin:0;padding:7px 12px;color:var(--dim);font:400 13.5px/1 var(--sans);cursor:pointer;
+  -webkit-tap-highlight-color:transparent;transition:color .15s ease,border-color .15s ease}
+.chips button[aria-pressed="true"]{color:var(--fg);border-color:var(--accent)}
+
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:11px 0 0;padding:0}
+.tags li{padding:4px 7px;border:1px solid var(--rule);border-radius:2px;color:var(--dim);font-size:12px;line-height:1}
+
+.rest{display:flex;align-items:baseline;gap:14px;margin:0 0 30px;color:var(--dim2);font:italic 400 16px/1.2 var(--serif)}
+.rest::after{content:"";flex:1;height:1px;background:var(--rule2);transform:translateY(-4px)}
+.rest[hidden]{display:none}
+
+.clip{margin:0 0 38px}
+.clip:last-of-type{margin-bottom:0}
+.clip .well{position:relative;aspect-ratio:16/9;border:1px solid var(--rule);border-radius:3px;background:var(--fill);overflow:hidden}
+.clip.wide .well{aspect-ratio:1280/592}
+.clip video{width:100%;height:100%;object-fit:cover;background:#000}
+.clip figcaption{margin-top:11px;color:var(--dim);font-size:14.5px;line-height:23px}
+.clip .tags + figcaption{margin-top:9px}
+.clip figcaption b{color:var(--fg);font-weight:400}
+.clip figcaption strong{color:var(--fg);font-weight:700;letter-spacing:.01em}
+.clip[data-sound="off"] .well::after{
+  content:"click for sound";
+  position:absolute;right:9px;bottom:9px;z-index:1;pointer-events:none;
+  padding:5px 8px;border-radius:2px;
+  background:rgba(15,16,14,.8);color:var(--dim);
+  font-size:11.5px;line-height:1;
+  opacity:0;transition:opacity .15s ease}
+@media (hover:hover) and (pointer:fine){
+  .clip[data-sound="off"] .well:hover::after{opacity:1}
+}
+@media (hover:none){
+  .clip[data-sound="off"] .well::after{content:"tap for sound";opacity:1}
+}
+
+@media (min-width:860px) and (prefers-reduced-motion:no-preference){
+  .clip video{transition:transform .25s var(--ease-in-out)}
+  .clip.crop video{transform-origin:0 0;transform:scale(1.437) translate(-3.2%,-13.3%)}
+}
+
+.project{margin-bottom:60px}
+.project:last-child{margin-bottom:0}
+.project h3{font:400 22px/1.25 var(--sans);letter-spacing:-.015em;margin:0 0 9px}
+.shots{display:grid;gap:26px;margin-top:24px}
+.shot{margin:0}
+.shot img{width:100%;height:auto;border:1px solid var(--rule);border-radius:3px;background:var(--fill);
+  transition:opacity .25s var(--ease-out)}
+.shot img.is-pending{opacity:0}
+.shot figcaption{margin-top:9px;color:var(--dim);font:italic 400 14.5px/22px var(--serif)}
+
+.rows{list-style:none;margin:24px 0 0;padding:0}
+.rows li{padding:14px 0;border-top:1px solid var(--rule2)}
+.rows li:first-child{border-top:1px solid var(--rule)}
+.rows b{display:block;font-weight:400;font-size:15.5px;margin-bottom:4px}
+.rows span{color:var(--dim);font-size:14.5px;line-height:22.5px}
+.rows .now{float:right;font-size:12.5px;line-height:24px;color:var(--accent);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.rows .now:empty{display:none}
+
+.links{display:grid;grid-template-columns:1fr 1fr;gap:0 26px;margin-top:20px}
+.rowlink{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border-top:1px solid var(--rule);padding:13px 2px;font-size:14.5px;color:var(--fg);
+  -webkit-tap-highlight-color:transparent;transition:border-color .2s ease}
+.rowlink .ic{color:var(--dim2);flex:none;transition:color .15s ease,transform .15s ease}
+button.rowlink{appearance:none;-webkit-appearance:none;background:none;border-left:0;border-right:0;border-bottom:0;
+  width:100%;margin:0;font-family:inherit;line-height:26px;text-align:left;cursor:pointer}
+
+.swap{display:grid;align-items:center}
+.swap>span{grid-area:1/1;transition:opacity .15s ease}
+.swap .alt{opacity:0}
+.rowlink.is-copied{border-color:var(--accent)}
+.rowlink.is-copied .ic{color:var(--accent)}
+.rowlink.is-copied .swap>span:first-child{opacity:0}
+.rowlink.is-copied .swap .alt{opacity:1}
+
+footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule2);color:var(--dim2);font-size:13px}
+
+@media (hover:hover) and (pointer:fine){
+  .lead a:hover,.inline a:hover{border-color:var(--accent)}
+  .chips button:hover{color:var(--fg)}
+  .rowlink:hover{border-color:var(--accent)}
+  .rowlink:hover .ic{color:var(--accent);transform:translate(1px,-1px)}
+}
+
+@media (max-width:620px){
+  .links{grid-template-columns:1fr}
+  .role{display:block;line-height:20px}
+}
+</style>
+</head>
+<body>
+
+<main>
+
+  <header class="head">
+    <a class="who-row" href="#top" style="display:inline-flex;gap:15px;align-items:center">
+      <img class="avatar" src="assets/avatar.jpg" alt="" width="46" height="46">
+      <span>
+        <p class="name">Ben · Buzziut</p>
+        <span class="role">Roblox systems programmer · VFX&nbsp;·&nbsp;Animation</span>
+      </span>
+    </a>
+  </header>
+
+  <section id="top" style="margin-top:0">
+    <h1>I'm Ben, a full stack advanced Roblox Luau scripter and VFX artist, willing to work part time and commissions.</h1>
+    <p class="lead">Character controllers, enemy AI, matchmaking, saving and loading, UI, that kind of thing. I write it all myself instead of grabbing something off the toolbox, I keep the important checks on the server, and I make sure it still runs fine on a cheap phone. Scripting is my primary skill and it's what you're hiring me for. VFX is my secondary one, so I can take an ability from the toggle to the finished effect without handing it off to anyone.</p>
+    <p class="lead">The two games further down are my own projects, so whatever I write for you is the same kind of code I have to deal with myself later on. I mostly do short commissions. One system, one feature, an optimization pass, or a bug you're just done dealing with.</p>
+    <p class="note inline"><a href="mailto:buzziut.dev@gmail.com">buzziut.dev@gmail.com</a> · Discord .ben284 · Roblox @thefuture1687</p>
+  </section>
+
+  <section id="clips">
+    <h2>clips</h2>
+    <div class="chips" role="group" aria-label="Filter clips by skill">
+      <button type="button" data-skill="" aria-pressed="true">All</button>
+      <button type="button" data-skill="scripting" aria-pressed="false">Scripting</button>
+      <button type="button" data-skill="vfx" aria-pressed="false">VFX</button>
+      <button type="button" data-skill="animation" aria-pressed="false">Animation</button>
+    </div>
+
+    <figure class="clip" id="clip-frieren">
+      <div class="well" style="aspect-ratio:1234/496"><video src="assets/frieren.mp4" poster="assets/frieren-poster.jpg" controls preload="metadata" playsinline></video></div>
+      <ul class="tags"><li>Scripting</li><li>VFX</li><li>Animation</li></ul>
+      <figcaption><b>Frieren cutscene.</b> She casts up into the sky, a ring opens on the ground and flowers spread out over the whole field. The whole thing is mine, the cutscene and camera scripting, the VFX, the character animation, the map and the lighting.</figcaption>
+    </figure>
+
+    <figure class="clip" id="clip-ultimate">
+      <div class="well"><video src="assets/ultimate.mp4" poster="assets/ultimate-poster.jpg" controls preload="metadata" playsinline></video></div>
+      <ul class="tags"><li>Scripting</li><li>VFX</li><li>Animation</li></ul>
+      <figcaption><b>Ultimate ability showcase.</b> <strong>ALL SCRIPTING AND VFX IS DONE BY ME.</strong> Scripting is the primary skill here. I wrote the camera work, the cutscene framing with the bars, the orbit and the pull back on the cast, and the ability toggle that drives the whole sequence and hands off to each stage of the effect. The VFX is mine too, that's the secondary skill, built as a real instance tree.</figcaption>
+    </figure>
+
+    <figure class="clip wide" id="clip-td-boss">
+      <div class="well"><video src="assets/td-boss.mp4" poster="assets/td-boss-poster.jpg" controls preload="metadata" playsinline></video></div>
+      <ul class="tags"><li>Scripting</li><li>VFX</li></ul>
+      <figcaption><b>Tower defense boss fight.</b> The Noob King wave from my tower defense game, running on a phone. The boss has its own health bar and state label, and the panel on the left is the unit upgrade and targeting menu for whatever you have placed. The whole system is mine, the UI, the VFX, the unit models and all of the scripting.</figcaption>
+    </figure>
+
+    <figure class="clip crop" id="clip-combat">
+      <div class="well"><video src="assets/combat.mp4" controls preload="metadata" playsinline></video></div>
+      <ul class="tags"><li>Scripting</li><li>VFX</li></ul>
+      <figcaption><b>Combat abilities.</b> This is a spin attack with a slash ring around the character and then a ground slam that kicks up a bunch of dust. Just a test rig in Studio, there's no art on it yet.</figcaption>
+    </figure>
+
+    <figure class="clip" id="clip-parry">
+      <div class="well"><video src="assets/parry.mp4" poster="assets/parry-poster.jpg" controls preload="none" playsinline></video></div>
+      <ul class="tags"><li>Scripting</li></ul>
+      <figcaption><b>Parry.</b> When the striker swings there's a red wind up first, and if you block right at that moment it becomes a parry instead of a normal block. You get the impact burst and the deflect effect and you don't lose any health, the bar stays at 125 through the whole thing.</figcaption>
+    </figure>
+
+    <figure class="clip" id="clip-backpack">
+      <div class="well"><video src="assets/backpack.mp4" poster="assets/backpack-poster.jpg" controls preload="none" playsinline></video></div>
+      <ul class="tags"><li>Scripting</li></ul>
+      <figcaption><b>Military backpack inventory.</b> This one was a commission, I built it inside the client's own place. You press TAB and the backpack rig comes up in front of the camera, and the items are actual 3D objects sitting in it, each slot has its own take out prompt. It runs alongside a first person viewmodel and a hotbar.</figcaption>
+    </figure>
+
+    <figure class="clip" id="clip-wirebox">
+      <div class="well"><video src="assets/wirebox.mp4" poster="assets/wirebox-poster.jpg" controls preload="none" playsinline></video></div>
+      <ul class="tags"><li>Scripting</li></ul>
+      <figcaption><b>Wire box objective.</b> The prompt checks the objective's own state before it does anything. When you interact it opens a little splice minigame where you reroute wires between terminals. When you finish, the server logs it and it counts toward the round's win condition.</figcaption>
+    </figure>
+
+    <figure class="clip" id="clip-generator">
+      <div class="well"><video src="assets/generator.mp4" poster="assets/generator-poster.jpg" controls preload="none" playsinline></video></div>
+      <ul class="tags"><li>Scripting</li></ul>
+      <figcaption><b>Generator objective.</b> A hold interaction with a timing ring and a progress bar that has four stages. Each stage saves separately, so if a survivor gets interrupted halfway through a repair they don't lose what they already did.</figcaption>
+    </figure>
+
+    <figure class="clip" id="clip-terminal">
+      <div class="well"><video src="assets/terminal.mp4" poster="assets/terminal-poster.jpg" controls preload="none" playsinline></video></div>
+      <ul class="tags"><li>Scripting</li></ul>
+      <figcaption><b>Server terminal objective.</b> You pick up data chips around the map and then hold them over the scanner on the console. Every symbol decrypts into a number and the panel keeps track of the system status until the terminal is back up. The chip pickups, the hold and the decryption all happen on the server.</figcaption>
+    </figure>
+
+    <figure class="clip" id="clip-chase">
+      <div class="well"><video src="assets/chase.mp4" poster="assets/chase-poster.jpg" controls preload="none" playsinline></video></div>
+      <ul class="tags"><li>Scripting</li></ul>
+      <figcaption><b>Movement and camera in the actual map.</b> The custom controller and the soft shift lock camera running in the real built map instead of a test room. You can see the health and stamina HUD going down as you sprint.</figcaption>
+    </figure>
+
+    <p class="rest" hidden>everything else</p>
+  </section>
+
+  <section id="work">
+    <h2>work</h2>
+
+    <article class="project" id="tower-defense">
+      <h3>Untitled Tower Defense</h3>
+      <p class="note inline" style="margin-bottom:14px"><a href="https://www.roblox.com/games/119472908687736" target="_blank" rel="noopener">roblox.com/games/119472908687736</a></p>
+      <p class="lead">A full tower defense game I made by myself. Code, UI, enemy behaviour, economy, balance, mobile support, all of it. It's live right now, which is honestly the main reason it's on here, you can go play it and check everything below yourself.</p>
+
+      <div class="shots">
+        <figure class="shot">
+          <img src="assets/td-unitshop.jpg" width="1400" height="691" alt="Unit shop with a hexagonal stat radar chart" loading="lazy">
+          <figcaption>The unit shop, each unit has its own hexagonal stat radar. All custom UI, no plugins.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/td-wave.jpg" width="1400" height="646" alt="A wave in progress with placed units and the economy HUD" loading="lazy">
+          <figcaption>A wave in progress, you can see the placed units, the enemy path and the economy HUD.</figcaption>
+        </figure>
+      </div>
+
+      <ul class="rows">
+        <li><b>Hexagonal stat radar</b><span>It reads each unit's stat table and draws the polygon, the axis web and the letter grades at runtime. I built it out of primitives instead of using a charting module, so when I add a new unit I don't have to touch the UI at all.</span></li>
+        <li><b>Wave and enemy director</b><span>The waves scale up in what they're made of as you go, the enemies have different movement behaviours, and the multi-phase bosses switch up their attack patterns in the middle of the fight.</span></li>
+        <li><b>Tower placement</b><span>Validation that makes sure the preview and the placement you actually commit are always the same thing. Works the same with mouse and with touch.</span></li>
+        <li><b>Economy and support units</b><span>Income towers and payouts per wave, with some anti-snowball levers in there so a really strong early game doesn't make the rest of the run boring.</span></li>
+        <li><b>Loadout system</b><span>Equip, unequip and reorder. Including the sparse array stuff that silently breaks Lua table iteration if you're not careful about it.</span></li>
+        <li><b>Responsive UI and performance</b><span>Layouts that hold up on a small phone and on widescreen, animations split between client and server, and the per frame loops merged down into as few as possible.</span></li>
+      </ul>
+    </article>
+
+    <article class="project" id="horror">
+      <h3>Unannounced Asymmetric Horror Project</h3>
+      <p class="lead">An asymmetric horror game, 12 survivors against 2 strikers, on two maps, sort of in the style of Dead by Daylight. I can't say the name until we announce it. I'm the only programmer on it, my partner does the design and the map layouts.</p>
+
+      <div class="shots">
+        <figure class="shot">
+          <img src="assets/hz-pursuit.jpg" width="1400" height="443" alt="Striker mid-pursuit with a red debug trail showing the computed path" loading="lazy">
+          <figcaption>The striker mid chase. The red trail is the computed path getting used up one waypoint at a time.</figcaption>
+        </figure>
+        <figure class="shot">
+          <img src="assets/hz-code.jpg" width="1206" height="596" alt="Luau source showing stamina-gated chase speed" loading="lazy">
+          <figcaption>Chase speed is tied to stamina, with an exhaustion threshold and a re-engage threshold, and the pathfinding fails safe if it can't find a route.</figcaption>
+        </figure>
+      </div>
+
+      <ul class="rows">
+        <li><b>Custom character controller</b><span>Movement written from the ground up because I didn't want the default humanoid feel. Sprint, crouch and the state transitions, with weight based animation crossfading.</span></li>
+        <li><b>Soft shift-lock camera</b><span>A custom camera rig set up for over the shoulder horror framing. The easing keeps your aim responsive but it doesn't have that stiff feel the stock shift lock has.</span></li>
+        <li><b>Striker AI</b><span>PathfindingService routing that recomputes when a path fails, and it all runs off a stamina model. When the striker gets exhausted it drops to walk speed, and a re-engage threshold decides when it starts chasing again.</span></li>
+        <li><b>Objectives and interaction</b><span>Proximity prompts where every objective keeps its own state, and they feed into the round's win conditions.</span></li>
+        <li><b>Server-authoritative movement</b><span>Walk speed, position and player state all get validated on the server. That closes the client trust holes exploiters use to outrun you or clip through the map.</span></li>
+      </ul>
+    </article>
+  </section>
+
+  <section id="build">
+    <h2>what I build</h2>
+    <ul class="rows">
+      <li><b>Data &amp; saving</b><span>DataStores and ProfileService. Save structures, session locking, and migrating old player data over without wiping anyone's stuff.</span></li>
+      <li><b>Matchmaking &amp; rounds</b><span>Queues, putting people on teams, the whole round lifecycle, and working out who won.</span></li>
+      <li><b>Character &amp; camera</b><span>Custom controllers, sprint / crouch / stamina states, animation blending, custom camera rigs.</span></li>
+      <li><b>Enemy &amp; NPC AI</b><span>PathfindingService routing, waypoint following, chase and search state machines, multi-phase bosses.</span></li>
+      <li><b>UI from scratch</b><span>HUDs, shops, upgrade panels, stat displays that read from data, and layouts that don't fall apart on a small phone.</span></li>
+      <li><b>VFX <span class="note" style="font-size:12.5px">secondary skill</span></b><span>Ability and cutscene effects, beams, trails, particle bursts and screen framing, built as a real instance tree. Everything above this line is the scripting, that's the primary skill, this one just means I don't have to wait on a VFX artist to finish an ability.</span></li>
+      <li><b>Performance &amp; security</b><span>Figuring out what's eating your frame rate, moving work off the server, and validating remotes so exploiters can't just ask the server for stuff.</span></li>
+    </ul>
+    <p class="note inline" style="margin-top:24px">I've been publishing on Roblox since 2021. Some of the early stuff is still up, like <a href="https://www.roblox.com/games/6719516094" target="_blank" rel="noopener">Super Clickers</a> and an <a href="https://www.roblox.com/games/7133018155" target="_blank" rel="noopener">early gun / combat system</a>. The full list is on <a href="https://www.roblox.com/users/807959354/profile" target="_blank" rel="noopener">my profile</a>.</p>
+  </section>
+
+  <section id="how">
+    <h2>how I work</h2>
+    <ul class="rows">
+      <li><b>Scope</b><span>You tell me the system or the bug. I ask the questions that actually change the estimate, and then I write down what's included and what isn't so we're on the same page.</span></li>
+      <li><b>Estimate</b><span>You get a fixed deliverable and a real timeline before I start anything. If the job grows halfway through we re-quote it, I'm not going to quietly go over and then surprise you with it.</span></li>
+      <li><b>Build</b><span>I send updates that have something you can actually test in them, not a week of nothing and then a giant wall of code.</span></li>
+      <li><b>Handoff</b><span>Commented, modular code that drops straight into your place, a quick walkthrough of how it all fits together, and a window after that where I fix anything that comes up.</span></li>
+    </ul>
+
+    <h2 style="margin:48px 0 20px">working together</h2>
+    <ul class="rows">
+      <li><b><span class="now" data-now></span>Availability (Eastern)</b><span>Thu and Fri 6 to 8 PM, Sat and Sun 3 to 10 PM. That's around 25 hours a week. I'd rather be upfront about that than pretend I can do full time.</span></li>
+      <li><b>Best fit</b><span>One system, a feature, an optimization pass, closing exploit holes, or hunting down a bug. Usually a few days to a few weeks of work.</span></li>
+      <li><b>Rates</b><span>I quote per project once we've agreed on the scope. Tell me what you need and I'll come back to you with a number and a date.</span></li>
+      <li><b>References</b><span>Crit (critical_dummy) and Pearl (pearlsnivy1) are happy to vouch for me. I can give you more if you want.</span></li>
+    </ul>
+  </section>
+
+  <section id="connect">
+    <h2>connect</h2>
+    <p class="lead">Send me the game, what the problem is and when you need it by. If I'm not the right person for it I'll tell you straight up instead of wasting your week.</p>
+    <div class="links">
+      <a class="rowlink" href="mailto:buzziut.dev@gmail.com"><span>Email</span><span class="ic">&#8599;</span></a>
+      <button class="rowlink" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span><span class="ic swap" aria-hidden="true"><span>&#8599;</span><span class="alt">&#10003;</span></span></button>
+      <a class="rowlink" href="https://www.roblox.com/users/807959354/profile" target="_blank" rel="noopener"><span>Roblox @thefuture1687</span><span class="ic">&#8599;</span></a>
+      <a class="rowlink" href="https://github.com/Streetdude123" target="_blank" rel="noopener"><span>GitHub</span><span class="ic">&#8599;</span></a>
+    </div>
+  </section>
+
+  <footer>Ben · Buzziut · buzziut.xyz</footer>
+
+</main>
+
+<script>
+document.querySelectorAll(".shot img").forEach(img => {
+  if (img.complete) return;
+  img.classList.add("is-pending");
+  const show = () => img.classList.remove("is-pending");
+  img.addEventListener("load", show, { once: true });
+  img.addEventListener("error", show, { once: true });
+});
+
+document.querySelectorAll("[data-copy]").forEach(btn => {
+  let timer = 0;
+  btn.addEventListener("click", () => {
+    navigator.clipboard.writeText(btn.dataset.copy).then(() => {
+      btn.classList.add("is-copied");
+      clearTimeout(timer);
+      timer = setTimeout(() => btn.classList.remove("is-copied"), 1600);
+    });
+  });
+});
+
+const clock = document.querySelector("[data-now]");
+const fmt = new Intl.DateTimeFormat("en-US", { timeZone: "America/New_York", weekday: "short", hour: "numeric", minute: "2-digit" });
+let clockTimer = 0;
+function tick(){
+  const d = new Date();
+  clock.textContent = fmt.format(d).replace(",", "") + " ET";
+  clearTimeout(clockTimer);
+  clockTimer = setTimeout(tick, 60000 - (d.getSeconds() * 1000 + d.getMilliseconds()) + 50);
+}
+tick();
+document.addEventListener("visibilitychange", () => { if (!document.hidden) tick(); });
+
+const clipBox = document.getElementById("clips");
+const clips = [...clipBox.querySelectorAll(".clip")];
+const chips = [...clipBox.querySelectorAll(".chips button")];
+const rest = clipBox.querySelector(".rest");
+
+function pick(skill){
+  const hits = clips.filter(fig => !skill || [...fig.querySelectorAll(".tags li")].some(li => li.textContent.toLowerCase() === skill));
+  const misses = clips.filter(fig => !hits.includes(fig));
+  clipBox.append(...hits, rest, ...misses);
+  rest.hidden = !misses.length;
+  chips.forEach(b => b.setAttribute("aria-pressed", b.dataset.skill === skill));
+  const url = new URL(location.href);
+  if (skill) url.searchParams.set("skill", skill);
+  else url.searchParams.delete("skill");
+  history.replaceState(null, "", url);
+}
+
+chips.forEach(b => b.addEventListener("click", () => pick(b.dataset.skill)));
+const startSkill = new URLSearchParams(location.search).get("skill");
+if (startSkill) pick(startSkill);
+
+const wide = window.matchMedia("(min-width: 860px)");
+const still = window.matchMedia("(prefers-reduced-motion: reduce)");
+const videos = [...document.querySelectorAll(".clip video")];
+
+function autoplayClips(){
+  if (!wide.matches || still.matches) return;
+
+  videos.forEach(v => {
+    const fig = v.closest(".clip");
+    v.muted = true; v.loop = true; v.playsInline = true;
+    v.removeAttribute("controls");
+    v.preload = "metadata";
+    v.style.cursor = "pointer";
+    fig.dataset.sound = "off";
+    v.addEventListener("click", () => {
+      fig.classList.remove("crop");
+      fig.dataset.sound = "on";
+      v.controls = true;
+      v.muted = false;
+    });
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const v = entry.target;
+      if (entry.isIntersecting) {
+        v.play().catch(err => {
+          if (err.name === "NotAllowedError"){
+            const fig = v.closest(".clip");
+            v.controls = true;
+            fig.classList.remove("crop");
+            fig.dataset.sound = "on";
+          }
+        });
+      }
+      else { v.pause(); }
+    });
+  }, { threshold: 0.35 });
+
+  videos.forEach(v => io.observe(v));
+}
+autoplayClips();
+</script>
+</body>
+</html>
