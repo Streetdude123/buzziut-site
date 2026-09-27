@@ -72,12 +72,9 @@ h2::after{content:"";flex:1;height:1px;background:var(--rule);transform:translat
 .tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:11px 0 0;padding:0}
 .tags li{padding:4px 7px;border:1px solid var(--rule);border-radius:2px;color:var(--dim);font-size:12px;line-height:1}
 
-.rest{display:flex;align-items:baseline;gap:14px;margin:0 0 30px;color:var(--dim2);font:italic 400 16px/1.2 var(--serif)}
-.rest::after{content:"";flex:1;height:1px;background:var(--rule2);transform:translateY(-4px)}
-.rest[hidden]{display:none}
 
-.clip{margin:0 0 38px}
-.clip:last-of-type{margin-bottom:0}
+.clip{margin:0}
+.clip:not([hidden]) ~ .clip:not([hidden]){margin-top:38px}
 .clip .well{position:relative;aspect-ratio:16/9;border:1px solid var(--rule);border-radius:3px;background:var(--fill);overflow:hidden}
 .clip.wide .well{aspect-ratio:1280/592}
 .clip video{width:100%;height:100%;object-fit:cover;background:#000}
@@ -186,14 +183,14 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule2);color:
 
     <figure class="clip" id="clip-frieren">
       <div class="well" style="aspect-ratio:1234/496"><video src="assets/frieren.mp4" poster="assets/frieren-poster.jpg" controls preload="metadata" playsinline></video></div>
-      <ul class="tags"><li>Scripting</li><li>VFX</li><li>Animation</li></ul>
+      <ul class="tags"><li>VFX</li><li>Animation</li></ul>
       <figcaption><b>Frieren cutscene.</b> She casts up into the sky, a ring opens on the ground and flowers spread out over the whole field. The whole thing is mine, the cutscene and camera scripting, the VFX, the character animation, the map and the lighting.</figcaption>
     </figure>
 
     <figure class="clip" id="clip-ultimate">
       <div class="well"><video src="assets/ultimate.mp4" poster="assets/ultimate-poster.jpg" controls preload="metadata" playsinline></video></div>
-      <ul class="tags"><li>Scripting</li><li>VFX</li><li>Animation</li></ul>
-      <figcaption><b>Ultimate ability showcase.</b> <strong>ALL SCRIPTING AND VFX IS DONE BY ME.</strong> Scripting is the primary skill here. I wrote the camera work, the cutscene framing with the bars, the orbit and the pull back on the cast, and the ability toggle that drives the whole sequence and hands off to each stage of the effect. The VFX is mine too, that's the secondary skill, built as a real instance tree.</figcaption>
+      <ul class="tags"><li>VFX</li><li>Animation</li></ul>
+      <figcaption><b>Ultimate ability showcase.</b> <strong>ALL SCRIPTING AND VFX IS DONE BY ME.</strong> I wrote the camera work, the cutscene framing with the bars, the orbit and the pull back on the cast, and the ability toggle that drives the whole sequence and hands off to each stage of the effect. The VFX is mine too, that's the secondary skill, built as a real instance tree.</figcaption>
     </figure>
 
     <figure class="clip wide" id="clip-td-boss">
@@ -243,8 +240,6 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule2);color:
       <ul class="tags"><li>Scripting</li></ul>
       <figcaption><b>Movement and camera in the actual map.</b> The custom controller and the soft shift lock camera running in the real built map instead of a test room. You can see the health and stamina HUD going down as you sprint.</figcaption>
     </figure>
-
-    <p class="rest" hidden>everything else</p>
   </section>
 
   <section id="work">
@@ -383,13 +378,11 @@ document.addEventListener("visibilitychange", () => { if (!document.hidden) tick
 const clipBox = document.getElementById("clips");
 const clips = [...clipBox.querySelectorAll(".clip")];
 const chips = [...clipBox.querySelectorAll(".chips button")];
-const rest = clipBox.querySelector(".rest");
 
 function pick(skill){
-  const hits = clips.filter(fig => !skill || [...fig.querySelectorAll(".tags li")].some(li => li.textContent.toLowerCase() === skill));
-  const misses = clips.filter(fig => !hits.includes(fig));
-  clipBox.append(...hits, rest, ...misses);
-  rest.hidden = !misses.length;
+  clips.forEach(fig => {
+    fig.hidden = !!skill && ![...fig.querySelectorAll(".tags li")].some(li => li.textContent.toLowerCase() === skill);
+  });
   chips.forEach(b => b.setAttribute("aria-pressed", b.dataset.skill === skill));
   const url = new URL(location.href);
   if (skill) url.searchParams.set("skill", skill);
