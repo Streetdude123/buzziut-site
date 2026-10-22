@@ -41,12 +41,11 @@
   --accent-ring:rgba(197,143,77,.16);
   --win:#facc15;
   --on-win:#16140a;
-  --win-tint:rgba(250,204,21,.07);
+  --win-tint:rgba(250,204,21,.08);
+  --win-glow:rgba(250,204,21,.22);
   --live:#5ec98a;
   --live-ring:rgba(94,201,138,.16);
   --sand:#cdb98f;
-  --scrim:rgba(15,16,14,.94);
-  --scrim-mid:rgba(15,16,14,.74);
   --scrim-low:rgba(15,16,14,.88);
   --glass:rgba(15,16,14,.62);
   --glass-line:rgba(232,229,221,.24);
@@ -56,12 +55,12 @@
   --serif:"Spectral",Georgia,"Times New Roman",serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
   --text:640px;
-  --wide:1200px;
+  --side:400px;
   --ease-out:cubic-bezier(.23,1,.32,1);
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
+html{scroll-behavior:smooth;scroll-padding-top:28px}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
 p,h1,h2,h3,dl,dd,figure{margin:0}
@@ -70,24 +69,41 @@ img,video{display:block;max-width:100%}
 ::selection{background:var(--sel);color:var(--fg-hi)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
 
-.in{max-width:calc(var(--wide) + 80px);margin-inline:auto;
-  padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.bar{display:none}
 
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--rule2)}
-.bar .in{display:flex;align-items:center;gap:16px;min-height:60px}
-.me{display:inline-flex;align-items:center;gap:11px;min-width:0;font-size:15px;white-space:nowrap}
-.me img{width:30px;height:30px;flex:none;border-radius:3px;border:1px solid var(--rule);object-fit:cover}
-.me span{overflow:hidden;text-overflow:ellipsis}
-.nav{display:flex;gap:2px;margin-left:auto}
-.nav a{padding:6px 10px;border-radius:3px;color:var(--dim);font-size:14px;white-space:nowrap;transition:color .15s ease}
-.nav a[aria-current="true"]{color:var(--fg)}
-.bar .btn{flex:none}
+.page{display:grid;grid-template-columns:var(--side) minmax(0,1fr);max-width:1520px;margin:0 auto}
 
-.btn{appearance:none;-webkit-appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:46px;margin:0;padding:0 18px;
+.side{position:sticky;top:env(safe-area-inset-top,0px);height:calc(100vh - env(safe-area-inset-top,0px));overflow-y:auto;border-right:1px solid var(--rule);
+  background:var(--bg);scrollbar-width:thin;scrollbar-color:var(--rule) transparent}
+.side-in{display:flex;flex-direction:column;gap:22px;min-height:100%;padding:36px 34px 28px max(34px,env(safe-area-inset-left,0px))}
+.who{display:flex;align-items:center;gap:14px}
+.who img{width:56px;height:56px;flex:none;border-radius:3px;border:1px solid var(--rule);object-fit:cover}
+.who b{display:block;font-weight:400;font-size:17px;line-height:1.3}
+.who .role{display:block;color:var(--dim);font-size:13.5px;line-height:1.4}
+.status{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;color:var(--dim);font-size:13.5px}
+.status .now{color:var(--dim2);font-variant-numeric:tabular-nums}
+.dot{width:7px;height:7px;flex:none;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px var(--live-ring)}
+h1{font:400 34px/1.1 var(--sans);letter-spacing:-.025em;text-wrap:balance}
+.proof{border-top:1px solid var(--rule)}
+.proof > div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:11px 0;border-bottom:1px solid var(--rule2);font-size:14px;line-height:1.4}
+.proof dt{flex:none;color:var(--fg)}
+.proof dd{text-align:right;color:var(--dim)}
+.proof dd a{border-bottom:1px solid var(--rule);transition:border-color .2s ease,color .15s ease}
+.proof .w dt{color:var(--win)}
+.side-cta{display:flex;flex-direction:column;gap:8px}
+.side-cta .btn{justify-content:space-between}
+.side-nav{display:flex;flex-direction:column;margin-top:auto;padding-top:6px;font-size:14px}
+.side-nav a{display:flex;align-items:center;padding:5px 0;color:var(--dim);transition:color .15s ease}
+.side-nav a::before{content:"";width:0;height:1px;margin-right:0;background:var(--accent);transition:width .2s var(--ease-out),margin-right .2s var(--ease-out)}
+.side-nav a[aria-current="true"]{color:var(--fg)}
+.side-nav a[aria-current="true"]::before{width:14px;margin-right:10px}
+
+.content{min-width:0;padding:36px 48px 0}
+
+.btn{appearance:none;-webkit-appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:46px;margin:0;padding:0 16px;
   border:1px solid var(--rule);border-radius:3px;background:none;color:var(--fg);font:400 15px/1 var(--sans);white-space:nowrap;cursor:pointer;
   -webkit-tap-highlight-color:transparent;transition:border-color .15s ease,background-color .15s ease}
 .btn.main{background:var(--fg);border-color:var(--fg);color:var(--bg)}
-.btn.ghost{background:var(--glass);border-color:var(--glass-line)}
 .btn.sm{min-height:36px;padding:0 14px;font-size:14px}
 .btn .k{font-size:12.5px;color:var(--dim2)}
 .btn.main .k{color:var(--ink2)}
@@ -98,51 +114,15 @@ img,video{display:block;max-width:100%}
 .is-copied .swap>span:first-child{opacity:0}
 .is-copied .swap .alt{opacity:1}
 
-.dot{width:7px;height:7px;flex:none;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px var(--live-ring)}
 .out{color:var(--fg);font-size:14.5px;border-bottom:1px solid var(--rule);white-space:nowrap;transition:border-color .2s ease}
 .inline a{color:var(--fg);border-bottom:1px solid var(--rule);transition:border-color .2s ease}
 .lead{max-width:var(--text);color:var(--dim);font-size:17px;line-height:1.7}
 .fine{max-width:var(--text);color:var(--dim2);font-size:14px;line-height:1.6}
-.badge{flex:none;padding:5px 7px 4px;border-radius:2px;background:var(--win);color:var(--on-win);font:600 11.5px/1 var(--sans);letter-spacing:.07em;text-transform:uppercase}
+.badge{flex:none;padding:6px 9px 5px;border-radius:2px;background:var(--win);color:var(--on-win);font:600 12.5px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase}
 
-.hero{padding-top:24px}
-.reel{position:relative;display:flex;align-items:flex-end;height:clamp(480px,44vw,600px);border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--fill)}
-.reel-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.reel::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(90deg,var(--scrim) 0%,var(--scrim-mid) 36%,transparent 72%),linear-gradient(0deg,var(--scrim-low) 0%,transparent 46%)}
-.reel-copy{position:relative;z-index:1;max-width:720px;padding:0 56px 52px}
-.status{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 22px;color:var(--dim);font-size:14px}
-.status .now{color:var(--dim2);font-variant-numeric:tabular-nums}
-h1{margin:0 0 18px;font:400 clamp(36px,4.6vw,62px)/1.03 var(--sans);letter-spacing:-.035em;text-wrap:balance}
-.proof{color:var(--dim);font-size:15.5px;line-height:1.6}
-.proof a{color:var(--fg);border-bottom:1px solid var(--glass-line);transition:border-color .2s ease}
-.proof b{font-weight:600}
-.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.stamp{position:absolute;top:24px;right:24px;z-index:1;display:flex;align-items:center;gap:12px;padding:9px 14px 9px 9px;border:1px solid var(--win);border-radius:3px;
-  background:var(--glass);font-size:14px;transition:background-color .15s ease}
-.reel-now{position:absolute;right:24px;bottom:22px;z-index:1;display:flex;align-items:center;gap:14px;color:var(--dim);font-size:13px}
-.reel-now a{color:var(--fg)}
-.ticks{display:flex;gap:5px}
-.ticks i{display:block;width:24px;height:3px;border-radius:2px;background:var(--tick);transition:background-color .2s ease}
-.ticks i.on{background:var(--fg)}
-
-.games{padding-top:18px}
-.eyebrow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin:0 0 10px;color:var(--dim2);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
-.credits{display:grid;grid-template-columns:1.35fr repeat(3,minmax(0,1fr));gap:14px;list-style:none;margin:0;padding:0}
-.credits a{display:flex;align-items:center;gap:14px;height:100%;padding:14px;border:1px solid var(--rule);border-radius:3px;background:var(--raise);transition:border-color .15s ease}
-.credits img{width:52px;height:52px;flex:none;border-radius:3px;border:1px solid var(--rule);object-fit:cover}
-.credits .win a{border-color:var(--win);background:linear-gradient(180deg,var(--win-tint),transparent),var(--raise)}
-.credits .win img{width:92px}
-.credits .txt{flex:1;min-width:0}
-.credits b{display:block;font-weight:400;font-size:15.5px;line-height:1.3}
-.credits .meta{display:block;margin-top:2px;color:var(--dim);font-size:13.5px;line-height:1.4}
-.credits .go{flex:none;align-self:flex-start;color:var(--dim2);transition:color .15s ease}
-
-.about{display:grid;grid-template-columns:minmax(0,var(--text)) minmax(0,1fr);align-items:end;gap:20px 64px;margin-top:64px;padding-top:28px;border-top:1px solid var(--rule)}
-.about .fine{max-width:420px}
-
-section{padding-top:120px}
-.hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 18px;margin:0 0 34px}
+section{padding-top:112px}
+.content > section:first-child{padding-top:0}
+.hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 18px;margin:0 0 26px}
 .hd h2{font:400 31px/1.15 var(--serif);letter-spacing:-.01em}
 .hd::after{content:"";order:1;flex:1;min-width:40px;height:1px;background:var(--rule);transform:translateY(-8px)}
 .hd .aside{order:2;color:var(--dim2);font-size:14px;font-variant-numeric:tabular-nums}
@@ -153,27 +133,44 @@ section{padding-top:120px}
 .clip[data-sound="off"] .well::after{content:"click for sound";position:absolute;right:10px;bottom:10px;z-index:1;pointer-events:none;
   padding:6px 9px;border-radius:2px;background:var(--glass);color:var(--fg);font-size:12px;line-height:1;opacity:0;transition:opacity .15s ease}
 
-.spotlight{padding-top:72px}
-.spot{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:32px;padding:22px;border:1px solid var(--win);border-radius:4px;
-  background:linear-gradient(180deg,var(--win-tint),transparent 55%),var(--raise)}
-.facts{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:8px 32px;margin-top:16px}
-.facts dt{margin-bottom:3px;color:var(--dim2);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
-.facts dd{font-size:14.5px;line-height:1.45}
-.spot-body{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:2px 4px 2px 0}
+.award{padding:24px;border:1px solid var(--win);border-radius:4px;background:linear-gradient(180deg,var(--win-tint),transparent 42%),var(--raise);
+  box-shadow:0 30px 80px -44px var(--win-glow)}
 .award-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
-.event{color:var(--dim);font-size:14.5px}
-.spot-body h2{margin:16px 0 14px;font:400 clamp(30px,3.4vw,42px)/1.06 var(--sans);letter-spacing:-.028em}
-.spot-body p{color:var(--dim);font-size:15.5px;line-height:1.65}
-.spot-body p b{color:var(--fg);font-weight:400}
-.spot-body .out{margin-top:auto;padding-top:22px;border-bottom:0}
-.spot-body .out span{border-bottom:1px solid var(--rule);transition:border-color .2s ease}
+.event{color:var(--dim);font-size:15px}
+.award-top .out{margin-left:auto}
+.award h3{margin:16px 0 22px;font:400 clamp(34px,3.8vw,48px)/1.04 var(--sans);letter-spacing:-.03em}
+.award-foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,280px);gap:20px 44px;margin-top:22px}
+.award-foot p{max-width:var(--text);color:var(--dim);font-size:15.5px;line-height:1.65}
+.award-foot p b{color:var(--fg);font-weight:400}
+.facts{display:grid;grid-template-columns:auto minmax(0,1fr);align-content:start;gap:9px 18px;padding-left:24px;border-left:1px solid var(--rule);font-size:14.5px;line-height:1.5}
+.facts dt{color:var(--dim2)}
+
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;list-style:none;margin:14px 0 0;padding:0}
+.games a{display:flex;align-items:flex-start;gap:14px;height:100%;padding:14px 16px 14px 14px;border:1px solid var(--rule);border-radius:3px;background:var(--raise);transition:border-color .15s ease}
+.games img{width:52px;height:52px;flex:none;border-radius:3px;border:1px solid var(--rule)}
+.games .txt{flex:1;min-width:0}
+.games b{display:block;font-weight:400;font-size:15.5px;line-height:1.35}
+.games .meta{display:block;margin-top:3px;color:var(--dim);font-size:13.5px;line-height:1.45}
+.games .go{flex:none;color:var(--dim2);transition:color .15s ease}
+.games + .fine{margin-top:12px}
+
+.about{display:grid;grid-template-columns:minmax(0,var(--text)) minmax(0,1fr);align-items:end;gap:20px 56px;margin-top:64px;padding-top:28px;border-top:1px solid var(--rule)}
+
+.reel{position:relative;aspect-ratio:2/1;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--fill)}
+.reel-v{width:100%;height:100%;object-fit:cover}
+.reel::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,var(--scrim-low) 0%,transparent 26%)}
+.reel-now{position:absolute;left:20px;right:20px;bottom:16px;z-index:1;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 14px;color:var(--dim);font-size:13.5px}
+.reel-now a{color:var(--fg)}
+.ticks{display:flex;gap:5px}
+.ticks i{display:block;width:26px;height:3px;border-radius:2px;background:var(--tick);transition:background-color .2s ease}
+.ticks i.on{background:var(--fg)}
 
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips button{appearance:none;-webkit-appearance:none;margin:0;padding:7px 12px;border:1px solid var(--rule);border-radius:3px;background:none;
   color:var(--dim);font:400 13.5px/1 var(--sans);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:color .15s ease,border-color .15s ease}
 .chips button[aria-pressed="true"]{color:var(--fg);border-color:var(--accent)}
 
-.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,232px);grid-auto-flow:dense;gap:14px}
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,14vw,220px);grid-auto-flow:dense;gap:14px}
 .bento.is-filtered{grid-template-columns:repeat(3,minmax(0,1fr))}
 .tile{position:relative;min-width:0}
 .tile.big{grid-column:span 2;grid-row:span 2}
@@ -240,7 +237,7 @@ section{padding-top:120px}
 .shot figcaption{margin-top:10px;color:var(--dim);font:italic 400 15px/1.5 var(--serif)}
 
 .rows{margin:30px 0 0;padding:0}
-.rows > div{display:grid;grid-template-columns:minmax(0,240px) minmax(0,1fr);gap:6px 36px;padding:17px 0;border-top:1px solid var(--rule2)}
+.rows > div{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:6px 36px;padding:17px 0;border-top:1px solid var(--rule2)}
 .rows > div:first-child{border-top-color:var(--rule)}
 .rows dt{color:var(--fg);font-size:15.5px;line-height:1.5}
 .rows dt small{display:block;color:var(--dim2);font-size:13px}
@@ -254,22 +251,22 @@ section{padding-top:120px}
 .steps b{display:block;margin-bottom:6px;font-weight:400;font-size:17px}
 .steps .d{display:block;color:var(--dim);font-size:15px;line-height:1.6}
 
-.closing{padding:clamp(28px,5vw,56px);border:1px solid var(--rule);border-radius:4px;background:var(--raise)}
-.closing h3{max-width:780px;margin:0 0 16px;font:400 clamp(28px,4vw,40px)/1.15 var(--serif);letter-spacing:-.01em;text-wrap:balance}
+.closing{padding:clamp(28px,5vw,52px);border:1px solid var(--rule);border-radius:4px;background:var(--raise)}
+.closing h3{max-width:760px;margin:0 0 16px;font:400 clamp(28px,3.6vw,40px)/1.15 var(--serif);letter-spacing:-.01em;text-wrap:balance}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
 .elsewhere{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:30px;padding-top:22px;border-top:1px solid var(--rule2);font-size:14.5px}
 .elsewhere a{color:var(--dim);transition:color .15s ease}
 
-footer{margin-top:96px;padding-block:22px 40px;border-top:1px solid var(--rule2);color:var(--dim2);font-size:13px}
-footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:96px;padding-block:22px 40px;border-top:1px solid var(--rule2);color:var(--dim2);font-size:13px}
 
 @media (hover:hover) and (pointer:fine){
-  .nav a:hover{color:var(--fg)}
+  .bar .nav a:hover,.side-nav a:hover{color:var(--fg)}
   .btn:hover{border-color:var(--accent)}
   .btn.main:hover{background:var(--fg-hi);border-color:var(--fg-hi)}
-  .stamp:hover{background:var(--scrim-mid)}
-  .proof a:hover,.out:hover,.inline a:hover,.spot-body .out:hover span{border-color:var(--accent)}
-  .credits a:hover,.tile-hit:hover{border-color:var(--accent)}
-  .credits a:hover .go,.files a:hover .ic{color:var(--accent)}
+  .proof dd a:hover{border-color:var(--accent);color:var(--fg)}
+  .out:hover,.inline a:hover{border-color:var(--accent)}
+  .games a:hover,.tile-hit:hover{border-color:var(--accent)}
+  .games a:hover .go,.files a:hover .ic{color:var(--accent)}
   .chips button:hover{color:var(--fg)}
   .elsewhere a:hover{color:var(--fg)}
   .clip[data-sound="off"] .well:hover::after{opacity:1}
@@ -281,36 +278,56 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
   html{scroll-behavior:auto}
 }
 
-@media (max-width:1100px){
-  .credits{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:1181px) and (max-height:880px){
+  .side-in{gap:16px;padding-top:28px;padding-bottom:18px}
+  .side-nav a{padding:3px 0}
+  .proof > div{padding:9px 0}
+}
+@media (max-width:1400px){
+  .bento,.bento.is-filtered{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(150px,19vw,240px)}
+  .files{grid-template-columns:1fr}
+}
+@media (max-width:1180px){
+  html{scroll-padding-top:76px}
+  .bar{display:block;position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--rule2)}
+  .bar .in{display:flex;align-items:center;gap:16px;min-height:60px;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+  .me{display:inline-flex;align-items:center;gap:11px;min-width:0;font-size:15px;white-space:nowrap}
+  .me img{width:30px;height:30px;flex:none;border-radius:3px;border:1px solid var(--rule);object-fit:cover}
+  .me span{overflow:hidden;text-overflow:ellipsis}
+  .bar .nav{display:flex;gap:2px;margin-left:auto}
+  .bar .nav a{padding:6px 10px;border-radius:3px;color:var(--dim);font-size:14px;white-space:nowrap;transition:color .15s ease}
+  .bar .nav a[aria-current="true"]{color:var(--fg)}
+  .page{display:block}
+  .side{position:static;height:auto;overflow:visible;border-right:0}
+  .side-in{max-width:760px;padding:48px max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px))}
+  .side .who,.side-nav{display:none}
+  h1{font-size:clamp(34px,5.4vw,46px);line-height:1.06}
+  .proof{max-width:560px}
+  .side-cta{flex-direction:row;flex-wrap:wrap}
+  .side-cta .btn{justify-content:center;gap:12px}
+  .content{padding:72px max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px))}
 }
 @media (max-width:900px){
-  .spot{grid-template-columns:1fr}
-  .bento,.bento.is-filtered{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(150px,28vw,240px)}
-  .files{grid-template-columns:1fr}
-  .about{grid-template-columns:1fr}
+  .award-foot,.about{grid-template-columns:1fr}
+  .facts{padding:16px 0 0;border-left:0;border-top:1px solid var(--rule)}
 }
 @media (max-width:760px){
-  .nav{display:none}
+  .bar .nav{display:none}
   .bar .btn{margin-left:auto}
-  .reel{display:block;height:auto;border:0;border-radius:0;background:none;overflow:visible}
-  .reel::after,.reel-now{display:none}
-  .reel-v{position:static;height:auto;aspect-ratio:16/10;border:1px solid var(--rule);border-radius:3px}
-  .reel-copy{max-width:none;padding:26px 0 0}
-  .stamp{top:10px;right:10px;padding:6px 10px 6px 6px;font-size:12.5px}
-  .btn.ghost{background:none;border-color:var(--rule)}
 }
 @media (max-width:620px){
-  section{padding-top:92px}
-  .spotlight{padding-top:56px}
-  .hd{margin-bottom:28px}
+  .bar .in{padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+  .side-in{padding:36px max(20px,env(safe-area-inset-right,0px)) 0 max(20px,env(safe-area-inset-left,0px))}
+  .content{padding:64px max(20px,env(safe-area-inset-right,0px)) 0 max(20px,env(safe-area-inset-left,0px))}
+  section{padding-top:88px}
+  .hd{margin-bottom:22px}
   .hd h2{font-size:27px}
   .hd .chips{flex-basis:100%}
   .hd.sub{margin-top:72px}
-  .credits{grid-template-columns:1fr}
-  .spot{margin-inline:-6px;padding:16px;gap:20px}
-  .facts{grid-template-columns:1fr 1fr}
-  .facts div:last-child{grid-column:1 / -1}
+  .award{margin-inline:-6px;padding:16px}
+  .award-top .out{margin-left:0}
+  .side-cta .btn{flex:1 1 auto}
+  .reel{aspect-ratio:16/10}
   .bento,.bento.is-filtered{grid-template-columns:1fr;grid-auto-rows:auto}
   .tile,.tile.big,.tile.wide{grid-column:auto;grid-row:auto;aspect-ratio:16/9}
   .tile.big .tile-meta b{font-size:17px}
@@ -327,92 +344,101 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
     <a class="me" href="#top"><img src="assets/avatar.jpg" alt="" width="30" height="30"><span>Ben · Buzziut</span></a>
     <nav class="nav" aria-label="Sections">
       <a href="#games">Released</a>
+      <a href="#showreel">Showreel</a>
       <a href="#clips">Clips</a>
       <a href="#code">Code</a>
       <a href="#work">Own games</a>
-      <a href="#how">How I work</a>
       <a href="#connect">Contact</a>
     </nav>
     <button class="btn sm" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span></button>
   </div>
 </header>
 
-<main id="top">
+<div class="page">
 
-  <section class="hero">
-    <div class="in">
-      <div class="reel">
-        <video class="reel-v" src="assets/showreel.mp4" poster="assets/showreel-poster.jpg" muted loop playsinline preload="auto" aria-label="Showreel of my clips"></video>
-        <a class="stamp" href="#allergy-season"><span class="badge">1st place</span>HiddenDevs Design a Disaster</a>
-        <div class="reel-copy">
-          <p class="status"><span class="dot"></span>Open for short commissions<span aria-hidden="true">·</span><span class="now" data-now></span></p>
-          <h1>Roblox Luau scripter for combat, abilities and game systems.</h1>
-          <p class="proof"><a href="#allergy-season"><b>1st place</b> at HiddenDevs Design a Disaster</a> · <a href="#games">4&nbsp;released&nbsp;games</a> · <a href="#code">code&nbsp;on&nbsp;GitHub</a></p>
-          <div class="cta">
-            <button class="btn main" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span><span class="k" aria-hidden="true">copy</span></button>
-            <a class="btn ghost" href="mailto:buzziut.dev@gmail.com">buzziut.dev@gmail.com</a>
-          </div>
-        </div>
-        <p class="reel-now">Showreel · <a href="#clip-frieren" data-reel-label>Frieren cutscene</a><span class="ticks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span></p>
+  <aside class="side" id="top">
+    <div class="side-in">
+      <a class="who" href="#top"><img src="assets/avatar.jpg" alt="" width="56" height="56"><span><b>Ben · Buzziut</b><span class="role">Roblox Luau scripter · VFX · Animation</span></span></a>
+      <p class="status"><span class="dot"></span>Open for short commissions<span aria-hidden="true">·</span><span class="now" data-now></span></p>
+      <h1>Roblox Luau scripter for combat, abilities and game systems.</h1>
+      <dl class="proof">
+        <div class="w"><dt>1st place</dt><dd><a href="#allergy-season">HiddenDevs Design a Disaster</a></dd></div>
+        <div><dt>Released games</dt><dd><a href="#games">4 on Roblox</a></dd></div>
+        <div><dt>Code</dt><dd><a href="#code">gifting system on GitHub</a></dd></div>
+      </dl>
+      <div class="side-cta">
+        <button class="btn main" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span><span class="k" aria-hidden="true">copy</span></button>
+        <a class="btn" href="mailto:buzziut.dev@gmail.com">buzziut.dev@gmail.com</a>
       </div>
+      <nav class="side-nav" aria-label="Sections">
+        <a href="#games">Released games</a>
+        <a href="#showreel">Showreel</a>
+        <a href="#clips">Clips</a>
+        <a href="#code">Code</a>
+        <a href="#work">Own games</a>
+        <a href="#how">How I work</a>
+        <a href="#connect">Contact</a>
+      </nav>
     </div>
-  </section>
+  </aside>
 
-  <section class="games" id="games">
-    <div class="in">
-      <p class="eyebrow"><span>Released games</span><span>Visits as of Oct 2026</span></p>
-      <ul class="credits">
-        <li class="win"><a href="#allergy-season">
-          <img src="assets/allergy-poster.jpg" alt="" width="92" height="52">
-          <span class="txt"><b>Allergy Season</b><span class="meta">1st place · duo, my part: scripting, VFX, animation, UI</span></span>
-        </a></li>
+  <main class="content">
+
+    <section id="games">
+      <div class="hd"><h2>released games</h2><span class="aside">4 live on Roblox</span></div>
+
+      <article class="clip award" id="allergy-season">
+        <div class="award-top">
+          <span class="badge">1st place</span>
+          <span class="event">HiddenDevs Design a Disaster</span>
+          <a class="out" href="https://www.roblox.com/games/136988453804049" target="_blank" rel="noopener">Play on Roblox&nbsp;&#8599;</a>
+        </div>
+        <h3>Allergy Season</h3>
+        <div class="well" style="aspect-ratio:1280/592"><video src="assets/allergy.mp4" poster="assets/allergy-poster.jpg" controls preload="metadata" playsinline></video></div>
+        <div class="award-foot">
+          <p><b>Sneezes set off the disasters.</b> At 100% on the sneeze meter you sneeze hard enough to start a random disaster. Here it's a tornado, with a manga impact frame on the sneeze and you getting flung. The HUD is a local news weather report telling you to run for your life. Recorded on a phone.</p>
+          <dl class="facts">
+            <dt>Date</dt><dd>Oct 2026</dd>
+            <dt>Team</dt><dd>Duo</dd>
+            <dt>My part</dt><dd>Scripting, VFX, animation and UI</dd>
+          </dl>
+        </div>
+      </article>
+
+      <ul class="games">
         <li><a href="https://www.roblox.com/games/138731624649567" target="_blank" rel="noopener">
-          <img src="assets/icon-targaot.jpg" alt="" width="52" height="52">
-          <span class="txt"><b>Targaot</b><span class="meta">Scripter · Targaot Co. · 16.5k visits</span></span>
+          <img src="assets/icon-targaot.jpg" alt="" width="52" height="52" loading="lazy">
+          <span class="txt"><b>Targaot</b><span class="meta">Targaot Co.</span><span class="meta">Scripter · 16.5k visits</span></span>
           <span class="go" aria-hidden="true">&#8599;</span>
         </a></li>
         <li><a href="https://www.roblox.com/games/124902110402950" target="_blank" rel="noopener">
-          <img src="assets/icon-wackypets.jpg" alt="" width="52" height="52">
-          <span class="txt"><b>Wacky Pets</b><span class="meta">Scripter · Bitshifter Productions · 3.9k visits</span></span>
+          <img src="assets/icon-wackypets.jpg" alt="" width="52" height="52" loading="lazy">
+          <span class="txt"><b>Wacky Pets</b><span class="meta">Bitshifter Productions</span><span class="meta">Scripter · 3.9k visits</span></span>
           <span class="go" aria-hidden="true">&#8599;</span>
         </a></li>
         <li><a href="https://www.roblox.com/games/84207978327733" target="_blank" rel="noopener">
-          <img src="assets/icon-aboshima.jpg" alt="" width="52" height="52">
-          <span class="txt"><b>Ashes of Aboshima combat showcase</b><span class="meta">Scripter · Ashes of Aboshima</span></span>
+          <img src="assets/icon-aboshima.jpg" alt="" width="52" height="52" loading="lazy">
+          <span class="txt"><b>Ashes of Aboshima combat showcase</b><span class="meta">Ashes of Aboshima</span><span class="meta">Scripter</span></span>
           <span class="go" aria-hidden="true">&#8599;</span>
         </a></li>
       </ul>
+      <p class="fine">Visits as of Oct 2026.</p>
 
       <div class="about">
         <p class="lead">I write it all myself instead of grabbing something off the toolbox, I keep the important checks on the server, and I make sure it still runs fine on a cheap phone. VFX and animation are my second skill, so an ability goes from the toggle to the finished effect without a handoff.</p>
         <p class="fine">One system, one feature, an optimization pass, or a bug you're just done dealing with.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="spotlight">
-    <div class="in">
-      <article class="clip spot" id="allergy-season">
-        <div class="spot-media">
-          <div class="well" style="aspect-ratio:1280/592"><video src="assets/allergy.mp4" poster="assets/allergy-poster.jpg" controls preload="metadata" playsinline></video></div>
-          <dl class="facts">
-            <div><dt>Date</dt><dd>Oct 2026</dd></div>
-            <div><dt>Team</dt><dd>Duo</dd></div>
-            <div><dt>My part</dt><dd>Scripting, VFX, animation and UI</dd></div>
-          </dl>
-        </div>
-        <div class="spot-body">
-          <div class="award-top"><span class="badge">1st place</span><span class="event">HiddenDevs Design a Disaster</span></div>
-          <h2>Allergy Season</h2>
-          <p><b>Sneezes set off the disasters.</b> At 100% on the sneeze meter you sneeze hard enough to start a random disaster. Here it's a tornado, with a manga impact frame on the sneeze and you getting flung. The HUD is a local news weather report telling you to run for your life. Recorded on a phone.</p>
-          <a class="out" href="https://www.roblox.com/games/136988453804049" target="_blank" rel="noopener"><span>Play Allergy Season on Roblox</span>&nbsp;&#8599;</a>
-        </div>
-      </article>
-    </div>
-  </section>
+    <section id="showreel">
+      <div class="hd"><h2>showreel</h2><span class="aside">5 clips in 14 seconds</span></div>
+      <div class="reel">
+        <video class="reel-v" src="assets/showreel.mp4" poster="assets/showreel-poster.jpg" muted loop playsinline preload="metadata" aria-label="Showreel of my clips"></video>
+        <p class="reel-now"><span>Now playing · <a href="#clip-frieren" data-reel-label>Frieren cutscene</a></span><span class="ticks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span></p>
+      </div>
+    </section>
 
-  <section id="clips">
-    <div class="in">
+    <section id="clips">
       <div class="hd"><h2>clips</h2>
         <div class="aside chips" role="group" aria-label="Filter clips by skill">
           <button type="button" data-skill="" aria-pressed="true">All</button>
@@ -523,11 +549,9 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
         </figure>
       </div>
       <p class="fine">Hover a clip to preview it. Click to watch with sound and read what I built.</p>
-    </div>
-  </section>
+    </section>
 
-  <section id="code">
-    <div class="in">
+    <section id="code">
       <div class="hd"><h2>code</h2><span class="aside">4 files on GitHub</span></div>
       <div class="code-grid">
         <div class="code-side">
@@ -566,11 +590,9 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
 <span class="l"><span class="k">end</span></span></code></pre>
         </figure>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="work">
-    <div class="in">
+    <section id="work">
       <div class="hd"><h2>my own games</h2><span class="aside">1 live · 1 in development</span></div>
       <p class="lead intro">These two are my own projects, so whatever I write for you is the same kind of code I have to deal with myself later on.</p>
 
@@ -629,11 +651,9 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
           <div><dt>Server-authoritative movement</dt><dd>Walk speed, position and player state all get validated on the server. That closes the client trust holes exploiters use to outrun you or clip through the map.</dd></div>
         </dl>
       </article>
-    </div>
-  </section>
+    </section>
 
-  <section id="build">
-    <div class="in">
+    <section id="build">
       <div class="hd"><h2>what I build</h2></div>
       <dl class="rows">
         <div><dt>Data &amp; saving</dt><dd>DataStores and ProfileService. Save structures, session locking, and migrating old player data over without wiping anyone's stuff.</dd></div>
@@ -645,11 +665,9 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
         <div><dt>Performance &amp; security</dt><dd>Figuring out what's eating your frame rate, moving work off the server, and validating remotes so exploiters can't just ask the server for stuff.</dd></div>
       </dl>
       <p class="fine inline">I've been publishing on Roblox since 2021. Some of the early stuff is still up, like <a href="https://www.roblox.com/games/6719516094" target="_blank" rel="noopener">Super Clickers</a> and an <a href="https://www.roblox.com/games/7133018155" target="_blank" rel="noopener">early gun / combat system</a>. The full list is on <a href="https://www.roblox.com/users/807959354/profile" target="_blank" rel="noopener">my profile</a>.</p>
-    </div>
-  </section>
+    </section>
 
-  <section id="how">
-    <div class="in">
+    <section id="how">
       <div class="hd"><h2>how I work</h2></div>
       <ol class="steps">
         <li><span class="no">01</span><b>Scope</b><span class="d">You tell me the system or the bug. I ask the questions that actually change the estimate, and then I write down what's included and what isn't so we're on the same page.</span></li>
@@ -665,11 +683,9 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
         <div><dt>Rates</dt><dd>I quote per project once we've agreed on the scope. Tell me what you need and I'll come back to you with a number and a date.</dd></div>
         <div><dt>References</dt><dd>Crit (critical_dummy) and Pearl (pearlsnivy1) are happy to vouch for me. I can give you more if you want.</dd></div>
       </dl>
-    </div>
-  </section>
+    </section>
 
-  <section id="connect">
-    <div class="in">
+    <section id="connect">
       <div class="hd"><h2>connect</h2></div>
       <div class="closing">
         <h3>Send me the game, what the problem is and when you need it by.</h3>
@@ -683,12 +699,12 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
           <a href="https://github.com/Streetdude123" target="_blank" rel="noopener">GitHub Streetdude123&nbsp;&#8599;</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+    <footer><span>Ben · Buzziut · buzziut.xyz</span><span>Updated Oct 2026</span></footer>
 
-<footer><div class="in"><span>Ben · Buzziut · buzziut.xyz</span><span>Updated Oct 2026</span></div></footer>
+  </main>
+</div>
 
 <dialog class="lb" id="lb" aria-label="Clip player">
   <div class="lb-in">
@@ -742,14 +758,14 @@ function tick(){
 tick();
 document.addEventListener("visibilitychange", () => { if (!document.hidden) tick(); });
 
-const navLinks = [...document.querySelectorAll(".nav a")];
+const navLinks = [...document.querySelectorAll(".bar .nav a, .side-nav a")];
 const navSeen = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     navLinks.forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + entry.target.id));
   });
 }, { rootMargin: "-35% 0px -60% 0px" });
-navLinks.forEach(a => navSeen.observe(document.querySelector(a.getAttribute("href"))));
+document.querySelectorAll(".content > section").forEach(s => navSeen.observe(s));
 
 const reel = document.querySelector(".reel-v");
 const reelLabel = document.querySelector("[data-reel-label]");
@@ -766,29 +782,30 @@ reel.addEventListener("timeupdate", () => {
   reelLabel.href = parts[i][1];
   ticks.forEach((t, n) => t.classList.toggle("on", n === i));
 });
-if (!still.matches) {
-  new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) reel.play().catch(() => {});
-    else reel.pause();
-  }, { threshold: 0.4 }).observe(reel);
+
+const awardVideo = document.querySelector(".award video");
+if (wide.matches && !still.matches) {
+  const award = awardVideo.closest(".clip");
+  awardVideo.muted = true; awardVideo.loop = true;
+  awardVideo.removeAttribute("controls");
+  awardVideo.style.cursor = "pointer";
+  award.dataset.sound = "off";
+  awardVideo.addEventListener("click", () => {
+    award.dataset.sound = "on";
+    awardVideo.controls = true;
+    awardVideo.muted = false;
+  });
 }
 
-const spotVideo = document.querySelector(".spot video");
-if (wide.matches && !still.matches) {
-  const spot = spotVideo.closest(".clip");
-  spotVideo.muted = true; spotVideo.loop = true;
-  spotVideo.removeAttribute("controls");
-  spotVideo.style.cursor = "pointer";
-  spot.dataset.sound = "off";
-  spotVideo.addEventListener("click", () => {
-    spot.dataset.sound = "on";
-    spotVideo.controls = true;
-    spotVideo.muted = false;
-  });
-  new IntersectionObserver(([entry]) => {
-    if (entry.intersectionRatio >= 0.5) spotVideo.play().catch(() => {});
-    else spotVideo.pause();
-  }, { threshold: [0, 0.5] }).observe(spotVideo);
+if (!still.matches) {
+  const autoplay = wide.matches ? [awardVideo, reel] : [reel];
+  const seen = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.intersectionRatio >= 0.5) entry.target.play().catch(() => {});
+      else entry.target.pause();
+    });
+  }, { threshold: [0, 0.5] });
+  autoplay.forEach(v => seen.observe(v));
 }
 
 const bento = document.getElementById("bento");
