@@ -144,6 +144,16 @@ section{padding-top:112px}
 .award-foot p b{color:var(--fg);font-weight:400}
 .facts{display:grid;grid-template-columns:auto minmax(0,1fr);align-content:start;gap:9px 18px;padding-left:24px;border-left:1px solid var(--rule);font-size:14.5px;line-height:1.5}
 .facts dt{color:var(--dim2)}
+.proof-row{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);align-items:center;gap:16px 24px;margin-top:22px;padding-top:20px;border-top:1px solid var(--rule)}
+.proof-thumb{appearance:none;-webkit-appearance:none;display:block;margin:0;padding:0;border:1px solid var(--rule);border-radius:3px;overflow:hidden;
+  background:var(--fill);cursor:zoom-in;transition:border-color .15s ease}
+.proof-thumb img{width:100%;height:auto}
+.proof-txt{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.proof-txt b{font-weight:400;font-size:15px}
+.proof-txt span{color:var(--dim);font-size:14px;line-height:1.5}
+.proof-txt .btn{margin-top:6px}
+.lb.proof-dlg{width:min(560px,calc(100vw - 32px))}
+.proof-dlg img{display:block;width:100%;height:auto;max-height:calc(100vh - 150px);object-fit:contain;border-radius:3px}
 
 .games{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;list-style:none;margin:14px 0 0;padding:0}
 .games a{display:flex;align-items:flex-start;gap:14px;height:100%;padding:14px 16px 14px 14px;border:1px solid var(--rule);border-radius:3px;background:var(--raise);transition:border-color .15s ease}
@@ -268,6 +278,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
   .btn.main:hover{background:var(--fg-hi);border-color:var(--fg-hi)}
   .proof dd a:hover{border-color:var(--accent);color:var(--fg)}
   .stamp:hover{background:var(--scrim-low)}
+  .proof-thumb:hover{border-color:var(--win)}
   .out:hover,.inline a:hover{border-color:var(--accent)}
   .games a:hover,.tile-hit:hover{border-color:var(--accent)}
   .games a:hover .go,.files a:hover .ic{color:var(--accent)}
@@ -329,6 +340,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
   .hd .chips{flex-basis:100%}
   .hd.sub{margin-top:72px}
   .award{margin-inline:-6px;padding:16px}
+  .proof-row{grid-template-columns:1fr}
   .award-top .out{margin-left:0}
   .side-cta .btn{flex:1 1 auto}
   .reel{aspect-ratio:16/10}
@@ -414,9 +426,18 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
           <p><b>Sneezes set off the disasters.</b> At 100% on the sneeze meter you sneeze hard enough to start a random disaster. Here it's a tornado, with a manga impact frame on the sneeze and you getting flung. The HUD is a local news weather report telling you to run for your life. Recorded on a phone.</p>
           <dl class="facts">
             <dt>Date</dt><dd>Oct 2026</dd>
+            <dt>Decided by</dt><dd>Public vote</dd>
             <dt>Team</dt><dd>Duo</dd>
             <dt>My part</dt><dd>Scripting, VFX, animation and UI</dd>
           </dl>
+        </div>
+        <div class="proof-row">
+          <button class="proof-thumb" type="button" data-proof aria-label="View the winners announcement screenshot"><img src="assets/proof-winners-thumb.jpg" alt="HiddenDevs winners post listing @.ben284 and @lzomo v2 in 1st place" width="828" height="288" loading="lazy"></button>
+          <div class="proof-txt">
+            <b>Winners announcement, HiddenDevs Discord</b>
+            <span>Posted Oct 22, 2026. First place was decided by a public vote.</span>
+            <button class="btn sm" type="button" data-proof>View screenshot</button>
+          </div>
         </div>
       </article>
 
@@ -722,6 +743,13 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
   </div>
 </dialog>
 
+<dialog class="lb proof-dlg" id="proof" aria-label="Winners announcement">
+  <div class="lb-in">
+    <div class="lb-top"><b>Winners announcement</b><span class="lb-tags">HiddenDevs Discord · Oct 22, 2026</span><button class="btn sm lb-x" type="button" data-close>Close</button></div>
+    <img src="assets/proof-winners.jpg" alt="Screenshot of the HiddenDevs design-a-disaster channel: public voting decides first place, and the winners post lists @.ben284 and @lzomo v2 in 1st place" width="828" height="1425" loading="lazy">
+  </div>
+</dialog>
+
 <script>
 const wide = window.matchMedia("(min-width: 860px)");
 const still = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -873,6 +901,11 @@ lb.addEventListener("close", () => {
   lbVideo.removeAttribute("src");
   lbVideo.load();
 });
+
+const proof = document.getElementById("proof");
+document.querySelectorAll("[data-proof]").forEach(b => b.addEventListener("click", () => proof.showModal()));
+proof.querySelector("[data-close]").addEventListener("click", () => proof.close());
+proof.addEventListener("click", e => { if (e.target === proof) proof.close(); });
 
 function pick(skill){
   tiles.forEach(t => { t.hidden = !!skill && !t.dataset.skills.split(" ").includes(skill); });
