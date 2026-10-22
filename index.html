@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Ben · Buzziut · Roblox Systems Programmer</title>
-<meta name="description" content="I write the systems under Roblox games: character controllers, enemy AI, matchmaking, saving and loading, UI. Six years on the platform. Open for short commissions.">
+<title>Ben · Buzziut · Roblox Luau Scripter</title>
+<meta name="description" content="Roblox Luau scripter for combat, abilities and game systems, plus VFX and animation. 1st place at HiddenDevs Design a Disaster. Open for short commissions.">
 <meta name="theme-color" content="#0f100e">
-<meta property="og:title" content="Ben · Buzziut · Roblox Systems Programmer · VFX · Animation">
-<meta property="og:description" content="Luau gameplay systems kept on the server, plus ability VFX and animation. Open for short commissions.">
+<meta property="og:title" content="Ben · Buzziut · Roblox Luau Scripter · VFX · Animation">
+<meta property="og:description" content="Combat, abilities and game systems, plus the VFX. 1st place at HiddenDevs Design a Disaster. Open for short commissions.">
 <meta property="og:image" content="https://buzziut.xyz/assets/link-banner.jpg">
 <meta property="og:url" content="https://buzziut.xyz/">
 <meta property="og:type" content="website">
@@ -26,11 +26,12 @@
   --bg:#0f100e;
   --fg:#e8e5dd;
   --dim:#9b988f;
-  --dim2:#6d6a63;
+  --dim2:#858279;
   --rule:#272822;
   --rule2:#1c1d19;
   --fill:#181914;
   --accent:#c58f4d;
+  --win:#facc15;
   --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --serif:"Spectral",Georgia,"Times New Roman",serif;
   --ease-out:cubic-bezier(.23,1,.32,1);
@@ -46,8 +47,9 @@ img,video{display:block;max-width:100%}
 ::selection{background:#33352b;color:#fff}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
 
-main{max-width:616px;margin:0 auto;padding:72px 22px 96px}
+main{max-width:616px;margin:0 auto;padding:56px 22px 96px}
 section{margin-top:64px}
+#games{margin-top:52px}
 #work{margin-top:78px}
 #connect{margin-top:84px}
 
@@ -58,10 +60,26 @@ h2::after{content:"";flex:1;height:1px;background:var(--rule);transform:translat
 .note{color:var(--dim2);font-size:14px;line-height:21px;margin:0}
 .lead a,.inline a{color:var(--fg);border-bottom:1px solid var(--rule);transition:border-color .2s ease}
 
-.head{display:flex;align-items:center;gap:15px;padding-bottom:26px;border-bottom:1px solid var(--rule2);margin-bottom:44px}
+.head{display:flex;align-items:center;gap:15px;padding-bottom:22px;border-bottom:1px solid var(--rule2);margin-bottom:36px}
+.who-row{display:inline-flex;gap:15px;align-items:center}
 .avatar{width:46px;height:46px;border-radius:3px;flex:none;object-fit:cover;border:1px solid var(--rule)}
 .name{font:400 16px/1.35 var(--sans);margin:0}
 .role{color:var(--dim);font-size:13.5px}
+
+.proof{color:var(--dim2);font-size:15px;line-height:24px;margin:0 0 18px}
+.proof a{color:var(--fg);border-bottom:1px solid var(--rule);transition:border-color .2s ease}
+.proof b{font-weight:600}
+.badge{flex:none;background:var(--win);color:#16140a;font:600 11px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 6px 3px;border-radius:2px}
+
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 14px}
+.btn{appearance:none;-webkit-appearance:none;display:inline-flex;align-items:center;gap:12px;min-height:44px;margin:0;padding:0 16px;
+  border:1px solid var(--rule);border-radius:3px;background:none;color:var(--fg);font:400 15px/1 var(--sans);cursor:pointer;
+  -webkit-tap-highlight-color:transparent;transition:border-color .15s ease,background-color .15s ease}
+.btn.main{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.btn .k{font-size:12.5px;color:var(--dim2)}
+.btn.main .k{color:#6d6a63}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#5ec98a;margin-right:8px;vertical-align:1px}
 
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
 .chips button{appearance:none;-webkit-appearance:none;background:none;border:1px solid var(--rule);border-radius:3px;
@@ -72,7 +90,6 @@ h2::after{content:"";flex:1;height:1px;background:var(--rule);transform:translat
 .tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:11px 0 0;padding:0}
 .tags li{padding:4px 7px;border:1px solid var(--rule);border-radius:2px;color:var(--dim);font-size:12px;line-height:1}
 
-
 .clip{margin:0}
 .clip:not([hidden]) ~ .clip:not([hidden]){margin-top:38px}
 .clip .well{position:relative;aspect-ratio:16/9;border:1px solid var(--rule);border-radius:3px;background:var(--fill);overflow:hidden}
@@ -81,7 +98,7 @@ h2::after{content:"";flex:1;height:1px;background:var(--rule);transform:translat
 .clip figcaption{margin-top:11px;color:var(--dim);font-size:14.5px;line-height:23px}
 .clip .tags + figcaption{margin-top:9px}
 .clip figcaption b{color:var(--fg);font-weight:400}
-.clip figcaption strong{color:var(--fg);font-weight:700;letter-spacing:.01em}
+.clip figcaption strong{color:var(--fg);font-weight:600}
 .clip[data-sound="off"] .well::after{
   content:"click for sound";
   position:absolute;right:9px;bottom:9px;z-index:1;pointer-events:none;
@@ -96,10 +113,41 @@ h2::after{content:"";flex:1;height:1px;background:var(--rule);transform:translat
   .clip[data-sound="off"] .well::after{content:"tap for sound";opacity:1}
 }
 
-@media (min-width:860px) and (prefers-reduced-motion:no-preference){
-  .clip video{transition:transform .25s var(--ease-in-out)}
-  .clip.crop video{transform-origin:0 0;transform:scale(1.437) translate(-3.2%,-13.3%)}
-}
+.award{border:1px solid var(--win);border-radius:4px;padding:18px 18px 16px;
+  background:linear-gradient(180deg,rgba(250,204,21,.075),rgba(250,204,21,0) 46%)}
+.award .label{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;color:var(--dim);font-size:13.5px;line-height:20px;margin:0 0 12px}
+.award h3{font:400 23px/1.2 var(--sans);letter-spacing:-.015em;margin:0 0 5px}
+.award .sub{color:var(--dim);font-size:14.5px;line-height:22px;margin:0 0 15px}
+.award .play{margin-top:12px}
+
+.games{list-style:none;margin:26px 0 0;padding:0}
+.games li{border-top:1px solid var(--rule2)}
+.games li:first-child{border-top:1px solid var(--rule)}
+.games a{display:flex;align-items:center;gap:14px;padding:12px 2px}
+.games img{width:48px;height:48px;flex:none;border-radius:3px;border:1px solid var(--rule);background:var(--fill)}
+.games .txt{flex:1;min-width:0}
+.games b{display:block;font-weight:400;font-size:15.5px;line-height:22px}
+.games .meta{display:block;color:var(--dim);font-size:14px;line-height:21px}
+.games .go{flex:none;color:var(--dim2);font-size:13.5px;transition:color .15s ease}
+
+.more{margin-top:40px;border-top:1px solid var(--rule)}
+.more summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 2px;cursor:pointer;list-style:none;
+  color:var(--fg);font-size:15px;-webkit-tap-highlight-color:transparent}
+.more summary::-webkit-details-marker{display:none}
+.more summary .n{color:var(--dim2);font-size:13.5px}
+.more summary .ic{display:inline-block;margin-left:10px;color:var(--dim);transition:transform .2s var(--ease-out)}
+.more[open] summary .ic{transform:rotate(45deg)}
+.more .clip:not([hidden]){margin-top:30px}
+
+.codebox{border:1px solid var(--rule);border-radius:3px;padding:20px 18px 6px;background:var(--fill)}
+.codebox h3{font:400 20px/1.25 var(--sans);letter-spacing:-.01em;margin:0 0 8px}
+.files{list-style:none;margin:18px 0 0;padding:0}
+.files li{border-top:1px solid var(--rule)}
+.files a{display:block;padding:13px 0}
+.files b{display:flex;justify-content:space-between;gap:12px;font-weight:400;font-size:14.5px;line-height:22px;margin-bottom:3px;
+  font-family:ui-monospace,SFMono-Regular,Consolas,Menlo,monospace}
+.files b .ic{color:var(--dim2);font-family:var(--sans);transition:color .15s ease}
+.files span{display:block;color:var(--dim);font-size:14.5px;line-height:22.5px}
 
 .project{margin-bottom:60px}
 .project:last-child{margin-bottom:0}
@@ -131,23 +179,31 @@ button.rowlink{appearance:none;-webkit-appearance:none;background:none;border-le
 .swap{display:grid;align-items:center}
 .swap>span{grid-area:1/1;transition:opacity .15s ease}
 .swap .alt{opacity:0}
+.is-copied .swap>span:first-child{opacity:0}
+.is-copied .swap .alt{opacity:1}
 .rowlink.is-copied{border-color:var(--accent)}
 .rowlink.is-copied .ic{color:var(--accent)}
-.rowlink.is-copied .swap>span:first-child{opacity:0}
-.rowlink.is-copied .swap .alt{opacity:1}
 
 footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule2);color:var(--dim2);font-size:13px}
 
 @media (hover:hover) and (pointer:fine){
   .lead a:hover,.inline a:hover{border-color:var(--accent)}
+  .proof a:hover{border-color:var(--accent)}
+  .btn:hover{border-color:var(--accent)}
+  .btn.main:hover{background:#fff;border-color:#fff}
   .chips button:hover{color:var(--fg)}
+  .games a:hover .go,.files a:hover .ic{color:var(--accent)}
+  .more summary:hover .ic{color:var(--fg)}
   .rowlink:hover{border-color:var(--accent)}
   .rowlink:hover .ic{color:var(--accent);transform:translate(1px,-1px)}
 }
 
 @media (max-width:620px){
+  main{padding-top:40px}
   .links{grid-template-columns:1fr}
   .role{display:block;line-height:20px}
+  .award{padding:16px 14px 14px;margin:0 -8px}
+  .cta .btn{flex:1 1 auto;justify-content:center}
 }
 </style>
 </head>
@@ -156,20 +212,55 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule2);color:
 <main>
 
   <header class="head">
-    <a class="who-row" href="#top" style="display:inline-flex;gap:15px;align-items:center">
+    <a class="who-row" href="#top">
       <img class="avatar" src="assets/avatar.jpg" alt="" width="46" height="46">
       <span>
         <p class="name">Ben · Buzziut</p>
-        <span class="role">Roblox systems programmer · VFX&nbsp;·&nbsp;Animation</span>
+        <span class="role">Roblox Luau scripter · VFX&nbsp;·&nbsp;Animation</span>
       </span>
     </a>
   </header>
 
   <section id="top" style="margin-top:0">
-    <h1>I'm Ben, a full stack advanced Roblox Luau scripter and VFX artist, willing to work part time and commissions.</h1>
-    <p class="lead">Character controllers, enemy AI, matchmaking, saving and loading, UI, that kind of thing. I write it all myself instead of grabbing something off the toolbox, I keep the important checks on the server, and I make sure it still runs fine on a cheap phone. Scripting is my primary skill and it's what you're hiring me for. VFX is my secondary one, so I can take an ability from the toggle to the finished effect without handing it off to anyone.</p>
-    <p class="lead">The two games further down are my own projects, so whatever I write for you is the same kind of code I have to deal with myself later on. I mostly do short commissions. One system, one feature, an optimization pass, or a bug you're just done dealing with.</p>
-    <p class="note inline"><a href="mailto:buzziut.dev@gmail.com">buzziut.dev@gmail.com</a> · Discord .ben284 · Roblox @thefuture1687</p>
+    <h1>Roblox Luau scripter for combat, abilities and game systems.</h1>
+    <p class="proof"><a href="#allergy-season"><b>1st place</b> at HiddenDevs Design a Disaster</a> · <a href="#games">4&nbsp;released&nbsp;games</a> · <a href="#code">code&nbsp;on&nbsp;GitHub</a></p>
+    <p class="lead">I write it all myself instead of grabbing something off the toolbox, I keep the important checks on the server, and I make sure it still runs fine on a cheap phone. VFX and animation are my second skill, so an ability goes from the toggle to the finished effect without a handoff.</p>
+    <div class="cta">
+      <button class="btn main" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span><span class="k" aria-hidden="true">copy</span></button>
+      <a class="btn" href="mailto:buzziut.dev@gmail.com">Email me</a>
+    </div>
+    <p class="note"><span class="dot"></span>Open for short commissions. One system, one feature, an optimization pass, or a bug you're just done dealing with.</p>
+  </section>
+
+  <section id="games">
+    <h2>released games</h2>
+
+    <figure class="clip award" id="allergy-season">
+      <p class="label"><span class="badge">1st place</span><span>HiddenDevs Design a Disaster · Oct 2026</span></p>
+      <h3>Allergy Season</h3>
+      <p class="sub">Duo team. My part: scripting, VFX, animation and UI.</p>
+      <div class="well" style="aspect-ratio:1280/592"><video src="assets/allergy.mp4" poster="assets/allergy-poster.jpg" controls preload="metadata" playsinline></video></div>
+      <figcaption><b>Sneezes set off the disasters.</b> At 100% on the sneeze meter you sneeze hard enough to start a random disaster. Here it's a tornado, with a manga impact frame on the sneeze and you getting flung. The HUD is a local news weather report telling you to run for your life. Recorded on a phone.</figcaption>
+      <p class="note inline play"><a href="https://www.roblox.com/games/136988453804049" target="_blank" rel="noopener">Play Allergy Season on Roblox</a></p>
+    </figure>
+
+    <ul class="games">
+      <li><a href="https://www.roblox.com/games/138731624649567" target="_blank" rel="noopener">
+        <img src="assets/icon-targaot.jpg" alt="" width="48" height="48" loading="lazy">
+        <span class="txt"><b>Targaot</b><span class="meta">Scripter · Targaot Co. · 16.5k visits as of Oct 2026</span></span>
+        <span class="go">Play &#8599;</span>
+      </a></li>
+      <li><a href="https://www.roblox.com/games/124902110402950" target="_blank" rel="noopener">
+        <img src="assets/icon-wackypets.jpg" alt="" width="48" height="48" loading="lazy">
+        <span class="txt"><b>Wacky Pets</b><span class="meta">Scripter · Bitshifter Productions · 3.9k visits as of Oct 2026</span></span>
+        <span class="go">Play &#8599;</span>
+      </a></li>
+      <li><a href="https://www.roblox.com/games/84207978327733" target="_blank" rel="noopener">
+        <img src="assets/icon-aboshima.jpg" alt="" width="48" height="48" loading="lazy">
+        <span class="txt"><b>Ashes of Aboshima combat showcase</b><span class="meta">Scripter · Ashes of Aboshima</span></span>
+        <span class="go">Play &#8599;</span>
+      </a></li>
+    </ul>
   </section>
 
   <section id="clips">
@@ -181,69 +272,94 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule2);color:
       <button type="button" data-skill="animation" aria-pressed="false">Animation</button>
     </div>
 
-    <figure class="clip" id="clip-frieren">
-      <div class="well" style="aspect-ratio:1234/496"><video src="assets/frieren.mp4" poster="assets/frieren-poster.jpg" controls preload="metadata" playsinline></video></div>
-      <ul class="tags"><li>VFX</li><li>Animation</li></ul>
-      <figcaption><b>Frieren cutscene.</b> She casts up into the sky, a ring opens on the ground and flowers spread out over the whole field. The whole thing is mine, the cutscene and camera scripting, the VFX, the character animation, the map and the lighting.</figcaption>
-    </figure>
-
-    <figure class="clip" id="clip-ultimate">
-      <div class="well"><video src="assets/ultimate.mp4" poster="assets/ultimate-poster.jpg" controls preload="metadata" playsinline></video></div>
-      <ul class="tags"><li>VFX</li><li>Animation</li></ul>
-      <figcaption><b>Ultimate ability showcase.</b> <strong>ALL SCRIPTING AND VFX IS DONE BY ME.</strong> I wrote the camera work, the cutscene framing with the bars, the orbit and the pull back on the cast, and the ability toggle that drives the whole sequence and hands off to each stage of the effect. The VFX is mine too, that's the secondary skill, built as a real instance tree.</figcaption>
-    </figure>
-
     <figure class="clip wide" id="clip-td-boss">
       <div class="well"><video src="assets/td-boss.mp4" poster="assets/td-boss-poster.jpg" controls preload="metadata" playsinline></video></div>
       <ul class="tags"><li>Scripting</li><li>VFX</li></ul>
-      <figcaption><b>Tower defense boss fight.</b> The Noob King wave from my tower defense game, running on a phone. The boss has its own health bar and state label, and the panel on the left is the unit upgrade and targeting menu for whatever you have placed. The whole system is mine, the UI, the VFX, the unit models and all of the scripting.</figcaption>
-    </figure>
-
-    <figure class="clip crop" id="clip-combat">
-      <div class="well"><video src="assets/combat.mp4" controls preload="metadata" playsinline></video></div>
-      <ul class="tags"><li>Scripting</li><li>VFX</li></ul>
-      <figcaption><b>Combat abilities.</b> This is a spin attack with a slash ring around the character and then a ground slam that kicks up a bunch of dust. Just a test rig in Studio, there's no art on it yet.</figcaption>
-    </figure>
-
-    <figure class="clip" id="clip-parry">
-      <div class="well"><video src="assets/parry.mp4" poster="assets/parry-poster.jpg" controls preload="none" playsinline></video></div>
-      <ul class="tags"><li>Scripting</li></ul>
-      <figcaption><b>Parry.</b> When the striker swings there's a red wind up first, and if you block right at that moment it becomes a parry instead of a normal block. You get the impact burst and the deflect effect and you don't lose any health, the bar stays at 125 through the whole thing.</figcaption>
+      <figcaption><b>My tower defense game, boss wave on a phone.</b> The Noob King has his own health bar and state label, and the left panel is the upgrade and targeting menu for whatever you placed. All mine: the scripting, the UI, the VFX and the unit models.</figcaption>
     </figure>
 
     <figure class="clip" id="clip-backpack">
       <div class="well"><video src="assets/backpack.mp4" poster="assets/backpack-poster.jpg" controls preload="none" playsinline></video></div>
       <ul class="tags"><li>Scripting</li></ul>
-      <figcaption><b>Military backpack inventory.</b> This one was a commission, I built it inside the client's own place. You press TAB and the backpack rig comes up in front of the camera, and the items are actual 3D objects sitting in it, each slot has its own take out prompt. It runs alongside a first person viewmodel and a hotbar.</figcaption>
+      <figcaption><b>Commission: 3D backpack inventory.</b> Built inside the client's own place. TAB brings the backpack rig up in front of the camera, the items are real 3D objects sitting in it, and each slot has its own take out prompt. It runs alongside a first person viewmodel and a hotbar.</figcaption>
     </figure>
 
-    <figure class="clip" id="clip-wirebox">
-      <div class="well"><video src="assets/wirebox.mp4" poster="assets/wirebox-poster.jpg" controls preload="none" playsinline></video></div>
+    <figure class="clip" id="clip-parry">
+      <div class="well"><video src="assets/parry.mp4" poster="assets/parry-poster.jpg" controls preload="none" playsinline></video></div>
       <ul class="tags"><li>Scripting</li></ul>
-      <figcaption><b>Wire box objective.</b> The prompt checks the objective's own state before it does anything. When you interact it opens a little splice minigame where you reroute wires between terminals. When you finish, the server logs it and it counts toward the round's win condition.</figcaption>
+      <figcaption><b>Parry timing.</b> The striker's swing has a red wind up, and blocking right at that moment turns the block into a parry. You get the impact burst and the deflect, and no damage, the health bar stays at 125 the whole time.</figcaption>
     </figure>
 
-    <figure class="clip" id="clip-generator">
-      <div class="well"><video src="assets/generator.mp4" poster="assets/generator-poster.jpg" controls preload="none" playsinline></video></div>
-      <ul class="tags"><li>Scripting</li></ul>
-      <figcaption><b>Generator objective.</b> A hold interaction with a timing ring and a progress bar that has four stages. Each stage saves separately, so if a survivor gets interrupted halfway through a repair they don't lose what they already did.</figcaption>
+    <figure class="clip" id="clip-frieren">
+      <div class="well" style="aspect-ratio:1234/496"><video src="assets/frieren.mp4" poster="assets/frieren-poster.jpg" controls preload="none" playsinline></video></div>
+      <ul class="tags"><li>VFX</li><li>Animation</li></ul>
+      <figcaption><b>Frieren cutscene, all mine.</b> She casts into the sky, a ring opens on the ground and flowers spread over the whole field. I did the cutscene and camera scripting, the VFX, the character animation, the map and the lighting.</figcaption>
     </figure>
 
-    <figure class="clip" id="clip-terminal">
-      <div class="well"><video src="assets/terminal.mp4" poster="assets/terminal-poster.jpg" controls preload="none" playsinline></video></div>
-      <ul class="tags"><li>Scripting</li></ul>
-      <figcaption><b>Server terminal objective.</b> You pick up data chips around the map and then hold them over the scanner on the console. Every symbol decrypts into a number and the panel keeps track of the system status until the terminal is back up. The chip pickups, the hold and the decryption all happen on the server.</figcaption>
+    <figure class="clip" id="clip-chisa">
+      <div class="well" style="aspect-ratio:1100/462"><video src="assets/chisa.mp4" poster="assets/chisa-poster.jpg" controls preload="none" playsinline></video></div>
+      <ul class="tags"><li>VFX</li><li>Animation</li></ul>
+      <figcaption><b>Chisa ultimate.</b> A sword ultimate played as a cutscene: letterbox bars, camera cuts through close shots with anime impact frames and speed lines, then it pulls back out to the normal game camera. The sword is Chisa's weapon from Wuthering Waves.</figcaption>
     </figure>
 
-    <figure class="clip" id="clip-chase">
-      <div class="well"><video src="assets/chase.mp4" poster="assets/chase-poster.jpg" controls preload="none" playsinline></video></div>
-      <ul class="tags"><li>Scripting</li></ul>
-      <figcaption><b>Movement and camera in the actual map.</b> The custom controller and the soft shift lock camera running in the real built map instead of a test room. You can see the health and stamina HUD going down as you sprint.</figcaption>
-    </figure>
+    <details class="more" id="more-clips">
+      <summary><span>More clips <span class="n" data-more-count>6</span></span><span class="ic" aria-hidden="true">+</span></summary>
+
+      <figure class="clip" id="clip-manazone">
+        <div class="well" style="aspect-ratio:1092/404"><video src="assets/manazone.mp4" poster="assets/manazone-poster.jpg" controls preload="none" playsinline></video></div>
+        <ul class="tags"><li>VFX</li><li>Animation</li></ul>
+        <figcaption><b>Mana Zone.</b> The Flame Mage's ultimate, Mereoleona's Calidos Brachium Barrage from Black Clover. A flash step in, a ring of fire fists around the target, quiet for the voice line, slow motion right before the hit, then every fist lands at once and cracks the ground. Recorded in Studio.</figcaption>
+      </figure>
+
+      <figure class="clip" id="clip-ultimate">
+        <div class="well"><video src="assets/ultimate.mp4" poster="assets/ultimate-poster.jpg" controls preload="none" playsinline></video></div>
+        <ul class="tags"><li>VFX</li><li>Animation</li></ul>
+        <figcaption><b>Ultimate ability, scripting and VFX all mine.</b> The camera work, the cutscene bars, the orbit and the pull back on the cast, and the ability toggle that drives the sequence and hands off to each stage of the effect. The VFX is built as a real instance tree.</figcaption>
+      </figure>
+
+      <figure class="clip" id="clip-wirebox">
+        <div class="well"><video src="assets/wirebox.mp4" poster="assets/wirebox-poster.jpg" controls preload="none" playsinline></video></div>
+        <ul class="tags"><li>Scripting</li></ul>
+        <figcaption><b>Wire box objective.</b> The prompt checks the objective's own state first, then opens a splice minigame where you reroute wires between terminals. Finishing it gets logged on the server and counts toward the round's win condition.</figcaption>
+      </figure>
+
+      <figure class="clip" id="clip-generator">
+        <div class="well"><video src="assets/generator.mp4" poster="assets/generator-poster.jpg" controls preload="none" playsinline></video></div>
+        <ul class="tags"><li>Scripting</li></ul>
+        <figcaption><b>Generator objective.</b> A hold interaction with a timing ring and a four stage progress bar. Each stage saves on its own, so a survivor who gets interrupted mid repair keeps what they already did.</figcaption>
+      </figure>
+
+      <figure class="clip" id="clip-terminal">
+        <div class="well"><video src="assets/terminal.mp4" poster="assets/terminal-poster.jpg" controls preload="none" playsinline></video></div>
+        <ul class="tags"><li>Scripting</li></ul>
+        <figcaption><b>Server terminal objective.</b> Pick up data chips around the map and hold them over the console's scanner. Each symbol decrypts into a number and the panel tracks the system status until the terminal is back up. The pickups, the hold and the decryption all run on the server.</figcaption>
+      </figure>
+
+      <figure class="clip" id="clip-chase">
+        <div class="well"><video src="assets/chase.mp4" poster="assets/chase-poster.jpg" controls preload="none" playsinline></video></div>
+        <ul class="tags"><li>Scripting</li></ul>
+        <figcaption><b>Movement and camera in the real map.</b> The custom controller and the soft shift lock camera in the actual built map, not a test room. The health and stamina HUD drains as you sprint.</figcaption>
+      </figure>
+    </details>
+  </section>
+
+  <section id="code">
+    <h2>code</h2>
+    <article class="codebox">
+      <h3>Gifting system, server side</h3>
+      <p class="lead">You buy a product for another player and it lands in their inbox, even if they're in another server or offline. If they don't claim it before it expires, it goes back to the sender.</p>
+      <ul class="files">
+        <li><a href="https://github.com/Streetdude123/sample-code/blob/main/ReceiptLedger.luau" target="_blank" rel="noopener"><b>ReceiptLedger.luau<span class="ic">&#8599;</span></b><span>Roblox keeps retrying ProcessReceipt until it hears back, so every PurchaseId gets recorded and a purchase can never grant twice.</span></a></li>
+        <li><a href="https://github.com/Streetdude123/sample-code/blob/main/InboxStore.luau" target="_blank" rel="noopener"><b>InboxStore.luau<span class="ic">&#8599;</span></b><span>Every write is an UpdateAsync, so two servers touching the same inbox can't duplicate or lose a gift, and a double click can't claim it twice.</span></a></li>
+        <li><a href="https://github.com/Streetdude123/sample-code/blob/main/Gift.luau" target="_blank" rel="noopener"><b>Gift.luau<span class="ic">&#8599;</span></b><span>The gift data and the payload the client gets, with the ids it has no business seeing stripped out. Returned gifts never expire again, so they can't bounce back and forth forever.</span></a></li>
+        <li><a href="https://github.com/Streetdude123/sample-code/blob/main/Store.luau" target="_blank" rel="noopener"><b>Store.luau<span class="ic">&#8599;</span></b><span>The DataStore wrapper every write goes through, with retries and backoff.</span></a></li>
+      </ul>
+    </article>
   </section>
 
   <section id="work">
-    <h2>work</h2>
+    <h2>my own games</h2>
+    <p class="lead" style="margin-bottom:34px">These two are my own projects, so whatever I write for you is the same kind of code I have to deal with myself later on.</p>
 
     <article class="project" id="tower-defense">
       <h3>Untitled Tower Defense</h3>
@@ -332,8 +448,8 @@ footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--rule2);color:
     <h2>connect</h2>
     <p class="lead">Send me the game, what the problem is and when you need it by. If I'm not the right person for it I'll tell you straight up instead of wasting your week.</p>
     <div class="links">
-      <a class="rowlink" href="mailto:buzziut.dev@gmail.com"><span>Email</span><span class="ic">&#8599;</span></a>
       <button class="rowlink" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span><span class="ic swap" aria-hidden="true"><span>&#8599;</span><span class="alt">&#10003;</span></span></button>
+      <a class="rowlink" href="mailto:buzziut.dev@gmail.com"><span>Email</span><span class="ic">&#8599;</span></a>
       <a class="rowlink" href="https://www.roblox.com/users/807959354/profile" target="_blank" rel="noopener"><span>Roblox @thefuture1687</span><span class="ic">&#8599;</span></a>
       <a class="rowlink" href="https://github.com/Streetdude123" target="_blank" rel="noopener"><span>GitHub</span><span class="ic">&#8599;</span></a>
     </div>
@@ -378,11 +494,15 @@ document.addEventListener("visibilitychange", () => { if (!document.hidden) tick
 const clipBox = document.getElementById("clips");
 const clips = [...clipBox.querySelectorAll(".clip")];
 const chips = [...clipBox.querySelectorAll(".chips button")];
+const more = document.getElementById("more-clips");
+const moreCount = more.querySelector("[data-more-count]");
 
 function pick(skill){
   clips.forEach(fig => {
     fig.hidden = !!skill && ![...fig.querySelectorAll(".tags li")].some(li => li.textContent.toLowerCase() === skill);
   });
+  moreCount.textContent = more.querySelectorAll(".clip:not([hidden])").length;
+  if (skill) more.open = true;
   chips.forEach(b => b.setAttribute("aria-pressed", b.dataset.skill === skill));
   const url = new URL(location.href);
   if (skill) url.searchParams.set("skill", skill);
@@ -405,33 +525,36 @@ function autoplayClips(){
     const fig = v.closest(".clip");
     v.muted = true; v.loop = true; v.playsInline = true;
     v.removeAttribute("controls");
-    v.preload = "metadata";
     v.style.cursor = "pointer";
     fig.dataset.sound = "off";
     v.addEventListener("click", () => {
-      fig.classList.remove("crop");
       fig.dataset.sound = "on";
       v.controls = true;
       v.muted = false;
     });
+    v.addEventListener("play", () => {
+      videos.forEach(o => { if (o !== v && !o.paused) o.pause(); });
+    });
   });
 
+  const seen = new Map();
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      const v = entry.target;
-      if (entry.isIntersecting) {
-        v.play().catch(err => {
-          if (err.name === "NotAllowedError"){
-            const fig = v.closest(".clip");
-            v.controls = true;
-            fig.classList.remove("crop");
-            fig.dataset.sound = "on";
-          }
-        });
-      }
-      else { v.pause(); }
+      seen.set(entry.target, entry.intersectionRatio);
+      if (entry.isIntersecting) entry.target.preload = "auto";
     });
-  }, { threshold: 0.35 });
+    let best = null, most = 0.35;
+    seen.forEach((ratio, v) => { if (ratio >= most) { best = v; most = ratio; } });
+    videos.forEach(v => { if (v !== best && !v.paused) v.pause(); });
+    if (best && best.paused) {
+      best.play().catch(err => {
+        if (err.name === "NotAllowedError"){
+          best.controls = true;
+          best.closest(".clip").dataset.sound = "on";
+        }
+      });
+    }
+  }, { threshold: [0, 0.35, 0.6, 0.85, 1] });
 
   videos.forEach(v => io.observe(v));
 }
