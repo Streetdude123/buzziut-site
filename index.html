@@ -45,11 +45,18 @@
   --live:#5ec98a;
   --live-ring:rgba(94,201,138,.16);
   --sand:#cdb98f;
+  --scrim:rgba(15,16,14,.94);
+  --scrim-mid:rgba(15,16,14,.74);
+  --scrim-low:rgba(15,16,14,.88);
+  --glass:rgba(15,16,14,.62);
+  --glass-line:rgba(232,229,221,.24);
+  --tick:rgba(232,229,221,.28);
+  --shade:rgba(5,5,4,.84);
   --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --serif:"Spectral",Georgia,"Times New Roman",serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
   --text:640px;
-  --wide:1040px;
+  --wide:1200px;
   --ease-out:cubic-bezier(.23,1,.32,1);
 }
 
@@ -80,6 +87,7 @@ img,video{display:block;max-width:100%}
   border:1px solid var(--rule);border-radius:3px;background:none;color:var(--fg);font:400 15px/1 var(--sans);white-space:nowrap;cursor:pointer;
   -webkit-tap-highlight-color:transparent;transition:border-color .15s ease,background-color .15s ease}
 .btn.main{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.btn.ghost{background:var(--glass);border-color:var(--glass-line)}
 .btn.sm{min-height:36px;padding:0 14px;font-size:14px}
 .btn .k{font-size:12.5px;color:var(--dim2)}
 .btn.main .k{color:var(--ink2)}
@@ -95,19 +103,46 @@ img,video{display:block;max-width:100%}
 .inline a{color:var(--fg);border-bottom:1px solid var(--rule);transition:border-color .2s ease}
 .lead{max-width:var(--text);color:var(--dim);font-size:17px;line-height:1.7}
 .fine{max-width:var(--text);color:var(--dim2);font-size:14px;line-height:1.6}
+.badge{flex:none;padding:5px 7px 4px;border-radius:2px;background:var(--win);color:var(--on-win);font:600 11.5px/1 var(--sans);letter-spacing:.07em;text-transform:uppercase}
 
-.hero{padding-top:88px}
-.status{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 26px;color:var(--dim);font-size:14px}
+.hero{padding-top:24px}
+.reel{position:relative;display:flex;align-items:flex-end;height:clamp(480px,44vw,600px);border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--fill)}
+.reel-v{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reel::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,var(--scrim) 0%,var(--scrim-mid) 36%,transparent 72%),linear-gradient(0deg,var(--scrim-low) 0%,transparent 46%)}
+.reel-copy{position:relative;z-index:1;max-width:720px;padding:0 56px 52px}
+.status{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:0 0 22px;color:var(--dim);font-size:14px}
 .status .now{color:var(--dim2);font-variant-numeric:tabular-nums}
-h1{max-width:860px;margin:0 0 22px;font:400 clamp(34px,5.6vw,54px)/1.05 var(--sans);letter-spacing:-.032em;text-wrap:balance}
-.proof{max-width:var(--text);margin:0 0 20px;color:var(--dim2);font-size:15.5px;line-height:1.6}
-.proof a{color:var(--fg);border-bottom:1px solid var(--rule);transition:border-color .2s ease}
+h1{margin:0 0 18px;font:400 clamp(36px,4.6vw,62px)/1.03 var(--sans);letter-spacing:-.035em;text-wrap:balance}
+.proof{color:var(--dim);font-size:15.5px;line-height:1.6}
+.proof a{color:var(--fg);border-bottom:1px solid var(--glass-line);transition:border-color .2s ease}
 .proof b{font-weight:600}
-.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
-.cta + .fine{margin-top:14px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.stamp{position:absolute;top:24px;right:24px;z-index:1;display:flex;align-items:center;gap:12px;padding:9px 14px 9px 9px;border:1px solid var(--win);border-radius:3px;
+  background:var(--glass);font-size:14px;transition:background-color .15s ease}
+.reel-now{position:absolute;right:24px;bottom:22px;z-index:1;display:flex;align-items:center;gap:14px;color:var(--dim);font-size:13px}
+.reel-now a{color:var(--fg)}
+.ticks{display:flex;gap:5px}
+.ticks i{display:block;width:24px;height:3px;border-radius:2px;background:var(--tick);transition:background-color .2s ease}
+.ticks i.on{background:var(--fg)}
 
-section{padding-top:128px}
-.hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 18px;margin:0 0 36px}
+.games{padding-top:18px}
+.eyebrow{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin:0 0 10px;color:var(--dim2);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.credits{display:grid;grid-template-columns:1.35fr repeat(3,minmax(0,1fr));gap:14px;list-style:none;margin:0;padding:0}
+.credits a{display:flex;align-items:center;gap:14px;height:100%;padding:14px;border:1px solid var(--rule);border-radius:3px;background:var(--raise);transition:border-color .15s ease}
+.credits img{width:52px;height:52px;flex:none;border-radius:3px;border:1px solid var(--rule);object-fit:cover}
+.credits .win a{border-color:var(--win);background:linear-gradient(180deg,var(--win-tint),transparent),var(--raise)}
+.credits .win img{width:92px}
+.credits .txt{flex:1;min-width:0}
+.credits b{display:block;font-weight:400;font-size:15.5px;line-height:1.3}
+.credits .meta{display:block;margin-top:2px;color:var(--dim);font-size:13.5px;line-height:1.4}
+.credits .go{flex:none;align-self:flex-start;color:var(--dim2);transition:color .15s ease}
+
+.about{display:grid;grid-template-columns:minmax(0,var(--text)) minmax(0,1fr);align-items:end;gap:20px 64px;margin-top:64px;padding-top:28px;border-top:1px solid var(--rule)}
+.about .fine{max-width:420px}
+
+section{padding-top:120px}
+.hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px 18px;margin:0 0 34px}
 .hd h2{font:400 31px/1.15 var(--serif);letter-spacing:-.01em}
 .hd::after{content:"";order:1;flex:1;min-width:40px;height:1px;background:var(--rule);transform:translateY(-8px)}
 .hd .aside{order:2;color:var(--dim2);font-size:14px;font-variant-numeric:tabular-nums}
@@ -116,53 +151,65 @@ section{padding-top:128px}
 .well{position:relative;aspect-ratio:16/9;max-width:100%;border:1px solid var(--rule);border-radius:3px;background:var(--fill);overflow:hidden}
 .well video{width:100%;height:100%;object-fit:cover;background:var(--void)}
 .clip[data-sound="off"] .well::after{content:"click for sound";position:absolute;right:10px;bottom:10px;z-index:1;pointer-events:none;
-  padding:6px 9px;border-radius:2px;background:rgba(15,16,14,.8);color:var(--dim);font-size:12px;line-height:1;opacity:0;transition:opacity .15s ease}
+  padding:6px 9px;border-radius:2px;background:var(--glass);color:var(--fg);font-size:12px;line-height:1;opacity:0;transition:opacity .15s ease}
 
-.award{border:1px solid var(--win);border-radius:4px;padding:24px;background:linear-gradient(180deg,var(--win-tint),transparent 45%),var(--raise)}
+.spotlight{padding-top:72px}
+.spot{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:32px;padding:22px;border:1px solid var(--win);border-radius:4px;
+  background:linear-gradient(180deg,var(--win-tint),transparent 55%),var(--raise)}
+.facts{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:8px 32px;margin-top:16px}
+.facts dt{margin-bottom:3px;color:var(--dim2);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.facts dd{font-size:14.5px;line-height:1.45}
+.spot-body{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:2px 4px 2px 0}
 .award-top{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
-.badge{flex:none;padding:5px 7px 4px;border-radius:2px;background:var(--win);color:var(--on-win);font:600 11.5px/1 var(--sans);letter-spacing:.07em;text-transform:uppercase}
 .event{color:var(--dim);font-size:14.5px}
-.award-top .out{margin-left:auto}
-.award h3{margin:14px 0 22px;font:400 clamp(28px,3.6vw,36px)/1.1 var(--sans);letter-spacing:-.025em}
-.award-foot{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,280px);gap:20px 44px;margin-top:20px}
-.award-foot p{max-width:var(--text);color:var(--dim);font-size:15px;line-height:1.65}
-.award-foot p b,.clip figcaption b{color:var(--fg);font-weight:400}
-.facts{display:grid;grid-template-columns:auto minmax(0,1fr);align-content:start;gap:9px 18px;padding-left:24px;border-left:1px solid var(--rule);font-size:14.5px;line-height:1.5}
-.facts dt{color:var(--dim2)}
-
-.games{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;list-style:none;margin:16px 0 0;padding:0}
-.games a{display:flex;align-items:flex-start;gap:14px;height:100%;padding:14px 16px 14px 14px;border:1px solid var(--rule);border-radius:3px;background:var(--raise);transition:border-color .15s ease}
-.games img{width:52px;height:52px;flex:none;border-radius:3px;border:1px solid var(--rule)}
-.games .txt{flex:1;min-width:0}
-.games b{display:block;font-weight:400;font-size:15.5px;line-height:1.35}
-.games .meta{display:block;margin-top:3px;color:var(--dim);font-size:13.5px;line-height:1.45}
-.games .go{flex:none;color:var(--dim2);transition:color .15s ease}
-.games + .fine{margin-top:12px}
+.spot-body h2{margin:16px 0 14px;font:400 clamp(30px,3.4vw,42px)/1.06 var(--sans);letter-spacing:-.028em}
+.spot-body p{color:var(--dim);font-size:15.5px;line-height:1.65}
+.spot-body p b{color:var(--fg);font-weight:400}
+.spot-body .out{margin-top:auto;padding-top:22px;border-bottom:0}
+.spot-body .out span{border-bottom:1px solid var(--rule);transition:border-color .2s ease}
 
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips button{appearance:none;-webkit-appearance:none;margin:0;padding:7px 12px;border:1px solid var(--rule);border-radius:3px;background:none;
   color:var(--dim);font:400 13.5px/1 var(--sans);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:color .15s ease,border-color .15s ease}
 .chips button[aria-pressed="true"]{color:var(--fg);border-color:var(--accent)}
 
-.feature:not([hidden]) ~ .feature:not([hidden]){margin-top:72px}
-.cap-row{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin:16px 0 6px}
-.cap-row b{font-size:18px;line-height:1.35}
-.clip figcaption p{max-width:var(--text);color:var(--dim);font-size:15px;line-height:1.65}
-.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
-.tags li{padding:4px 7px;border:1px solid var(--rule);border-radius:2px;color:var(--dim);font-size:12px;line-height:1}
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,232px);grid-auto-flow:dense;gap:14px}
+.bento.is-filtered{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tile{position:relative;min-width:0}
+.tile.big{grid-column:span 2;grid-row:span 2}
+.tile.wide{grid-column:span 2}
+.bento.is-filtered .tile{grid-column:auto;grid-row:auto}
+.tile-hit{appearance:none;-webkit-appearance:none;position:absolute;inset:0;display:block;width:100%;height:100%;margin:0;padding:0;
+  border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--fill);color:var(--fg);font:inherit;text-align:left;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;transition:border-color .15s ease}
+.tile-hit img,.tile-hit video{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover}
+.tile-hit video{opacity:0;transition:opacity .2s ease}
+.tile.is-live .tile-hit video{opacity:1}
+.tile-hit::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,var(--scrim-low) 0%,transparent 50%)}
+.tile-meta{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 12px}
+.tile-meta b{font-weight:400;font-size:16px;line-height:1.3}
+.tile.big .tile-meta b{font-size:21px}
+.tile-tags{display:flex;gap:5px}
+.tile-tags span,.flag,.dur{padding:4px 7px;border-radius:2px;background:var(--glass);font-size:11.5px;line-height:1}
+.tile-tags span{border:1px solid var(--glass-line);color:var(--dim)}
+.flag{position:absolute;top:12px;left:12px;z-index:1;border:1px solid var(--accent);color:var(--fg)}
+.dur{position:absolute;top:12px;right:12px;z-index:1;color:var(--fg);font-family:var(--mono);font-variant-numeric:tabular-nums}
+.bento + .fine{margin-top:14px}
 
-.more{margin-top:80px;border-top:1px solid var(--rule)}
-.more summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 2px;list-style:none;font-size:16px;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.more summary::-webkit-details-marker{display:none}
-.more summary .n{margin-left:8px;color:var(--dim2);font-size:14px;font-variant-numeric:tabular-nums}
-.more summary .ic{color:var(--dim);font-size:20px;line-height:1;transition:transform .2s var(--ease-out),color .15s ease}
-.more[open] summary .ic{transform:rotate(45deg)}
-.more-list{display:grid;gap:56px;max-width:var(--text);padding:14px 0 6px}
-.more-list .cap-row b{font-size:16px}
-.more-list figcaption p{font-size:14.5px}
+.lb{width:min(1100px,calc(100vw - 32px));max-width:none;max-height:calc(100vh - 32px);padding:0;border:1px solid var(--rule);border-radius:4px;background:var(--raise);color:var(--fg)}
+.lb::backdrop{background:var(--shade)}
+.lb-in{display:grid;gap:14px;padding:16px}
+.lb-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.lb-top b{font-weight:400;font-size:18px}
+.lb-tags{color:var(--dim2);font-size:13.5px}
+.lb-x{margin-left:auto}
+.lb video{width:100%;max-height:68vh;border-radius:3px;background:var(--void)}
+.lb-cap{max-width:var(--text);color:var(--dim);font-size:15px;line-height:1.65}
+.lb-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--rule2)}
+.lb-count{color:var(--dim2);font-size:13.5px;font-variant-numeric:tabular-nums}
 
 .code-grid{display:grid;gap:28px}
-.code{min-width:0;border:1px solid var(--rule);border-radius:3px;background:var(--raise);overflow:hidden}
+.code{order:1;min-width:0;border:1px solid var(--rule);border-radius:3px;background:var(--raise);overflow:hidden}
 .code-top{display:flex;justify-content:space-between;gap:12px;padding:11px 16px;border-bottom:1px solid var(--rule2);color:var(--dim);font:400 12.5px/1.2 var(--mono)}
 .code-top span + span{color:var(--dim2)}
 .code pre{margin:0;padding:16px 18px 18px 0;overflow-x:auto;color:var(--fg);font:400 13px/1.75 var(--mono);tab-size:2;counter-reset:ln 30}
@@ -174,7 +221,6 @@ section{padding-top:128px}
 .code-side h3{margin:0 0 10px;font:400 23px/1.25 var(--sans);letter-spacing:-.015em}
 .code-side .lead{font-size:16px}
 .files{order:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 44px;list-style:none;margin:0;padding:0}
-.code{order:1}
 .files li{border-top:1px solid var(--rule)}
 .files a{display:block;padding:14px 0}
 .files b{display:flex;justify-content:space-between;gap:12px;color:var(--fg);font:400 14px/1.4 var(--mono)}
@@ -220,11 +266,11 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
   .nav a:hover{color:var(--fg)}
   .btn:hover{border-color:var(--accent)}
   .btn.main:hover{background:var(--fg-hi);border-color:var(--fg-hi)}
-  .proof a:hover,.out:hover,.inline a:hover{border-color:var(--accent)}
-  .games a:hover{border-color:var(--accent)}
-  .games a:hover .go,.files a:hover .ic{color:var(--accent)}
+  .stamp:hover{background:var(--scrim-mid)}
+  .proof a:hover,.out:hover,.inline a:hover,.spot-body .out:hover span{border-color:var(--accent)}
+  .credits a:hover,.tile-hit:hover{border-color:var(--accent)}
+  .credits a:hover .go,.files a:hover .ic{color:var(--accent)}
   .chips button:hover{color:var(--fg)}
-  .more summary:hover .ic{color:var(--fg)}
   .elsewhere a:hover{color:var(--fg)}
   .clip[data-sound="off"] .well:hover::after{opacity:1}
 }
@@ -235,26 +281,39 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
   html{scroll-behavior:auto}
 }
 
+@media (max-width:1100px){
+  .credits{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media (max-width:900px){
-  .games{grid-template-columns:1fr}
+  .spot{grid-template-columns:1fr}
+  .bento,.bento.is-filtered{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(150px,28vw,240px)}
   .files{grid-template-columns:1fr}
-  .award-foot{grid-template-columns:1fr}
-  .facts{padding:16px 0 0;border-left:0;border-top:1px solid var(--rule)}
+  .about{grid-template-columns:1fr}
 }
 @media (max-width:760px){
   .nav{display:none}
   .bar .btn{margin-left:auto}
+  .reel{display:block;height:auto;border:0;border-radius:0;background:none;overflow:visible}
+  .reel::after,.reel-now{display:none}
+  .reel-v{position:static;height:auto;aspect-ratio:16/10;border:1px solid var(--rule);border-radius:3px}
+  .reel-copy{max-width:none;padding:26px 0 0}
+  .stamp{top:10px;right:10px;padding:6px 10px 6px 6px;font-size:12.5px}
+  .btn.ghost{background:none;border-color:var(--rule)}
 }
 @media (max-width:620px){
-  .hero{padding-top:56px}
   section{padding-top:92px}
+  .spotlight{padding-top:56px}
   .hd{margin-bottom:28px}
   .hd h2{font-size:27px}
   .hd .chips{flex-basis:100%}
   .hd.sub{margin-top:72px}
-  .award{margin-inline:-6px;padding:16px}
-  .award-top .out{margin-left:0}
-  .feature:not([hidden]) ~ .feature:not([hidden]){margin-top:56px}
+  .credits{grid-template-columns:1fr}
+  .spot{margin-inline:-6px;padding:16px;gap:20px}
+  .facts{grid-template-columns:1fr 1fr}
+  .facts div:last-child{grid-column:1 / -1}
+  .bento,.bento.is-filtered{grid-template-columns:1fr;grid-auto-rows:auto}
+  .tile,.tile.big,.tile.wide{grid-column:auto;grid-row:auto;aspect-ratio:16/9}
+  .tile.big .tile-meta b{font-size:17px}
   .shots,.steps,.rows > div{grid-template-columns:1fr}
   .proj-head .out{margin-left:0}
   .cta .btn{flex:1 1 auto}
@@ -282,58 +341,73 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
 
   <section class="hero">
     <div class="in">
-      <p class="status"><span class="dot"></span>Open for short commissions<span aria-hidden="true">·</span><span class="now" data-now></span></p>
-      <h1>Roblox Luau scripter for combat, abilities and game systems.</h1>
-      <p class="proof"><a href="#allergy-season"><b>1st place</b> at HiddenDevs Design a Disaster</a> · <a href="#games">4&nbsp;released&nbsp;games</a> · <a href="#code">code&nbsp;on&nbsp;GitHub</a></p>
-      <p class="lead">I write it all myself instead of grabbing something off the toolbox, I keep the important checks on the server, and I make sure it still runs fine on a cheap phone. VFX and animation are my second skill, so an ability goes from the toggle to the finished effect without a handoff.</p>
-      <div class="cta">
-        <button class="btn main" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span><span class="k" aria-hidden="true">copy</span></button>
-        <a class="btn" href="mailto:buzziut.dev@gmail.com">buzziut.dev@gmail.com</a>
+      <div class="reel">
+        <video class="reel-v" src="assets/showreel.mp4" poster="assets/showreel-poster.jpg" muted loop playsinline preload="auto" aria-label="Showreel of my clips"></video>
+        <a class="stamp" href="#allergy-season"><span class="badge">1st place</span>HiddenDevs Design a Disaster</a>
+        <div class="reel-copy">
+          <p class="status"><span class="dot"></span>Open for short commissions<span aria-hidden="true">·</span><span class="now" data-now></span></p>
+          <h1>Roblox Luau scripter for combat, abilities and game systems.</h1>
+          <p class="proof"><a href="#allergy-season"><b>1st place</b> at HiddenDevs Design a Disaster</a> · <a href="#games">4&nbsp;released&nbsp;games</a> · <a href="#code">code&nbsp;on&nbsp;GitHub</a></p>
+          <div class="cta">
+            <button class="btn main" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span><span class="k" aria-hidden="true">copy</span></button>
+            <a class="btn ghost" href="mailto:buzziut.dev@gmail.com">buzziut.dev@gmail.com</a>
+          </div>
+        </div>
+        <p class="reel-now">Showreel · <a href="#clip-frieren" data-reel-label>Frieren cutscene</a><span class="ticks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span></p>
       </div>
-      <p class="fine">One system, one feature, an optimization pass, or a bug you're just done dealing with.</p>
     </div>
   </section>
 
-  <section id="games">
+  <section class="games" id="games">
     <div class="in">
-      <div class="hd"><h2>released games</h2><span class="aside">4 live on Roblox</span></div>
-
-      <article class="clip award" id="allergy-season">
-        <div class="award-top">
-          <span class="badge">1st place</span>
-          <span class="event">HiddenDevs Design a Disaster</span>
-          <a class="out" href="https://www.roblox.com/games/136988453804049" target="_blank" rel="noopener">Play on Roblox&nbsp;&#8599;</a>
-        </div>
-        <h3>Allergy Season</h3>
-        <div class="well" style="aspect-ratio:1280/592"><video src="assets/allergy.mp4" poster="assets/allergy-poster.jpg" controls preload="metadata" playsinline></video></div>
-        <div class="award-foot">
-          <p><b>Sneezes set off the disasters.</b> At 100% on the sneeze meter you sneeze hard enough to start a random disaster. Here it's a tornado, with a manga impact frame on the sneeze and you getting flung. The HUD is a local news weather report telling you to run for your life. Recorded on a phone.</p>
-          <dl class="facts">
-            <dt>Date</dt><dd>Oct 2026</dd>
-            <dt>Team</dt><dd>Duo</dd>
-            <dt>My part</dt><dd>Scripting, VFX, animation and UI</dd>
-          </dl>
-        </div>
-      </article>
-
-      <ul class="games">
+      <p class="eyebrow"><span>Released games</span><span>Visits as of Oct 2026</span></p>
+      <ul class="credits">
+        <li class="win"><a href="#allergy-season">
+          <img src="assets/allergy-poster.jpg" alt="" width="92" height="52">
+          <span class="txt"><b>Allergy Season</b><span class="meta">1st place · duo, my part: scripting, VFX, animation, UI</span></span>
+        </a></li>
         <li><a href="https://www.roblox.com/games/138731624649567" target="_blank" rel="noopener">
-          <img src="assets/icon-targaot.jpg" alt="" width="52" height="52" loading="lazy">
-          <span class="txt"><b>Targaot</b><span class="meta">Targaot Co.</span><span class="meta">Scripter · 16.5k visits</span></span>
+          <img src="assets/icon-targaot.jpg" alt="" width="52" height="52">
+          <span class="txt"><b>Targaot</b><span class="meta">Scripter · Targaot Co. · 16.5k visits</span></span>
           <span class="go" aria-hidden="true">&#8599;</span>
         </a></li>
         <li><a href="https://www.roblox.com/games/124902110402950" target="_blank" rel="noopener">
-          <img src="assets/icon-wackypets.jpg" alt="" width="52" height="52" loading="lazy">
-          <span class="txt"><b>Wacky Pets</b><span class="meta">Bitshifter Productions</span><span class="meta">Scripter · 3.9k visits</span></span>
+          <img src="assets/icon-wackypets.jpg" alt="" width="52" height="52">
+          <span class="txt"><b>Wacky Pets</b><span class="meta">Scripter · Bitshifter Productions · 3.9k visits</span></span>
           <span class="go" aria-hidden="true">&#8599;</span>
         </a></li>
         <li><a href="https://www.roblox.com/games/84207978327733" target="_blank" rel="noopener">
-          <img src="assets/icon-aboshima.jpg" alt="" width="52" height="52" loading="lazy">
-          <span class="txt"><b>Ashes of Aboshima combat showcase</b><span class="meta">Ashes of Aboshima</span><span class="meta">Scripter</span></span>
+          <img src="assets/icon-aboshima.jpg" alt="" width="52" height="52">
+          <span class="txt"><b>Ashes of Aboshima combat showcase</b><span class="meta">Scripter · Ashes of Aboshima</span></span>
           <span class="go" aria-hidden="true">&#8599;</span>
         </a></li>
       </ul>
-      <p class="fine">Visits as of Oct 2026.</p>
+
+      <div class="about">
+        <p class="lead">I write it all myself instead of grabbing something off the toolbox, I keep the important checks on the server, and I make sure it still runs fine on a cheap phone. VFX and animation are my second skill, so an ability goes from the toggle to the finished effect without a handoff.</p>
+        <p class="fine">One system, one feature, an optimization pass, or a bug you're just done dealing with.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="spotlight">
+    <div class="in">
+      <article class="clip spot" id="allergy-season">
+        <div class="spot-media">
+          <div class="well" style="aspect-ratio:1280/592"><video src="assets/allergy.mp4" poster="assets/allergy-poster.jpg" controls preload="metadata" playsinline></video></div>
+          <dl class="facts">
+            <div><dt>Date</dt><dd>Oct 2026</dd></div>
+            <div><dt>Team</dt><dd>Duo</dd></div>
+            <div><dt>My part</dt><dd>Scripting, VFX, animation and UI</dd></div>
+          </dl>
+        </div>
+        <div class="spot-body">
+          <div class="award-top"><span class="badge">1st place</span><span class="event">HiddenDevs Design a Disaster</span></div>
+          <h2>Allergy Season</h2>
+          <p><b>Sneezes set off the disasters.</b> At 100% on the sneeze meter you sneeze hard enough to start a random disaster. Here it's a tornado, with a manga impact frame on the sneeze and you getting flung. The HUD is a local news weather report telling you to run for your life. Recorded on a phone.</p>
+          <a class="out" href="https://www.roblox.com/games/136988453804049" target="_blank" rel="noopener"><span>Play Allergy Season on Roblox</span>&nbsp;&#8599;</a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -348,98 +422,107 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
         </div>
       </div>
 
-      <figure class="clip feature" id="clip-chisa" data-skills="vfx animation">
-        <div class="well" style="aspect-ratio:1100/462"><video src="assets/chisa.mp4" poster="assets/chisa-poster.jpg" controls preload="none" playsinline></video></div>
-        <figcaption>
-          <div class="cap-row"><b>Chisa ultimate</b><ul class="tags"><li>VFX</li><li>Animation</li></ul></div>
-          <p>A sword ultimate played as a cutscene: letterbox bars, camera cuts through close shots with anime impact frames and speed lines, then it pulls back out to the normal game camera. The sword is Chisa's weapon from Wuthering Waves.</p>
-        </figcaption>
-      </figure>
+      <div class="bento" id="bento">
+        <figure class="tile big" id="clip-chisa" data-skills="vfx animation" data-title="Chisa ultimate" data-tags="VFX · Animation">
+          <button class="tile-hit" type="button" aria-label="Watch Chisa ultimate">
+            <img src="assets/chisa-poster.jpg" alt="" loading="lazy"><video data-src="assets/chisa.mp4" muted loop playsinline preload="none"></video>
+            <span class="dur">0:08</span>
+            <span class="tile-meta"><b>Chisa ultimate</b><span class="tile-tags"><span>VFX</span><span>Animation</span></span></span>
+          </button>
+          <figcaption hidden>A sword ultimate played as a cutscene: letterbox bars, camera cuts through close shots with anime impact frames and speed lines, then it pulls back out to the normal game camera. The sword is Chisa's weapon from Wuthering Waves.</figcaption>
+        </figure>
 
-      <figure class="clip feature" id="clip-manazone" data-skills="vfx animation">
-        <div class="well" style="aspect-ratio:1092/404"><video src="assets/manazone.mp4" poster="assets/manazone-poster.jpg" controls preload="none" playsinline></video></div>
-        <figcaption>
-          <div class="cap-row"><b>Mana Zone</b><ul class="tags"><li>VFX</li><li>Animation</li></ul></div>
-          <p>The Flame Mage's ultimate, Mereoleona's Calidos Brachium Barrage from Black Clover. A flash step in, a ring of fire fists around the target, quiet for the voice line, slow motion right before the hit, then every fist lands at once and cracks the ground. Recorded in Studio.</p>
-        </figcaption>
-      </figure>
+        <figure class="tile wide" id="clip-manazone" data-skills="vfx animation" data-title="Mana Zone" data-tags="VFX · Animation">
+          <button class="tile-hit" type="button" aria-label="Watch Mana Zone">
+            <img src="assets/manazone-poster.jpg" alt="" loading="lazy"><video data-src="assets/manazone.mp4" muted loop playsinline preload="none"></video>
+            <span class="dur">0:18</span>
+            <span class="tile-meta"><b>Mana Zone</b><span class="tile-tags"><span>VFX</span><span>Animation</span></span></span>
+          </button>
+          <figcaption hidden>The Flame Mage's ultimate, Mereoleona's Calidos Brachium Barrage from Black Clover. A flash step in, a ring of fire fists around the target, quiet for the voice line, slow motion right before the hit, then every fist lands at once and cracks the ground. Recorded in Studio.</figcaption>
+        </figure>
 
-      <figure class="clip feature" id="clip-td-boss" data-skills="scripting vfx">
-        <div class="well" style="aspect-ratio:1280/592"><video src="assets/td-boss.mp4" poster="assets/td-boss-poster.jpg" controls preload="metadata" playsinline></video></div>
-        <figcaption>
-          <div class="cap-row"><b>My tower defense game, boss wave on a phone</b><ul class="tags"><li>Scripting</li><li>VFX</li></ul></div>
-          <p>The Noob King has his own health bar and state label, and the left panel is the upgrade and targeting menu for whatever you placed. All mine: the scripting, the UI, the VFX and the unit models.</p>
-        </figcaption>
-      </figure>
+        <figure class="tile" id="clip-td-boss" data-skills="scripting vfx" data-title="My tower defense game, boss wave on a phone" data-tags="Scripting · VFX">
+          <button class="tile-hit" type="button" aria-label="Watch the tower defense boss wave">
+            <img src="assets/td-boss-poster.jpg" alt="" loading="lazy"><video data-src="assets/td-boss.mp4" muted loop playsinline preload="none"></video>
+            <span class="dur">0:46</span>
+            <span class="tile-meta"><b>Tower defense boss wave</b></span>
+          </button>
+          <figcaption hidden>The Noob King has his own health bar and state label, and the left panel is the upgrade and targeting menu for whatever you placed. All mine: the scripting, the UI, the VFX and the unit models.</figcaption>
+        </figure>
 
-      <figure class="clip feature" id="clip-backpack" data-skills="scripting">
-        <div class="well"><video src="assets/backpack.mp4" poster="assets/backpack-poster.jpg" controls preload="none" playsinline></video></div>
-        <figcaption>
-          <div class="cap-row"><b>Commission: 3D backpack inventory</b><ul class="tags"><li>Scripting</li></ul></div>
-          <p>Built inside the client's own place. TAB brings the backpack rig up in front of the camera, the items are real 3D objects sitting in it, and each slot has its own take out prompt. It runs alongside a first person viewmodel and a hotbar.</p>
-        </figcaption>
-      </figure>
+        <figure class="tile" id="clip-backpack" data-skills="scripting" data-title="Commission: 3D backpack inventory" data-tags="Scripting">
+          <button class="tile-hit" type="button" aria-label="Watch the 3D backpack inventory commission">
+            <img src="assets/backpack-poster.jpg" alt="" loading="lazy"><video data-src="assets/backpack.mp4" muted loop playsinline preload="none"></video>
+            <span class="flag">Commission</span><span class="dur">0:11</span>
+            <span class="tile-meta"><b>3D backpack inventory</b></span>
+          </button>
+          <figcaption hidden>Built inside the client's own place. TAB brings the backpack rig up in front of the camera, the items are real 3D objects sitting in it, and each slot has its own take out prompt. It runs alongside a first person viewmodel and a hotbar.</figcaption>
+        </figure>
 
-      <figure class="clip feature" id="clip-parry" data-skills="scripting">
-        <div class="well"><video src="assets/parry.mp4" poster="assets/parry-poster.jpg" controls preload="none" playsinline></video></div>
-        <figcaption>
-          <div class="cap-row"><b>Parry timing</b><ul class="tags"><li>Scripting</li></ul></div>
-          <p>The striker's swing has a red wind up, and blocking right at that moment turns the block into a parry. You get the impact burst and the deflect, and no damage, the health bar stays at 125 the whole time.</p>
-        </figcaption>
-      </figure>
+        <figure class="tile" id="clip-parry" data-skills="scripting" data-title="Parry timing" data-tags="Scripting">
+          <button class="tile-hit" type="button" aria-label="Watch Parry timing">
+            <img src="assets/parry-poster.jpg" alt="" loading="lazy"><video data-src="assets/parry.mp4" muted loop playsinline preload="none"></video>
+            <span class="dur">0:08</span>
+            <span class="tile-meta"><b>Parry timing</b></span>
+          </button>
+          <figcaption hidden>The striker's swing has a red wind up, and blocking right at that moment turns the block into a parry. You get the impact burst and the deflect, and no damage, the health bar stays at 125 the whole time.</figcaption>
+        </figure>
 
-      <figure class="clip feature" id="clip-frieren" data-skills="vfx animation">
-        <div class="well" style="aspect-ratio:1234/496"><video src="assets/frieren.mp4" poster="assets/frieren-poster.jpg" controls preload="none" playsinline></video></div>
-        <figcaption>
-          <div class="cap-row"><b>Frieren cutscene, all mine</b><ul class="tags"><li>VFX</li><li>Animation</li></ul></div>
-          <p>She casts into the sky, a ring opens on the ground and flowers spread over the whole field. I did the cutscene and camera scripting, the VFX, the character animation, the map and the lighting.</p>
-        </figcaption>
-      </figure>
+        <figure class="tile" id="clip-ultimate" data-skills="vfx animation" data-title="Ultimate ability, scripting and VFX all mine" data-tags="VFX · Animation">
+          <button class="tile-hit" type="button" aria-label="Watch the ultimate ability">
+            <img src="assets/ultimate-poster.jpg" alt="" loading="lazy"><video data-src="assets/ultimate.mp4" muted loop playsinline preload="none"></video>
+            <span class="dur">0:14</span>
+            <span class="tile-meta"><b>Ultimate ability</b></span>
+          </button>
+          <figcaption hidden>The camera work, the cutscene bars, the orbit and the pull back on the cast, and the ability toggle that drives the sequence and hands off to each stage of the effect. The VFX is built as a real instance tree.</figcaption>
+        </figure>
 
-      <details class="more" id="more-clips">
-        <summary><span>More clips<span class="n" data-more-count>5</span></span><span class="ic" aria-hidden="true">+</span></summary>
-        <div class="more-list">
-          <figure class="clip" id="clip-ultimate" data-skills="vfx animation">
-            <div class="well"><video src="assets/ultimate.mp4" poster="assets/ultimate-poster.jpg" controls preload="none" playsinline></video></div>
-            <figcaption>
-              <div class="cap-row"><b>Ultimate ability, scripting and VFX all mine</b><ul class="tags"><li>VFX</li><li>Animation</li></ul></div>
-              <p>The camera work, the cutscene bars, the orbit and the pull back on the cast, and the ability toggle that drives the sequence and hands off to each stage of the effect. The VFX is built as a real instance tree.</p>
-            </figcaption>
-          </figure>
+        <figure class="tile big" id="clip-frieren" data-skills="vfx animation" data-title="Frieren cutscene, all mine" data-tags="VFX · Animation">
+          <button class="tile-hit" type="button" aria-label="Watch the Frieren cutscene">
+            <img src="assets/frieren-poster.jpg" alt="" loading="lazy"><video data-src="assets/frieren.mp4" muted loop playsinline preload="none"></video>
+            <span class="dur">0:14</span>
+            <span class="tile-meta"><b>Frieren cutscene</b><span class="tile-tags"><span>VFX</span><span>Animation</span></span></span>
+          </button>
+          <figcaption hidden>She casts into the sky, a ring opens on the ground and flowers spread over the whole field. I did the cutscene and camera scripting, the VFX, the character animation, the map and the lighting.</figcaption>
+        </figure>
 
-          <figure class="clip" id="clip-wirebox" data-skills="scripting">
-            <div class="well"><video src="assets/wirebox.mp4" poster="assets/wirebox-poster.jpg" controls preload="none" playsinline></video></div>
-            <figcaption>
-              <div class="cap-row"><b>Wire box objective</b><ul class="tags"><li>Scripting</li></ul></div>
-              <p>The prompt checks the objective's own state first, then opens a splice minigame where you reroute wires between terminals. Finishing it gets logged on the server and counts toward the round's win condition.</p>
-            </figcaption>
-          </figure>
+        <figure class="tile" id="clip-wirebox" data-skills="scripting" data-title="Wire box objective" data-tags="Scripting">
+          <button class="tile-hit" type="button" aria-label="Watch the wire box objective">
+            <img src="assets/wirebox-poster.jpg" alt="" loading="lazy"><video data-src="assets/wirebox.mp4" muted loop playsinline preload="none"></video>
+            <span class="dur">0:10</span>
+            <span class="tile-meta"><b>Wire box objective</b></span>
+          </button>
+          <figcaption hidden>The prompt checks the objective's own state first, then opens a splice minigame where you reroute wires between terminals. Finishing it gets logged on the server and counts toward the round's win condition.</figcaption>
+        </figure>
 
-          <figure class="clip" id="clip-generator" data-skills="scripting">
-            <div class="well"><video src="assets/generator.mp4" poster="assets/generator-poster.jpg" controls preload="none" playsinline></video></div>
-            <figcaption>
-              <div class="cap-row"><b>Generator objective</b><ul class="tags"><li>Scripting</li></ul></div>
-              <p>A hold interaction with a timing ring and a four stage progress bar. Each stage saves on its own, so a survivor who gets interrupted mid repair keeps what they already did.</p>
-            </figcaption>
-          </figure>
+        <figure class="tile" id="clip-generator" data-skills="scripting" data-title="Generator objective" data-tags="Scripting">
+          <button class="tile-hit" type="button" aria-label="Watch the generator objective">
+            <img src="assets/generator-poster.jpg" alt="" loading="lazy"><video data-src="assets/generator.mp4" muted loop playsinline preload="none"></video>
+            <span class="dur">0:11</span>
+            <span class="tile-meta"><b>Generator objective</b></span>
+          </button>
+          <figcaption hidden>A hold interaction with a timing ring and a four stage progress bar. Each stage saves on its own, so a survivor who gets interrupted mid repair keeps what they already did.</figcaption>
+        </figure>
 
-          <figure class="clip" id="clip-terminal" data-skills="scripting">
-            <div class="well"><video src="assets/terminal.mp4" poster="assets/terminal-poster.jpg" controls preload="none" playsinline></video></div>
-            <figcaption>
-              <div class="cap-row"><b>Server terminal objective</b><ul class="tags"><li>Scripting</li></ul></div>
-              <p>Pick up data chips around the map and hold them over the console's scanner. Each symbol decrypts into a number and the panel tracks the system status until the terminal is back up. The pickups, the hold and the decryption all run on the server.</p>
-            </figcaption>
-          </figure>
+        <figure class="tile wide" id="clip-terminal" data-skills="scripting" data-title="Server terminal objective" data-tags="Scripting">
+          <button class="tile-hit" type="button" aria-label="Watch the server terminal objective">
+            <img src="assets/terminal-poster.jpg" alt="" loading="lazy"><video data-src="assets/terminal.mp4" muted loop playsinline preload="none"></video>
+            <span class="dur">0:12</span>
+            <span class="tile-meta"><b>Server terminal objective</b></span>
+          </button>
+          <figcaption hidden>Pick up data chips around the map and hold them over the console's scanner. Each symbol decrypts into a number and the panel tracks the system status until the terminal is back up. The pickups, the hold and the decryption all run on the server.</figcaption>
+        </figure>
 
-          <figure class="clip" id="clip-chase" data-skills="scripting">
-            <div class="well"><video src="assets/chase.mp4" poster="assets/chase-poster.jpg" controls preload="none" playsinline></video></div>
-            <figcaption>
-              <div class="cap-row"><b>Movement and camera in the real map</b><ul class="tags"><li>Scripting</li></ul></div>
-              <p>The custom controller and the soft shift lock camera in the actual built map, not a test room. The health and stamina HUD drains as you sprint.</p>
-            </figcaption>
-          </figure>
-        </div>
-      </details>
+        <figure class="tile wide" id="clip-chase" data-skills="scripting" data-title="Movement and camera in the real map" data-tags="Scripting">
+          <button class="tile-hit" type="button" aria-label="Watch movement and camera in the real map">
+            <img src="assets/chase-poster.jpg" alt="" loading="lazy"><video data-src="assets/chase.mp4" muted loop playsinline preload="none"></video>
+            <span class="dur">0:13</span>
+            <span class="tile-meta"><b>Movement and camera in the real map</b></span>
+          </button>
+          <figcaption hidden>The custom controller and the soft shift lock camera in the actual built map, not a test room. The health and stamina HUD drains as you sprint.</figcaption>
+        </figure>
+      </div>
+      <p class="fine">Hover a clip to preview it. Click to watch with sound and read what I built.</p>
     </div>
   </section>
 
@@ -452,10 +535,10 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
           <p class="lead">You buy a product for another player and it lands in their inbox, even if they're in another server or offline. If they don't claim it before it expires, it goes back to the sender.</p>
         </div>
         <ul class="files">
-            <li><a href="https://github.com/Streetdude123/sample-code/blob/main/ReceiptLedger.luau" target="_blank" rel="noopener"><b>ReceiptLedger.luau<span class="ic">&#8599;</span></b><span class="d">Roblox keeps retrying ProcessReceipt until it hears back, so every PurchaseId gets recorded and a purchase can never grant twice.</span></a></li>
-            <li><a href="https://github.com/Streetdude123/sample-code/blob/main/InboxStore.luau" target="_blank" rel="noopener"><b>InboxStore.luau<span class="ic">&#8599;</span></b><span class="d">Every write is an UpdateAsync, so two servers touching the same inbox can't duplicate or lose a gift, and a double click can't claim it twice.</span></a></li>
-            <li><a href="https://github.com/Streetdude123/sample-code/blob/main/Gift.luau" target="_blank" rel="noopener"><b>Gift.luau<span class="ic">&#8599;</span></b><span class="d">The gift data and the payload the client gets, with the ids it has no business seeing stripped out. Returned gifts never expire again, so they can't bounce back and forth forever.</span></a></li>
-            <li><a href="https://github.com/Streetdude123/sample-code/blob/main/Store.luau" target="_blank" rel="noopener"><b>Store.luau<span class="ic">&#8599;</span></b><span class="d">The DataStore wrapper every write goes through, with retries and backoff.</span></a></li>
+          <li><a href="https://github.com/Streetdude123/sample-code/blob/main/ReceiptLedger.luau" target="_blank" rel="noopener"><b>ReceiptLedger.luau<span class="ic">&#8599;</span></b><span class="d">Roblox keeps retrying ProcessReceipt until it hears back, so every PurchaseId gets recorded and a purchase can never grant twice.</span></a></li>
+          <li><a href="https://github.com/Streetdude123/sample-code/blob/main/InboxStore.luau" target="_blank" rel="noopener"><b>InboxStore.luau<span class="ic">&#8599;</span></b><span class="d">Every write is an UpdateAsync, so two servers touching the same inbox can't duplicate or lose a gift, and a double click can't claim it twice.</span></a></li>
+          <li><a href="https://github.com/Streetdude123/sample-code/blob/main/Gift.luau" target="_blank" rel="noopener"><b>Gift.luau<span class="ic">&#8599;</span></b><span class="d">The gift data and the payload the client gets, with the ids it has no business seeing stripped out. Returned gifts never expire again, so they can't bounce back and forth forever.</span></a></li>
+          <li><a href="https://github.com/Streetdude123/sample-code/blob/main/Store.luau" target="_blank" rel="noopener"><b>Store.luau<span class="ic">&#8599;</span></b><span class="d">The DataStore wrapper every write goes through, with retries and backoff.</span></a></li>
         </ul>
         <figure class="code">
           <figcaption class="code-top"><span>ReceiptLedger.luau</span><span>lines 31-52</span></figcaption>
@@ -607,7 +690,20 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24p
 
 <footer><div class="in"><span>Ben · Buzziut · buzziut.xyz</span><span>Updated Oct 2026</span></div></footer>
 
+<dialog class="lb" id="lb" aria-label="Clip player">
+  <div class="lb-in">
+    <div class="lb-top"><b class="lb-title"></b><span class="lb-tags"></span><button class="btn sm lb-x" type="button">Close</button></div>
+    <video controls playsinline></video>
+    <p class="lb-cap"></p>
+    <div class="lb-nav"><button class="btn sm" type="button" data-step="-1">&#8592; Previous</button><span class="lb-count"></span><button class="btn sm" type="button" data-step="1">Next &#8594;</button></div>
+  </div>
+</dialog>
+
 <script>
+const wide = window.matchMedia("(min-width: 860px)");
+const still = window.matchMedia("(prefers-reduced-motion: reduce)");
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+
 document.querySelectorAll(".shot img").forEach(img => {
   if (img.complete) return;
   img.classList.add("is-pending");
@@ -655,16 +751,106 @@ const navSeen = new IntersectionObserver(entries => {
 }, { rootMargin: "-35% 0px -60% 0px" });
 navLinks.forEach(a => navSeen.observe(document.querySelector(a.getAttribute("href"))));
 
-const clipBox = document.getElementById("clips");
-const clips = [...clipBox.querySelectorAll(".clip")];
-const chips = [...clipBox.querySelectorAll(".chips button")];
-const more = document.getElementById("more-clips");
-const moreCount = more.querySelector("[data-more-count]");
+const reel = document.querySelector(".reel-v");
+const reelLabel = document.querySelector("[data-reel-label]");
+const ticks = [...document.querySelectorAll(".ticks i")];
+const cuts = [0, 2.7, 5.4, 8.2, 10.9];
+const parts = [["Frieren cutscene", "#clip-frieren"], ["Chisa ultimate", "#clip-chisa"], ["Mana Zone", "#clip-manazone"], ["Allergy Season", "#allergy-season"], ["Tower defense boss wave", "#clip-td-boss"]];
+let part = 0;
+reel.addEventListener("timeupdate", () => {
+  let i = cuts.length - 1;
+  while (i > 0 && reel.currentTime < cuts[i]) i--;
+  if (i === part) return;
+  part = i;
+  reelLabel.textContent = parts[i][0];
+  reelLabel.href = parts[i][1];
+  ticks.forEach((t, n) => t.classList.toggle("on", n === i));
+});
+if (!still.matches) {
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) reel.play().catch(() => {});
+    else reel.pause();
+  }, { threshold: 0.4 }).observe(reel);
+}
+
+const spotVideo = document.querySelector(".spot video");
+if (wide.matches && !still.matches) {
+  const spot = spotVideo.closest(".clip");
+  spotVideo.muted = true; spotVideo.loop = true;
+  spotVideo.removeAttribute("controls");
+  spotVideo.style.cursor = "pointer";
+  spot.dataset.sound = "off";
+  spotVideo.addEventListener("click", () => {
+    spot.dataset.sound = "on";
+    spotVideo.controls = true;
+    spotVideo.muted = false;
+  });
+  new IntersectionObserver(([entry]) => {
+    if (entry.intersectionRatio >= 0.5) spotVideo.play().catch(() => {});
+    else spotVideo.pause();
+  }, { threshold: [0, 0.5] }).observe(spotVideo);
+}
+
+const bento = document.getElementById("bento");
+const tiles = [...bento.querySelectorAll(".tile")];
+const chips = [...document.querySelectorAll("#clips .chips button")];
+const lb = document.getElementById("lb");
+const lbVideo = lb.querySelector("video");
+let current = null;
+
+function openClip(tile){
+  current = tile;
+  lb.querySelector(".lb-title").textContent = tile.dataset.title;
+  lb.querySelector(".lb-tags").textContent = tile.dataset.tags;
+  lb.querySelector(".lb-cap").textContent = tile.querySelector("figcaption").textContent.trim();
+  const shown = tiles.filter(t => !t.hidden);
+  lb.querySelector(".lb-count").textContent = (shown.indexOf(tile) + 1) + " / " + shown.length;
+  lbVideo.poster = tile.querySelector("img").src;
+  lbVideo.src = tile.querySelector("video").dataset.src;
+  if (!lb.open) lb.showModal();
+  lbVideo.play().catch(() => {});
+}
+
+function step(dir){
+  const shown = tiles.filter(t => !t.hidden);
+  openClip(shown[(shown.indexOf(current) + dir + shown.length) % shown.length]);
+}
+
+tiles.forEach(tile => {
+  const hit = tile.querySelector(".tile-hit");
+  const preview = tile.querySelector("video");
+  hit.addEventListener("mouseenter", () => {
+    if (!finePointer.matches || still.matches) return;
+    if (!preview.src) preview.src = preview.dataset.src;
+    preview.play().then(() => tile.classList.add("is-live")).catch(() => {});
+  });
+  hit.addEventListener("mouseleave", () => {
+    preview.pause();
+    tile.classList.remove("is-live");
+  });
+  hit.addEventListener("click", () => {
+    preview.pause();
+    tile.classList.remove("is-live");
+    openClip(tile);
+  });
+});
+
+lb.querySelectorAll("[data-step]").forEach(b => b.addEventListener("click", () => step(Number(b.dataset.step))));
+lb.querySelector(".lb-x").addEventListener("click", () => lb.close());
+lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+lb.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") step(1);
+  if (e.key === "ArrowLeft") step(-1);
+});
+lb.addEventListener("close", () => {
+  lbVideo.pause();
+  lbVideo.removeAttribute("src");
+  lbVideo.load();
+});
 
 function pick(skill){
-  clips.forEach(fig => { fig.hidden = !!skill && !fig.dataset.skills.split(" ").includes(skill); });
-  moreCount.textContent = more.querySelectorAll(".clip:not([hidden])").length;
-  if (skill) more.open = true;
+  tiles.forEach(t => { t.hidden = !!skill && !t.dataset.skills.split(" ").includes(skill); });
+  bento.classList.toggle("is-filtered", !!skill);
   chips.forEach(b => b.setAttribute("aria-pressed", b.dataset.skill === skill));
   const url = new URL(location.href);
   if (skill) url.searchParams.set("skill", skill);
@@ -675,52 +861,6 @@ function pick(skill){
 chips.forEach(b => b.addEventListener("click", () => pick(b.dataset.skill)));
 const startSkill = new URLSearchParams(location.search).get("skill");
 if (startSkill) pick(startSkill);
-
-const wide = window.matchMedia("(min-width: 860px)");
-const still = window.matchMedia("(prefers-reduced-motion: reduce)");
-const videos = [...document.querySelectorAll(".clip video")];
-
-function autoplayClips(){
-  if (!wide.matches || still.matches) return;
-
-  videos.forEach(v => {
-    const fig = v.closest(".clip");
-    v.muted = true; v.loop = true; v.playsInline = true;
-    v.removeAttribute("controls");
-    v.style.cursor = "pointer";
-    fig.dataset.sound = "off";
-    v.addEventListener("click", () => {
-      fig.dataset.sound = "on";
-      v.controls = true;
-      v.muted = false;
-    });
-    v.addEventListener("play", () => {
-      videos.forEach(o => { if (o !== v && !o.paused) o.pause(); });
-    });
-  });
-
-  const seen = new Map();
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      seen.set(entry.target, entry.intersectionRatio);
-      if (entry.isIntersecting) entry.target.preload = "auto";
-    });
-    let best = null, most = 0.35;
-    seen.forEach((ratio, v) => { if (ratio >= most) { best = v; most = ratio; } });
-    videos.forEach(v => { if (v !== best && !v.paused) v.pause(); });
-    if (best && best.paused) {
-      best.play().catch(err => {
-        if (err.name === "NotAllowedError"){
-          best.controls = true;
-          best.closest(".clip").dataset.sound = "on";
-        }
-      });
-    }
-  }, { threshold: [0, 0.35, 0.6, 0.85, 1] });
-
-  videos.forEach(v => io.observe(v));
-}
-autoplayClips();
 </script>
 </body>
 </html>
