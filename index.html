@@ -90,6 +90,7 @@ h1{font:400 34px/1.1 var(--sans);letter-spacing:-.025em;text-wrap:balance}
 .proof dd{text-align:right;color:var(--dim)}
 .proof dd a{border-bottom:1px solid var(--rule);transition:border-color .2s ease,color .15s ease}
 .proof .w dt{color:var(--win)}
+.proof .r dt{color:var(--accent)}
 .side-cta{display:flex;flex-direction:column;gap:8px}
 .side-cta .btn{justify-content:space-between}
 .side-nav{display:flex;flex-direction:column;margin-top:auto;padding-top:6px;font-size:14px}
@@ -237,6 +238,19 @@ section{padding-top:112px}
 .files b .ic{font-family:var(--sans);color:var(--dim2);transition:color .15s ease}
 .files .d{display:block;margin-top:4px;color:var(--dim);font-size:14.5px;line-height:1.55}
 
+.rates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.rate{padding:24px;border:1px solid var(--accent);border-radius:4px;background:linear-gradient(180deg,var(--accent-ring),transparent 38%),var(--raise)}
+.rate-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 14px;margin:0 0 10px}
+.rate-top h3{font:400 26px/1.2 var(--sans);letter-spacing:-.02em}
+.rate-top span{color:var(--dim);font-size:14px}
+.rate-top span b{color:var(--accent);font-weight:500}
+.tiers{margin:0}
+.tiers > div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-top:1px solid var(--rule)}
+.tiers dt{font-size:16px;line-height:1.4}
+.tiers dt small{display:block;margin-top:2px;color:var(--dim);font-size:13.5px;line-height:1.45}
+.tiers dd{flex:none;color:var(--fg-hi);font:500 24px/1.2 var(--sans);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.rates + .fine{margin-top:14px}
+
 .intro{margin-bottom:60px}
 .project + .project{margin-top:104px}
 .proj-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin:0 0 14px}
@@ -323,10 +337,10 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
   .content{padding:72px max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px))}
 }
 @media (max-width:900px){
-  .award-foot,.about{grid-template-columns:1fr}
+  .award-foot,.about,.rates{grid-template-columns:1fr}
   .facts{padding:16px 0 0;border-left:0;border-top:1px solid var(--rule)}
 }
-@media (max-width:760px){
+@media (max-width:880px){
   .bar .nav{display:none}
   .bar .btn{margin-left:auto}
 }
@@ -340,6 +354,8 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
   .hd .chips{flex-basis:100%}
   .hd.sub{margin-top:72px}
   .award{margin-inline:-6px;padding:16px}
+  .rate{padding:18px}
+  .tiers dd{font-size:21px}
   .proof-row{grid-template-columns:1fr}
   .award-top .out{margin-left:0}
   .side-cta .btn{flex:1 1 auto}
@@ -364,6 +380,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
     <nav class="nav" aria-label="Sections">
       <a href="#showreel">Showreel</a>
       <a href="#games">Released</a>
+      <a href="#rates">Rates</a>
       <a href="#clips">Clips</a>
       <a href="#code">Code</a>
       <a href="#work">Own games</a>
@@ -382,6 +399,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       <h1>Roblox Luau scripter for combat, abilities and game systems.</h1>
       <dl class="proof">
         <div class="w"><dt>1st place</dt><dd><a href="#allergy-season">HiddenDevs Design a Disaster</a></dd></div>
+        <div class="r"><dt>Rates</dt><dd><a href="#rates">VFX from $28 · scripting from $15</a></dd></div>
         <div><dt>Released games</dt><dd><a href="#games">4 on Roblox</a></dd></div>
         <div><dt>Code</dt><dd><a href="#code">gifting system on GitHub</a></dd></div>
       </dl>
@@ -392,6 +410,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       <nav class="side-nav" aria-label="Sections">
         <a href="#showreel">Showreel</a>
         <a href="#games">Released games</a>
+        <a href="#rates">Rates</a>
         <a href="#clips">Clips</a>
         <a href="#code">Code</a>
         <a href="#work">Own games</a>
@@ -464,6 +483,31 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
         <p class="lead">I write it all myself instead of grabbing something off the toolbox, I keep the important checks on the server, and I make sure it still runs fine on a cheap phone. VFX and animation are my second skill, so an ability goes from the toggle to the finished effect without a handoff.</p>
         <p class="fine">One system, one feature, an optimization pass, or a bug you're just done dealing with.</p>
       </div>
+    </section>
+
+    <section id="rates">
+      <div class="hd"><h2>rates</h2><span class="aside">USD</span></div>
+      <div class="rates">
+        <article class="rate">
+          <div class="rate-top"><h3>VFX</h3><span>per effect · from <b>$28</b></span></div>
+          <dl class="tiers">
+            <div><dt>Basic<small>One emitter group, like an aura or a small hit spark</small></dt><dd>$28-35</dd></div>
+            <div><dt>Standard<small>Multi part impact, trail and burst, simple beam</small></dt><dd>$36-45</dd></div>
+            <div><dt>Advanced<small>Full ability effect, charge, release and impact, custom textures</small></dt><dd>$46-58</dd></div>
+            <div><dt>Bigger than that<small>Ultimates, cinematic effects, scripted timing</small></dt><dd>Quote</dd></div>
+          </dl>
+        </article>
+        <article class="rate">
+          <div class="rate-top"><h3>Scripting</h3><span>per task · from <b>$15</b></span></div>
+          <dl class="tiers">
+            <div><dt>Small<small>One mechanic, like a hitbox, a door or wiring up UI buttons</small></dt><dd>$15-30</dd></div>
+            <div><dt>Medium<small>One ability with the VFX hooked up, a shop, DataStore saving</small></dt><dd>$40-90</dd></div>
+            <div><dt>Large<small>Combat framework, round system, inventory</small></dt><dd>$100-250+</dd></div>
+            <div><dt>Hourly<small>Unclear scope, bug fixing, edits to someone else's code</small></dt><dd>$12-18/hr</dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="fine">VFX and scripting for the same ability is the VFX tier plus the scripting tier.</p>
     </section>
 
     <section id="clips">
@@ -708,7 +752,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       <dl class="rows">
         <div><dt>Availability (Eastern)<span class="now" data-now></span></dt><dd>Every day except Thursday and Friday. That's around 25 hours a week.</dd></div>
         <div><dt>Best fit</dt><dd>One system, a feature, an optimization pass, closing exploit holes, or hunting down a bug. Usually a few days to a few weeks of work.</dd></div>
-        <div><dt>Rates</dt><dd>I quote per project once we've agreed on the scope. Tell me what you need and I'll come back to you with a number and a date.</dd></div>
+        <div><dt>Rates</dt><dd class="inline">The prices are up in the <a href="#rates">rates</a> section. The final number gets set once we agree on the scope, and you get a date with it.</dd></div>
         <div><dt>References</dt><dd>Crit (critical_dummy) and Pearl (pearlsnivy1) are happy to vouch for me. I can give you more if you want.</dd></div>
       </dl>
     </section>
