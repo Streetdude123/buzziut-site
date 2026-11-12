@@ -167,7 +167,7 @@ section{padding-top:112px}
 
 .about{display:grid;grid-template-columns:minmax(0,var(--text)) minmax(0,1fr);align-items:end;gap:20px 56px;margin-top:64px;padding-top:28px;border-top:1px solid var(--rule)}
 
-#games{padding-top:44px}
+#best{padding-top:44px}
 .reel{position:relative;aspect-ratio:21/9;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--fill)}
 .reel-v{width:100%;height:100%;object-fit:cover}
 .reel::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,var(--scrim-low) 0%,transparent 28%)}
@@ -336,6 +336,9 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
   .side-cta .btn{justify-content:center;gap:12px}
   .content{padding:72px max(24px,env(safe-area-inset-right,0px)) 0 max(24px,env(safe-area-inset-left,0px))}
 }
+@media (max-width:1040px){
+  .bar .nav .opt{display:none}
+}
 @media (max-width:900px){
   .award-foot,.about,.rates{grid-template-columns:1fr}
   .facts{padding:16px 0 0;border-left:0;border-top:1px solid var(--rule)}
@@ -362,7 +365,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
   .reel{aspect-ratio:16/10}
   .stamp{top:10px;right:10px;gap:10px;padding:6px 10px 6px 6px;font-size:12.5px}
   .stamp .badge{padding:5px 7px 4px;font-size:11px}
-  #games{padding-top:36px}
+  #best{padding-top:36px}
   .bento,.bento.is-filtered{grid-template-columns:1fr;grid-auto-rows:auto}
   .tile,.tile.big,.tile.wide{grid-column:auto;grid-row:auto;aspect-ratio:16/9}
   .tile.big .tile-meta b{font-size:17px}
@@ -379,6 +382,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
     <a class="me" href="#top"><img src="assets/avatar.jpg" alt="" width="30" height="30"><span>Ben · Buzziut</span></a>
     <nav class="nav" aria-label="Sections">
       <a href="#showreel">Showreel</a>
+      <a class="opt" href="#best">Best work</a>
       <a href="#games">Released</a>
       <a href="#rates">Rates</a>
       <a href="#clips">Clips</a>
@@ -398,6 +402,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       <p class="status"><span class="dot"></span>Open for short commissions<span aria-hidden="true">·</span><span class="now" data-now></span></p>
       <h1>Roblox Luau scripter for combat, abilities and game systems.</h1>
       <dl class="proof">
+        <div class="w"><dt>Best work</dt><dd><a href="#best">Shisenkyo, made solo</a></dd></div>
         <div class="w"><dt>1st place</dt><dd><a href="#allergy-season">HiddenDevs Design a Disaster</a></dd></div>
         <div class="r"><dt>Rates</dt><dd><a href="#rates">VFX from $28 · scripting from $15</a></dd></div>
         <div><dt>Released games</dt><dd><a href="#games">4 on Roblox</a></dd></div>
@@ -409,6 +414,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       </div>
       <nav class="side-nav" aria-label="Sections">
         <a href="#showreel">Showreel</a>
+        <a href="#best">Best work</a>
         <a href="#games">Released games</a>
         <a href="#rates">Rates</a>
         <a href="#clips">Clips</a>
@@ -428,6 +434,28 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
         <a class="stamp" href="#allergy-season"><span class="badge">1st place</span>HiddenDevs Design a Disaster</a>
         <p class="reel-now"><span>Showreel · <a href="#clip-frieren" data-reel-label>Frieren cutscene</a></span><span class="ticks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span></p>
       </div>
+    </section>
+
+    <section id="best">
+      <div class="hd"><h2>best work</h2><span class="aside">solo · in development</span></div>
+
+      <article class="clip award" id="shisenkyo-clip">
+        <div class="award-top">
+          <span class="badge">Best work</span>
+          <span class="event">Shisenkyo · a Hell's Paradise game</span>
+          <a class="out" href="#shisenkyo">More on Shisenkyo&nbsp;&#8595;</a>
+        </div>
+        <h3>Shisenkyo</h3>
+        <div class="well" style="aspect-ratio:1280/592"><video src="assets/shisenkyo.mp4" poster="assets/shisenkyo-poster.jpg" controls preload="metadata" playsinline></video></div>
+        <div class="award-foot">
+          <p><b>My best work, and I made all of it by myself.</b> Shisenkyo is my own Hell's Paradise game. In this clip you take on a huge enemy with attack, guard, dodge and lock on, with the slash and blood VFX and voice lines with subtitles. Recorded on a phone.</p>
+          <dl class="facts">
+            <dt>Status</dt><dd>In development</dd>
+            <dt>Team</dt><dd>Solo</dd>
+            <dt>My part</dt><dd>Every part of it</dd>
+          </dl>
+        </div>
+      </article>
     </section>
 
     <section id="games">
@@ -665,8 +693,17 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
     </section>
 
     <section id="work">
-      <div class="hd"><h2>my own games</h2><span class="aside">1 live · 1 in development</span></div>
-      <p class="lead intro">These two are my own projects, so whatever I write for you is the same kind of code I have to deal with myself later on.</p>
+      <div class="hd"><h2>my own games</h2><span class="aside">1 live · 2 in development</span></div>
+      <p class="lead intro">These three are my own projects, so whatever I write for you is the same kind of code I have to deal with myself later on.</p>
+
+      <article class="project" id="shisenkyo">
+        <div class="proj-head">
+          <h3>Shisenkyo</h3>
+          <span class="state dev"><span class="dot"></span>In development</span>
+          <a class="out" href="#best">Watch the clip&nbsp;&#8593;</a>
+        </div>
+        <p class="lead">My Hell's Paradise game and my best work so far. I'm the only developer on it, so every part of it is mine. It's not public yet, the clip up in best work is from the current build.</p>
+      </article>
 
       <article class="project" id="tower-defense">
         <div class="proj-head">
@@ -862,22 +899,24 @@ reel.addEventListener("timeupdate", () => {
   ticks.forEach((t, n) => t.classList.toggle("on", n === i));
 });
 
-const awardVideo = document.querySelector(".award video");
+const awardVideos = [...document.querySelectorAll(".award video")];
 if (wide.matches && !still.matches) {
-  const award = awardVideo.closest(".clip");
-  awardVideo.muted = true; awardVideo.loop = true;
-  awardVideo.removeAttribute("controls");
-  awardVideo.style.cursor = "pointer";
-  award.dataset.sound = "off";
-  awardVideo.addEventListener("click", () => {
-    award.dataset.sound = "on";
-    awardVideo.controls = true;
-    awardVideo.muted = false;
+  awardVideos.forEach(v => {
+    const award = v.closest(".clip");
+    v.muted = true; v.loop = true;
+    v.removeAttribute("controls");
+    v.style.cursor = "pointer";
+    award.dataset.sound = "off";
+    v.addEventListener("click", () => {
+      award.dataset.sound = "on";
+      v.controls = true;
+      v.muted = false;
+    });
   });
 }
 
 if (!still.matches) {
-  const autoplay = wide.matches ? [reel, awardVideo] : [reel];
+  const autoplay = wide.matches ? [reel, ...awardVideos] : [reel];
   const ratios = new Map();
   const seen = new IntersectionObserver(entries => {
     entries.forEach(entry => ratios.set(entry.target, entry.intersectionRatio));
