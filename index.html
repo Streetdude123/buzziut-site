@@ -378,72 +378,60 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
   .cta .btn{flex:1 1 auto}
 }
 </style>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&display=swap" rel="stylesheet">
+<link href="gold.css" rel="stylesheet">
+<noscript><style>[data-reveal],[data-reveal] > *,[data-enter],.hero h1{opacity:1!important;animation:none!important;clip-path:none!important}</style></noscript>
 </head>
 <body>
 
-<header class="bar">
+<header class="bar" data-enter>
   <div class="in">
-    <a class="me" href="#top"><img src="assets/avatar.jpg" alt="" width="30" height="30"><span>Ben · Buzziut</span></a>
+    <a class="me" href="#top"><img src="assets/avatar.jpg" alt="" width="34" height="34"><span><b>Ben · Buzziut</b><small class="role">Roblox full stack dev · Scripting · VFX</small></span></a>
     <nav class="nav" aria-label="Sections">
       <a href="#showreel">Showreel</a>
       <a class="opt" href="#best">Best work</a>
       <a href="#games">Released</a>
-      <a href="#rates">Rates</a>
       <a href="#clips">Clips</a>
       <a href="#code">Code</a>
       <a href="#work">Own games</a>
+      <a href="#rates">Rates</a>
+      <a class="opt" href="#how">How I work</a>
       <a href="#connect">Contact</a>
     </nav>
     <button class="btn sm" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span></button>
   </div>
 </header>
 
-<div class="page">
+<div class="page" id="top">
 
-  <aside class="side" id="top">
-    <div class="side-in">
-      <a class="who" href="#top"><img src="assets/avatar.jpg" alt="" width="56" height="56"><span><b>Ben · Buzziut</b><span class="role">Roblox full stack dev · Scripting · VFX</span></span></a>
-      <p class="status"><span class="dot"></span>Open for short commissions<span aria-hidden="true">·</span><span class="now" data-now></span></p>
-      <h1>Roblox full stack developer. Scripting and VFX first.</h1>
-      <dl class="proof">
+  <main class="content">
+
+    <section class="hero" id="showreel">
+      <video class="reel-v" src="assets/showreel.mp4" poster="assets/showreel-poster.jpg" muted loop playsinline preload="auto" aria-label="Showreel of my clips"></video>
+      <div class="hero-in">
+        <p class="status" data-enter><span class="dot"></span>Open for short commissions<span aria-hidden="true">·</span><span class="now" data-now></span></p>
+        <h1>Roblox full stack developer. Scripting and VFX first.</h1>
+        <div class="hero-cta" data-enter>
+          <button class="btn main" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span><span class="k" aria-hidden="true">copy</span></button>
+        </div>
+        <p class="reel-now" data-enter><span>Showreel · <a href="#clip-frieren" data-reel-label>Frieren cutscene</a></span><span class="ticks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span></p>
+      </div>
+    </section>
+
+    <div class="strip">
+      <dl class="proof" data-reveal="group">
         <div class="w"><dt>Best work</dt><dd><a href="#best">Shisenkyo, every part by me</a></dd></div>
         <div class="w"><dt>1st place</dt><dd><a href="#allergy-season">HiddenDevs Design a Disaster</a></dd></div>
         <div class="r"><dt>Rates</dt><dd><a href="#rates">VFX from $28 · scripting from $15</a></dd></div>
         <div><dt>Released games</dt><dd><a href="#games">4 on Roblox</a></dd></div>
         <div><dt>Code</dt><dd><a href="#code">gifting system on GitHub</a></dd></div>
       </dl>
-      <div class="side-cta">
-        <button class="btn main" type="button" data-copy=".ben284" aria-label="Copy Discord handle .ben284"><span class="swap"><span>Discord .ben284</span><span class="alt" aria-hidden="true">Copied</span></span><span class="k" aria-hidden="true">copy</span></button>
-        <a class="btn" href="mailto:buzziut.dev@gmail.com">buzziut.dev@gmail.com</a>
-      </div>
-      <nav class="side-nav" aria-label="Sections">
-        <a href="#showreel">Showreel</a>
-        <a href="#best">Best work</a>
-        <a href="#games">Released games</a>
-        <a href="#rates">Rates</a>
-        <a href="#clips">Clips</a>
-        <a href="#code">Code</a>
-        <a href="#work">Own games</a>
-        <a href="#how">How I work</a>
-        <a href="#connect">Contact</a>
-      </nav>
     </div>
-  </aside>
-
-  <main class="content">
-
-    <section id="showreel">
-      <div class="reel">
-        <video class="reel-v" src="assets/showreel.mp4" poster="assets/showreel-poster.jpg" muted loop playsinline preload="auto" aria-label="Showreel of my clips"></video>
-        <a class="stamp" href="#allergy-season"><span class="badge">1st place</span>HiddenDevs Design a Disaster</a>
-        <p class="reel-now"><span>Showreel · <a href="#clip-frieren" data-reel-label>Frieren cutscene</a></span><span class="ticks" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></span></p>
-      </div>
-    </section>
 
     <section id="best">
-      <div class="hd"><h2>best work</h2><span class="aside">made solo · in development</span></div>
+      <div class="hd big" data-reveal="words"><h2>best work</h2><span class="aside">made solo · in development</span></div>
 
-      <article class="clip award" id="shisenkyo-clip">
+      <article class="clip award" id="shisenkyo-clip" data-reveal>
         <div class="award-top">
           <span class="badge">Best work</span>
           <span class="event">Shisenkyo · a Hell's Paradise game · made 100% by me</span>
@@ -451,7 +439,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
         </div>
         <h3>Shisenkyo</h3>
         <div class="parts"><b>Every part made by me</b><ul><li>Scripting</li><li>VFX</li><li>Animation</li><li>UI</li><li>Map</li><li>3D models</li></ul></div>
-        <div class="well" style="aspect-ratio:1280/592"><video src="assets/shisenkyo.mp4" poster="assets/shisenkyo-poster.jpg" controls preload="metadata" playsinline></video></div>
+        <div class="well" style="aspect-ratio:1280/592" data-reveal="wipe"><video src="assets/shisenkyo.mp4" poster="assets/shisenkyo-poster.jpg" controls preload="metadata" playsinline></video></div>
         <div class="award-foot">
           <p><b>My best work, and I made every single part of it by myself.</b> No team, no one else's work in it. The combat scripting, the VFX, the animations, the UI, the map and the models in Shisenkyo are all mine. In this clip you take on a huge enemy with attack, guard, dodge and lock on, with slash and blood VFX and voice lines with subtitles. Recorded on a phone.</p>
           <dl class="facts">
@@ -463,17 +451,17 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       </article>
     </section>
 
-    <section id="games">
-      <div class="hd"><h2>released games</h2><span class="aside">4 live on Roblox</span></div>
+    <section class="tone" id="games">
+      <div class="hd" data-reveal="words"><h2>released games</h2><span class="aside">4 live on Roblox</span></div>
 
-      <article class="clip award" id="allergy-season">
+      <article class="clip award" id="allergy-season" data-reveal>
         <div class="award-top">
           <span class="badge">1st place</span>
           <span class="event">HiddenDevs Design a Disaster</span>
           <a class="out" href="https://www.roblox.com/games/136988453804049" target="_blank" rel="noopener">Play on Roblox&nbsp;&#8599;</a>
         </div>
         <h3>Allergy Season</h3>
-        <div class="well" style="aspect-ratio:1280/592"><video src="assets/allergy.mp4" poster="assets/allergy-poster.jpg" controls preload="metadata" playsinline></video></div>
+        <div class="well" style="aspect-ratio:1280/592" data-reveal="wipe"><video src="assets/allergy.mp4" poster="assets/allergy-poster.jpg" controls preload="metadata" playsinline></video></div>
         <div class="award-foot">
           <p><b>Sneezes set off the disasters.</b> At 100% on the sneeze meter you sneeze hard enough to start a random disaster. Here it's a tornado, with a manga impact frame on the sneeze and you getting flung. The HUD is a local news weather report telling you to run for your life. Recorded on a phone.</p>
           <dl class="facts">
@@ -483,7 +471,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
             <dt>My part</dt><dd>Scripting, VFX, animation and UI</dd>
           </dl>
         </div>
-        <div class="proof-row">
+        <div class="proof-row" data-reveal>
           <button class="proof-thumb" type="button" data-proof aria-label="View the winners announcement screenshot"><img src="assets/proof-winners-thumb.jpg" alt="HiddenDevs winners post listing @.ben284 and @lzomo v2 in 1st place" width="828" height="288" loading="lazy"></button>
           <div class="proof-txt">
             <b>Winners announcement, HiddenDevs Discord</b>
@@ -493,15 +481,15 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
         </div>
       </article>
 
-      <ul class="games">
+      <ul class="games" data-reveal="group">
         <li><a href="https://www.roblox.com/games/138731624649567" target="_blank" rel="noopener">
           <img src="assets/icon-targaot.jpg" alt="" width="52" height="52" loading="lazy">
-          <span class="txt"><b>Targaot</b><span class="meta">Targaot Co.</span><span class="meta">Scripter · 16.5k visits</span></span>
+          <span class="txt"><b>Targaot</b><span class="meta">Targaot Co.</span><span class="meta">Scripter · <span data-count="16.5">16.5</span>k visits</span></span>
           <span class="go" aria-hidden="true">&#8599;</span>
         </a></li>
         <li><a href="https://www.roblox.com/games/124902110402950" target="_blank" rel="noopener">
           <img src="assets/icon-wackypets.jpg" alt="" width="52" height="52" loading="lazy">
-          <span class="txt"><b>Wacky Pets</b><span class="meta">Bitshifter Productions</span><span class="meta">Scripter · 3.9k visits</span></span>
+          <span class="txt"><b>Wacky Pets</b><span class="meta">Bitshifter Productions</span><span class="meta">Scripter · <span data-count="3.9">3.9</span>k visits</span></span>
           <span class="go" aria-hidden="true">&#8599;</span>
         </a></li>
         <li><a href="https://www.roblox.com/games/84207978327733" target="_blank" rel="noopener">
@@ -510,41 +498,23 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
           <span class="go" aria-hidden="true">&#8599;</span>
         </a></li>
       </ul>
-      <p class="fine">Visits as of Oct 2026.</p>
+      <p class="fine" data-reveal>Visits as of Oct 2026.</p>
 
-      <div class="about">
+      <div class="about" data-reveal>
         <p class="lead">I write it all myself instead of grabbing something off the toolbox, I keep the important checks on the server, and I make sure it still runs fine on a cheap phone. Scripting and VFX are my two main skills, so an ability goes from the toggle to the finished effect without a handoff. I also build maps, model, make UI and animate, so I can take a game from an empty place to something you can play.</p>
         <p class="fine">One system, one feature, an optimization pass, or a bug you're just done dealing with.</p>
       </div>
     </section>
 
-    <section id="rates">
-      <div class="hd"><h2>rates</h2><span class="aside">USD</span></div>
-      <div class="rates">
-        <article class="rate">
-          <div class="rate-top"><h3>VFX</h3><span>per effect · from <b>$28</b></span></div>
-          <dl class="tiers">
-            <div><dt>Basic<small>One emitter group, like an aura or a small hit spark</small></dt><dd>$28-35</dd></div>
-            <div><dt>Standard<small>Multi part impact, trail and burst, simple beam</small></dt><dd>$36-45</dd></div>
-            <div><dt>Advanced<small>Full ability effect, charge, release and impact, custom textures</small></dt><dd>$46-58</dd></div>
-            <div><dt>Bigger than that<small>Ultimates, cinematic effects, scripted timing</small></dt><dd>Quote</dd></div>
-          </dl>
-        </article>
-        <article class="rate">
-          <div class="rate-top"><h3>Scripting</h3><span>per task · from <b>$15</b></span></div>
-          <dl class="tiers">
-            <div><dt>Small<small>One mechanic, like a hitbox, a door or wiring up UI buttons</small></dt><dd>$15-30</dd></div>
-            <div><dt>Medium<small>One ability with the VFX hooked up, a shop, DataStore saving</small></dt><dd>$40-90</dd></div>
-            <div><dt>Large<small>Combat framework, round system, inventory</small></dt><dd>$100-250+</dd></div>
-            <div><dt>Hourly<small>Unclear scope, bug fixing, edits to someone else's code</small></dt><dd>$12-18/hr</dd></div>
-          </dl>
-        </article>
+    <div class="break" data-reveal aria-hidden="true">
+      <div class="track">
+        <div><span>Scripting</span><span>VFX</span><span>Animation</span><span>UI</span><span>Map</span><span>3D models</span></div>
+        <div><span>Scripting</span><span>VFX</span><span>Animation</span><span>UI</span><span>Map</span><span>3D models</span></div>
       </div>
-      <p class="fine">VFX and scripting for the same ability is the VFX tier plus the scripting tier.</p>
-    </section>
+    </div>
 
-    <section id="clips">
-      <div class="hd"><h2>clips</h2>
+    <section class="tone" id="clips">
+      <div class="hd big" data-reveal="words"><h2>clips</h2>
         <div class="aside chips" role="group" aria-label="Filter clips by skill">
           <button type="button" data-skill="" aria-pressed="true">All</button>
           <button type="button" data-skill="scripting" aria-pressed="false">Scripting</button>
@@ -553,7 +523,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
         </div>
       </div>
 
-      <div class="bento" id="bento">
+      <div class="bento" id="bento" data-reveal="group">
         <figure class="tile big" id="clip-chisa" data-skills="vfx animation" data-title="Chisa ultimate" data-tags="VFX · Animation">
           <button class="tile-hit" type="button" aria-label="Watch Chisa ultimate">
             <img src="assets/chisa-poster.jpg" alt="" loading="lazy"><video data-src="assets/chisa.mp4" muted loop playsinline preload="none"></video>
@@ -653,23 +623,23 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
           <figcaption hidden>The custom controller and the soft shift lock camera in the actual built map, not a test room. The health and stamina HUD drains as you sprint.</figcaption>
         </figure>
       </div>
-      <p class="fine">Hover a clip to preview it. Click to watch with sound and read what I built.</p>
+      <p class="fine" data-reveal>Hover a clip to preview it. Click to watch with sound and read what I built.</p>
     </section>
 
     <section id="code">
-      <div class="hd"><h2>code</h2><span class="aside">4 files on GitHub</span></div>
+      <div class="hd" data-reveal="words"><h2>code</h2><span class="aside">4 files on GitHub</span></div>
       <div class="code-grid">
-        <div class="code-side">
+        <div class="code-side" data-reveal>
           <h3>Gifting system, server side</h3>
           <p class="lead">You buy a product for another player and it lands in their inbox, even if they're in another server or offline. If they don't claim it before it expires, it goes back to the sender.</p>
         </div>
-        <ul class="files">
+        <ul class="files" data-reveal="group">
           <li><a href="https://github.com/Streetdude123/sample-code/blob/main/ReceiptLedger.luau" target="_blank" rel="noopener"><b>ReceiptLedger.luau<span class="ic">&#8599;</span></b><span class="d">Roblox keeps retrying ProcessReceipt until it hears back, so every PurchaseId gets recorded and a purchase can never grant twice.</span></a></li>
           <li><a href="https://github.com/Streetdude123/sample-code/blob/main/InboxStore.luau" target="_blank" rel="noopener"><b>InboxStore.luau<span class="ic">&#8599;</span></b><span class="d">Every write is an UpdateAsync, so two servers touching the same inbox can't duplicate or lose a gift, and a double click can't claim it twice.</span></a></li>
           <li><a href="https://github.com/Streetdude123/sample-code/blob/main/Gift.luau" target="_blank" rel="noopener"><b>Gift.luau<span class="ic">&#8599;</span></b><span class="d">The gift data and the payload the client gets, with the ids it has no business seeing stripped out. Returned gifts never expire again, so they can't bounce back and forth forever.</span></a></li>
           <li><a href="https://github.com/Streetdude123/sample-code/blob/main/Store.luau" target="_blank" rel="noopener"><b>Store.luau<span class="ic">&#8599;</span></b><span class="d">The DataStore wrapper every write goes through, with retries and backoff.</span></a></li>
         </ul>
-        <figure class="code">
+        <figure class="code" data-reveal="wipe">
           <figcaption class="code-top"><span>ReceiptLedger.luau</span><span>lines 31-52</span></figcaption>
 <pre><code><span class="l"><span class="c">-- New means this server owns the delivery, Error means Roblox should retry later</span></span>
 <span class="l">ReceiptLedger.Claim = <span class="k">function</span>(purchase_id: <span class="t">string</span>): <span class="t">ClaimResult</span></span>
@@ -697,39 +667,39 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       </div>
     </section>
 
-    <section id="work">
-      <div class="hd"><h2>my own games</h2><span class="aside">1 live · 2 in development</span></div>
-      <p class="lead intro">These three are my own projects, so whatever I write for you is the same kind of code I have to deal with myself later on.</p>
+    <section class="tone" id="work">
+      <div class="hd big" data-reveal="words"><h2>my own games</h2><span class="aside">1 live · 2 in development</span></div>
+      <p class="lead intro" data-reveal>These three are my own projects, so whatever I write for you is the same kind of code I have to deal with myself later on.</p>
 
       <article class="project" id="shisenkyo">
-        <div class="proj-head">
+        <div class="proj-head" data-reveal>
           <h3>Shisenkyo</h3>
           <span class="state dev"><span class="dot"></span>In development</span>
           <a class="out" href="#best">Watch the clip&nbsp;&#8593;</a>
         </div>
-        <p class="lead">My Hell's Paradise game and my best work so far. I'm the only developer on it, so every part of it is mine: the scripting, the VFX, the animations, the UI, the map and the models. It's not public yet, the clip up in best work is from the current build.</p>
+        <p class="lead" data-reveal>My Hell's Paradise game and my best work so far. I'm the only developer on it, so every part of it is mine: the scripting, the VFX, the animations, the UI, the map and the models. It's not public yet, the clip up in best work is from the current build.</p>
       </article>
 
       <article class="project" id="tower-defense">
-        <div class="proj-head">
+        <div class="proj-head" data-reveal>
           <h3>Untitled Tower Defense</h3>
           <span class="state"><span class="dot"></span>Live on Roblox</span>
           <a class="out" href="https://www.roblox.com/games/119472908687736" target="_blank" rel="noopener">roblox.com/games/119472908687736&nbsp;&#8599;</a>
         </div>
-        <p class="lead">A full tower defense game I made by myself. Code, UI, enemy behaviour, economy, balance, mobile support, all of it. It's live right now, which is honestly the main reason it's on here, you can go play it and check everything below yourself.</p>
+        <p class="lead" data-reveal>A full tower defense game I made by myself. Code, UI, enemy behaviour, economy, balance, mobile support, all of it. It's live right now, which is honestly the main reason it's on here, you can go play it and check everything below yourself.</p>
 
         <div class="shots">
-          <figure class="shot">
+          <figure class="shot" data-reveal="wipe">
             <img src="assets/td-unitshop.jpg" width="1400" height="691" alt="Unit shop with a hexagonal stat radar chart" loading="lazy">
             <figcaption>The unit shop, each unit has its own hexagonal stat radar. All custom UI, no plugins.</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot" data-reveal="wipe">
             <img src="assets/td-wave.jpg" width="1400" height="646" alt="A wave in progress with placed units and the economy HUD" loading="lazy">
             <figcaption>A wave in progress, you can see the placed units, the enemy path and the economy HUD.</figcaption>
           </figure>
         </div>
 
-        <dl class="rows">
+        <dl class="rows" data-reveal="group">
           <div><dt>Hexagonal stat radar</dt><dd>It reads each unit's stat table and draws the polygon, the axis web and the letter grades at runtime. I built it out of primitives instead of using a charting module, so when I add a new unit I don't have to touch the UI at all.</dd></div>
           <div><dt>Wave and enemy director</dt><dd>The waves scale up in what they're made of as you go, the enemies have different movement behaviours, and the multi-phase bosses switch up their attack patterns in the middle of the fight.</dd></div>
           <div><dt>Tower placement</dt><dd>Validation that makes sure the preview and the placement you actually commit are always the same thing. Works the same with mouse and with touch.</dd></div>
@@ -740,24 +710,24 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       </article>
 
       <article class="project" id="horror">
-        <div class="proj-head">
+        <div class="proj-head" data-reveal>
           <h3>Unannounced Asymmetric Horror Project</h3>
           <span class="state dev"><span class="dot"></span>In development</span>
         </div>
-        <p class="lead">An asymmetric horror game, 12 survivors against 2 strikers, on two maps, sort of in the style of Dead by Daylight. I can't say the name until we announce it. I'm the only programmer on it, my partner does the design and the map layouts.</p>
+        <p class="lead" data-reveal>An asymmetric horror game, 12 survivors against 2 strikers, on two maps, sort of in the style of Dead by Daylight. I can't say the name until we announce it. I'm the only programmer on it, my partner does the design and the map layouts.</p>
 
         <div class="shots">
-          <figure class="shot">
+          <figure class="shot" data-reveal="wipe">
             <img src="assets/hz-pursuit.jpg" width="1400" height="443" alt="Striker mid-pursuit with a red debug trail showing the computed path" loading="lazy">
             <figcaption>The striker mid chase. The red trail is the computed path getting used up one waypoint at a time.</figcaption>
           </figure>
-          <figure class="shot">
+          <figure class="shot" data-reveal="wipe">
             <img src="assets/hz-code.jpg" width="1206" height="596" alt="Luau source showing stamina-gated chase speed" loading="lazy">
             <figcaption>Chase speed is tied to stamina, with an exhaustion threshold and a re-engage threshold, and the pathfinding fails safe if it can't find a route.</figcaption>
           </figure>
         </div>
 
-        <dl class="rows">
+        <dl class="rows" data-reveal="group">
           <div><dt>Custom character controller</dt><dd>Movement written from the ground up because I didn't want the default humanoid feel. Sprint, crouch and the state transitions, with weight based animation crossfading.</dd></div>
           <div><dt>Soft shift-lock camera</dt><dd>A custom camera rig set up for over the shoulder horror framing. The easing keeps your aim responsive but it doesn't have that stiff feel the stock shift lock has.</dd></div>
           <div><dt>Striker AI</dt><dd>PathfindingService routing that recomputes when a path fails, and it all runs off a stamina model. When the striker gets exhausted it drops to walk speed, and a re-engage threshold decides when it starts chasing again.</dd></div>
@@ -768,8 +738,8 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
     </section>
 
     <section id="build">
-      <div class="hd"><h2>what I build</h2><span class="aside">full stack · scripting and VFX first</span></div>
-      <dl class="rows">
+      <div class="hd" data-reveal="words"><h2>what I build</h2><span class="aside">full stack · scripting and VFX first</span></div>
+      <dl class="rows" data-reveal="group">
         <div><dt>Data &amp; saving</dt><dd>DataStores and ProfileService. Save structures, session locking, and migrating old player data over without wiping anyone's stuff.</dd></div>
         <div><dt>Matchmaking &amp; rounds</dt><dd>Queues, putting people on teams, the whole round lifecycle, and working out who won.</dd></div>
         <div><dt>Character &amp; camera</dt><dd>Custom controllers, sprint / crouch / stamina states, animation blending, custom camera rigs.</dd></div>
@@ -781,20 +751,45 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
         <div><dt>3D modeling</dt><dd>Models for my own games, like the units in my tower defense game and the models in Shisenkyo.</dd></div>
         <div><dt>Performance &amp; security</dt><dd>Figuring out what's eating your frame rate, moving work off the server, and validating remotes so exploiters can't just ask the server for stuff.</dd></div>
       </dl>
-      <p class="fine inline">I've been publishing on Roblox since 2021. Some of the early stuff is still up, like <a href="https://www.roblox.com/games/6719516094" target="_blank" rel="noopener">Super Clickers</a> and an <a href="https://www.roblox.com/games/7133018155" target="_blank" rel="noopener">early gun / combat system</a>. The full list is on <a href="https://www.roblox.com/users/807959354/profile" target="_blank" rel="noopener">my profile</a>.</p>
+      <p class="fine inline" data-reveal>I've been publishing on Roblox since 2021. Some of the early stuff is still up, like <a href="https://www.roblox.com/games/6719516094" target="_blank" rel="noopener">Super Clickers</a> and an <a href="https://www.roblox.com/games/7133018155" target="_blank" rel="noopener">early gun / combat system</a>. The full list is on <a href="https://www.roblox.com/users/807959354/profile" target="_blank" rel="noopener">my profile</a>.</p>
+    </section>
+
+    <section class="tone" id="rates">
+      <div class="hd big" data-reveal="words"><h2>rates</h2><span class="aside">USD</span></div>
+      <div class="rates" data-reveal="group">
+        <article class="rate">
+          <div class="rate-top"><h3>VFX</h3><span>per effect · from <b>$28</b></span></div>
+          <dl class="tiers">
+            <div><dt>Basic<small>One emitter group, like an aura or a small hit spark</small></dt><dd>$28-35</dd></div>
+            <div><dt>Standard<small>Multi part impact, trail and burst, simple beam</small></dt><dd>$36-45</dd></div>
+            <div><dt>Advanced<small>Full ability effect, charge, release and impact, custom textures</small></dt><dd>$46-58</dd></div>
+            <div><dt>Bigger than that<small>Ultimates, cinematic effects, scripted timing</small></dt><dd>Quote</dd></div>
+          </dl>
+        </article>
+        <article class="rate">
+          <div class="rate-top"><h3>Scripting</h3><span>per task · from <b>$15</b></span></div>
+          <dl class="tiers">
+            <div><dt>Small<small>One mechanic, like a hitbox, a door or wiring up UI buttons</small></dt><dd>$15-30</dd></div>
+            <div><dt>Medium<small>One ability with the VFX hooked up, a shop, DataStore saving</small></dt><dd>$40-90</dd></div>
+            <div><dt>Large<small>Combat framework, round system, inventory</small></dt><dd>$100-250+</dd></div>
+            <div><dt>Hourly<small>Unclear scope, bug fixing, edits to someone else's code</small></dt><dd>$12-18/hr</dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="fine" data-reveal>VFX and scripting for the same ability is the VFX tier plus the scripting tier.</p>
     </section>
 
     <section id="how">
-      <div class="hd"><h2>how I work</h2></div>
-      <ol class="steps">
+      <div class="hd" data-reveal="words"><h2>how I work</h2></div>
+      <ol class="steps" data-reveal="group">
         <li><span class="no">01</span><b>Scope</b><span class="d">You tell me the system or the bug. I ask the questions that actually change the estimate, and then I write down what's included and what isn't so we're on the same page.</span></li>
         <li><span class="no">02</span><b>Estimate</b><span class="d">You get a fixed deliverable and a real timeline before I start anything. If the job grows halfway through we re-quote it, I'm not going to quietly go over and then surprise you with it.</span></li>
         <li><span class="no">03</span><b>Build</b><span class="d">I send updates that have something you can actually test in them, not a week of nothing and then a giant wall of code.</span></li>
         <li><span class="no">04</span><b>Handoff</b><span class="d">Commented, modular code that drops straight into your place, a quick walkthrough of how it all fits together, and a window after that where I fix anything that comes up.</span></li>
       </ol>
 
-      <div class="hd sub"><h2>working together</h2></div>
-      <dl class="rows">
+      <div class="hd sub" data-reveal="words"><h2>working together</h2></div>
+      <dl class="rows" data-reveal="group">
         <div><dt>Availability (Eastern)<span class="now" data-now></span></dt><dd>Every day except Thursday and Friday. That's around 25 hours a week.</dd></div>
         <div><dt>Best fit</dt><dd>One system, a feature, an optimization pass, closing exploit holes, or hunting down a bug. Usually a few days to a few weeks of work.</dd></div>
         <div><dt>Rates</dt><dd class="inline">The prices are up in the <a href="#rates">rates</a> section. The final number gets set once we agree on the scope, and you get a date with it.</dd></div>
@@ -802,9 +797,9 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       </dl>
     </section>
 
-    <section id="connect">
-      <div class="hd"><h2>connect</h2></div>
-      <div class="closing">
+    <section class="tone" id="connect">
+      <div class="hd big" data-reveal="words"><h2>connect</h2></div>
+      <div class="closing" data-reveal>
         <h3>Send me the game, what the problem is and when you need it by.</h3>
         <p class="lead">If I'm not the right person for it I'll tell you straight up instead of wasting your week.</p>
         <div class="cta">
@@ -818,7 +813,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       </div>
     </section>
 
-    <footer><span>Ben · Buzziut · buzziut.xyz</span><span>Updated Oct 2026</span></footer>
+    <footer data-reveal="group"><span>Ben · Buzziut · buzziut.xyz</span><span>Updated Oct 2026</span></footer>
 
   </main>
 </div>
@@ -1012,5 +1007,6 @@ chips.forEach(b => b.addEventListener("click", () => pick(b.dataset.skill)));
 const startSkill = new URLSearchParams(location.search).get("skill");
 if (startSkill) pick(startSkill);
 </script>
+<script src="motion.js"></script>
 </body>
 </html>
