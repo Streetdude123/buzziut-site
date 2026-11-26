@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="claude:viewport-fit-sides" content="cover">
 
 <title>Ben · Buzziut · Roblox Full Stack Developer</title>
 <meta name="description" content="Roblox full stack developer. Scripting and VFX first, plus building, 3D modeling, UI and animation. 1st place at HiddenDevs Design a Disaster. Open for short commissions.">
@@ -223,18 +222,6 @@ section{padding-top:112px}
 .lb-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--rule2)}
 .lb-count{color:var(--dim2);font-size:13.5px;font-variant-numeric:tabular-nums}
 
-.code-grid{display:grid;gap:28px}
-.code{order:1;min-width:0;border:1px solid var(--rule);border-radius:3px;background:var(--raise);overflow:hidden}
-.code-top{display:flex;justify-content:space-between;gap:12px;padding:11px 16px;border-bottom:1px solid var(--rule2);color:var(--dim);font:400 12.5px/1.2 var(--mono)}
-.code-top span + span{color:var(--dim2)}
-.code pre{margin:0;padding:16px 18px 18px 0;overflow-x:auto;color:var(--fg);font:400 13px/1.75 var(--mono);tab-size:2;counter-reset:ln 30}
-.code .l::before{counter-increment:ln;content:counter(ln);display:inline-block;width:3.3em;padding-right:1.3em;color:var(--dim2);text-align:right}
-.code .k{color:var(--accent)}
-.code .s{color:var(--sand)}
-.code .t{color:var(--dim)}
-.code .c{color:var(--dim2);font-style:italic}
-.code-side h3{margin:0 0 10px;font:400 23px/1.25 var(--sans);letter-spacing:-.015em}
-.code-side .lead{font-size:16px}
 .files{order:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 44px;list-style:none;margin:0;padding:0}
 .files li{border-top:1px solid var(--rule)}
 .files a{display:block;padding:14px 0}
@@ -392,7 +379,6 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
       <a class="opt" href="#best">Best work</a>
       <a href="#games">Released</a>
       <a href="#clips">Clips</a>
-      <a href="#code">Code</a>
       <a href="#work">Own games</a>
       <a href="#rates">Rates</a>
       <a class="opt" href="#how">How I work</a>
@@ -424,7 +410,6 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
         <div class="w"><dt>1st place</dt><dd><a href="#allergy-season">HiddenDevs Design a Disaster</a></dd></div>
         <div class="r"><dt>Rates</dt><dd><a href="#rates">VFX from $28 · scripting from $15</a></dd></div>
         <div><dt>Released games</dt><dd><a href="#games">4 on Roblox</a></dd></div>
-        <div><dt>Code</dt><dd><a href="#code">gifting system on GitHub</a></dd></div>
       </dl>
     </div>
 
@@ -560,16 +545,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
           <figcaption hidden>Built inside the client's own place. TAB brings the backpack rig up in front of the camera, the items are real 3D objects sitting in it, and each slot has its own take out prompt. It runs alongside a first person viewmodel and a hotbar.</figcaption>
         </figure>
 
-        <figure class="tile" id="clip-parry" data-skills="scripting" data-title="Parry timing" data-tags="Scripting">
-          <button class="tile-hit" type="button" aria-label="Watch Parry timing">
-            <img src="assets/parry-poster.jpg" alt="" loading="lazy"><video controlslist="nodownload" data-src="assets/parry.mp4" muted loop playsinline preload="none"></video>
-            <span class="dur">0:08</span>
-            <span class="tile-meta"><b>Parry timing</b></span>
-          </button>
-          <figcaption hidden>The striker's swing has a red wind up, and blocking right at that moment turns the block into a parry. You get the impact burst and the deflect, and no damage, the health bar stays at 125 the whole time.</figcaption>
-        </figure>
-
-        <figure class="tile" id="clip-ultimate" data-skills="vfx animation" data-title="Ultimate ability, scripting and VFX all mine" data-tags="VFX · Animation">
+        <figure class="tile big" id="clip-ultimate" data-skills="vfx animation" data-title="Ultimate ability, scripting and VFX all mine" data-tags="VFX · Animation">
           <button class="tile-hit" type="button" aria-label="Watch the ultimate ability">
             <img src="assets/ultimate-poster.jpg" alt="" loading="lazy"><video controlslist="nodownload" data-src="assets/ultimate.mp4" muted loop playsinline preload="none"></video>
             <span class="dur">0:14</span>
@@ -587,89 +563,13 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
           <figcaption hidden>She casts into the sky, a ring opens on the ground and flowers spread over the whole field. I did the cutscene and camera scripting, the VFX, the character animation, the map and the lighting.</figcaption>
         </figure>
 
-        <figure class="tile" id="clip-wirebox" data-skills="scripting" data-title="Wire box objective" data-tags="Scripting">
-          <button class="tile-hit" type="button" aria-label="Watch the wire box objective">
-            <img src="assets/wirebox-poster.jpg" alt="" loading="lazy"><video controlslist="nodownload" data-src="assets/wirebox.mp4" muted loop playsinline preload="none"></video>
-            <span class="dur">0:10</span>
-            <span class="tile-meta"><b>Wire box objective</b></span>
-          </button>
-          <figcaption hidden>The prompt checks the objective's own state first, then opens a splice minigame where you reroute wires between terminals. Finishing it gets logged on the server and counts toward the round's win condition.</figcaption>
-        </figure>
-
-        <figure class="tile" id="clip-generator" data-skills="scripting" data-title="Generator objective" data-tags="Scripting">
-          <button class="tile-hit" type="button" aria-label="Watch the generator objective">
-            <img src="assets/generator-poster.jpg" alt="" loading="lazy"><video controlslist="nodownload" data-src="assets/generator.mp4" muted loop playsinline preload="none"></video>
-            <span class="dur">0:11</span>
-            <span class="tile-meta"><b>Generator objective</b></span>
-          </button>
-          <figcaption hidden>A hold interaction with a timing ring and a four stage progress bar. Each stage saves on its own, so a survivor who gets interrupted mid repair keeps what they already did.</figcaption>
-        </figure>
-
-        <figure class="tile wide" id="clip-terminal" data-skills="scripting" data-title="Server terminal objective" data-tags="Scripting">
-          <button class="tile-hit" type="button" aria-label="Watch the server terminal objective">
-            <img src="assets/terminal-poster.jpg" alt="" loading="lazy"><video controlslist="nodownload" data-src="assets/terminal.mp4" muted loop playsinline preload="none"></video>
-            <span class="dur">0:12</span>
-            <span class="tile-meta"><b>Server terminal objective</b></span>
-          </button>
-          <figcaption hidden>Pick up data chips around the map and hold them over the console's scanner. Each symbol decrypts into a number and the panel tracks the system status until the terminal is back up. The pickups, the hold and the decryption all run on the server.</figcaption>
-        </figure>
-
-        <figure class="tile wide" id="clip-chase" data-skills="scripting" data-title="Movement and camera in the real map" data-tags="Scripting">
-          <button class="tile-hit" type="button" aria-label="Watch movement and camera in the real map">
-            <img src="assets/chase-poster.jpg" alt="" loading="lazy"><video controlslist="nodownload" data-src="assets/chase.mp4" muted loop playsinline preload="none"></video>
-            <span class="dur">0:13</span>
-            <span class="tile-meta"><b>Movement and camera in the real map</b></span>
-          </button>
-          <figcaption hidden>The custom controller and the soft shift lock camera in the actual built map, not a test room. The health and stamina HUD drains as you sprint.</figcaption>
-        </figure>
       </div>
       <p class="fine" data-reveal>Hover a clip to preview it. Click to watch with sound and read what I built.</p>
     </section>
 
-    <section id="code">
-      <div class="hd" data-reveal="words"><h2>code</h2><span class="aside">4 files on GitHub</span></div>
-      <div class="code-grid">
-        <div class="code-side" data-reveal>
-          <h3>Gifting system, server side</h3>
-          <p class="lead">You buy a product for another player and it lands in their inbox, even if they're in another server or offline. If they don't claim it before it expires, it goes back to the sender.</p>
-        </div>
-        <ul class="files" data-reveal="group">
-          <li><a href="https://github.com/Streetdude123/sample-code/blob/main/ReceiptLedger.luau" target="_blank" rel="noopener"><b>ReceiptLedger.luau<span class="ic">&#8599;</span></b><span class="d">Roblox keeps retrying ProcessReceipt until it hears back, so every PurchaseId gets recorded and a purchase can never grant twice.</span></a></li>
-          <li><a href="https://github.com/Streetdude123/sample-code/blob/main/InboxStore.luau" target="_blank" rel="noopener"><b>InboxStore.luau<span class="ic">&#8599;</span></b><span class="d">Every write is an UpdateAsync, so two servers touching the same inbox can't duplicate or lose a gift, and a double click can't claim it twice.</span></a></li>
-          <li><a href="https://github.com/Streetdude123/sample-code/blob/main/Gift.luau" target="_blank" rel="noopener"><b>Gift.luau<span class="ic">&#8599;</span></b><span class="d">The gift data and the payload the client gets, with the ids it has no business seeing stripped out. Returned gifts never expire again, so they can't bounce back and forth forever.</span></a></li>
-          <li><a href="https://github.com/Streetdude123/sample-code/blob/main/Store.luau" target="_blank" rel="noopener"><b>Store.luau<span class="ic">&#8599;</span></b><span class="d">The DataStore wrapper every write goes through, with retries and backoff.</span></a></li>
-        </ul>
-        <figure class="code" data-reveal="wipe">
-          <figcaption class="code-top"><span>ReceiptLedger.luau</span><span>lines 31-52</span></figcaption>
-<pre><code><span class="l"><span class="c">-- New means this server owns the delivery, Error means Roblox should retry later</span></span>
-<span class="l">ReceiptLedger.Claim = <span class="k">function</span>(purchase_id: <span class="t">string</span>): <span class="t">ClaimResult</span></span>
-<span class="l">&#9;<span class="k">local</span> already_processed = <span class="k">false</span></span>
-<span class="l"></span>
-<span class="l">&#9;<span class="k">local</span> claim_transform = <span class="k">function</span>(current: <span class="t">any</span>): <span class="t">ReceiptRecord?</span></span>
-<span class="l">&#9;&#9;<span class="k">if</span> current ~= <span class="k">nil</span> <span class="k">then</span></span>
-<span class="l">&#9;&#9;&#9;already_processed = <span class="k">true</span></span>
-<span class="l">&#9;&#9;&#9;<span class="k">return</span> <span class="k">nil</span></span>
-<span class="l">&#9;&#9;<span class="k">end</span></span>
-<span class="l">&#9;&#9;<span class="k">return</span> { ClaimedAt = os.time() }</span>
-<span class="l">&#9;<span class="k">end</span></span>
-<span class="l"></span>
-<span class="l">&#9;<span class="k">local</span> succeeded = Store.Update(GiftConfig.ReceiptStoreName, key_for(purchase_id), claim_transform)</span>
-<span class="l"></span>
-<span class="l">&#9;<span class="k">if</span> <span class="k">not</span> succeeded <span class="k">then</span></span>
-<span class="l">&#9;&#9;<span class="k">return</span> <span class="s">"Error"</span></span>
-<span class="l">&#9;<span class="k">end</span></span>
-<span class="l">&#9;<span class="k">if</span> already_processed <span class="k">then</span></span>
-<span class="l">&#9;&#9;<span class="k">return</span> <span class="s">"AlreadyProcessed"</span></span>
-<span class="l">&#9;<span class="k">end</span></span>
-<span class="l">&#9;<span class="k">return</span> <span class="s">"New"</span></span>
-<span class="l"><span class="k">end</span></span></code></pre>
-        </figure>
-      </div>
-    </section>
-
     <section class="tone" id="work">
-      <div class="hd big" data-reveal="words"><h2>my own games</h2><span class="aside">1 live · 2 in development</span></div>
-      <p class="lead intro" data-reveal>These three are my own projects, so whatever I write for you is the same kind of code I have to deal with myself later on.</p>
+      <div class="hd big" data-reveal="words"><h2>my own games</h2><span class="aside">1 live · 1 in development</span></div>
+      <p class="lead intro" data-reveal>These two are my own projects, so whatever I write for you is the same kind of code I have to deal with myself later on.</p>
 
       <article class="project" id="shisenkyo">
         <div class="proj-head" data-reveal>
@@ -709,32 +609,6 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
         </dl>
       </article>
 
-      <article class="project" id="horror">
-        <div class="proj-head" data-reveal>
-          <h3>Unannounced Asymmetric Horror Project</h3>
-          <span class="state dev"><span class="dot"></span>In development</span>
-        </div>
-        <p class="lead" data-reveal>An asymmetric horror game, 12 survivors against 2 strikers, on two maps, sort of in the style of Dead by Daylight. I can't say the name until we announce it. I'm the only programmer on it, my partner does the design and the map layouts.</p>
-
-        <div class="shots">
-          <figure class="shot" data-reveal="wipe">
-            <img src="assets/hz-pursuit.jpg" width="1400" height="443" alt="Striker mid-pursuit with a red debug trail showing the computed path" loading="lazy">
-            <figcaption>The striker mid chase. The red trail is the computed path getting used up one waypoint at a time.</figcaption>
-          </figure>
-          <figure class="shot" data-reveal="wipe">
-            <img src="assets/hz-code.jpg" width="1206" height="596" alt="Luau source showing stamina-gated chase speed" loading="lazy">
-            <figcaption>Chase speed is tied to stamina, with an exhaustion threshold and a re-engage threshold, and the pathfinding fails safe if it can't find a route.</figcaption>
-          </figure>
-        </div>
-
-        <dl class="rows" data-reveal="group">
-          <div><dt>Custom character controller</dt><dd>Movement written from the ground up because I didn't want the default humanoid feel. Sprint, crouch and the state transitions, with weight based animation crossfading.</dd></div>
-          <div><dt>Soft shift-lock camera</dt><dd>A custom camera rig set up for over the shoulder horror framing. The easing keeps your aim responsive but it doesn't have that stiff feel the stock shift lock has.</dd></div>
-          <div><dt>Striker AI</dt><dd>PathfindingService routing that recomputes when a path fails, and it all runs off a stamina model. When the striker gets exhausted it drops to walk speed, and a re-engage threshold decides when it starts chasing again.</dd></div>
-          <div><dt>Objectives and interaction</dt><dd>Proximity prompts where every objective keeps its own state, and they feed into the round's win conditions.</dd></div>
-          <div><dt>Server-authoritative movement</dt><dd>Walk speed, position and player state all get validated on the server. That closes the client trust holes exploiters use to outrun you or clip through the map.</dd></div>
-        </dl>
-      </article>
     </section>
 
     <section id="build">
@@ -808,7 +682,6 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;ma
         </div>
         <div class="elsewhere">
           <a href="https://www.roblox.com/users/807959354/profile" target="_blank" rel="noopener">Roblox @thefuture1687&nbsp;&#8599;</a>
-          <a href="https://github.com/Streetdude123" target="_blank" rel="noopener">GitHub Streetdude123&nbsp;&#8599;</a>
         </div>
       </div>
     </section>
